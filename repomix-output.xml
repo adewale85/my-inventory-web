@@ -1,0 +1,4622 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+public/
+  file.svg
+  globe.svg
+  next.svg
+  vercel.svg
+  window.svg
+src/
+  app/
+    auth/
+      login/
+        page.tsx
+      signup/
+        page.tsx
+    products/
+      page.tsx
+    reports/
+      page.tsx
+    settings/
+      page.tsx
+    suppliers/
+      page.tsx
+    transactions/
+      page.tsx
+    favicon.ico
+    globals.css
+    layout.tsx
+    page.tsx
+  components/
+    AppShell.tsx
+    AuthWrapper.tsx
+    CategoryBars.tsx
+    MetricCard.tsx
+    MovementsList.tsx
+    Sidebar.tsx
+  context/
+    AuthContext.tsx
+  hooks/
+    products/
+      useproduct.ts
+  lib/
+    api/
+      auth/
+        getCurrentUser.ts
+        login.ts
+        logout.ts
+        signUp.ts
+        updateProfile.ts
+      categories/
+        createCategories.ts
+        deleteCategory.ts
+        getCategories.ts
+        getCategory.ts
+        updateCategory.ts
+      dashboard/
+        getDashboardStats.ts
+        getInventoryByCategory.ts
+        getRecentStockMovements.ts
+        getTopCategories.ts
+      products/
+        createProduct.ts
+        deleteProduct.ts
+        getAllProducts.ts
+        getLowStockProducts.ts
+        getSingleProduct.ts
+      reports/
+        getInventorySummary.ts
+        getStockValue.ts
+      stock-movements/
+        getAllStockMovements.ts
+        getSingleStockMovement.ts
+        recordStockMovement.ts
+      suppliers/
+        createSupplier.ts
+        deleteSupplier.ts
+        getAllSuppliers.ts
+        getSingleSupplier.ts
+        updateSupplier.ts
+      units/
+        createUnit.ts
+        deleteUnit.ts
+        getAllUnits.ts
+        getSingleUnit.ts
+        updateUnit.ts
+      axiosPrivate.ts
+  providers/
+    QueryProvider.tsx
+  store/
+    config/
+      sharedConfig.ts
+  types/
+    categories.ts
+    dashboard.ts
+    product.ts
+    report.ts
+    schema.d.ts
+    stockMovement.ts
+    suppliers.ts
+    unit.ts
+    user.ts
+  zustand/
+    useAuthStore.tsx
+  global.d.ts
+  zustand-fake.d.ts
+.gitignore
+AGENTS.md
+CLAUDE.md
+eslint.config.mjs
+next.config.ts
+package.json
+pnpm-workspace.yaml
+postcss.config.mjs
+README.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="src/app/auth/login/page.tsx">
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { login as apiLogin } from "@/lib/api/auth/login";
+import { useMutation } from "@tanstack/react-query";
+import { useAuthStore } from "@/zustand/useAuthStore";
+import { getCurrentUser } from "@/lib/api/auth/getCurrentUser";
+
+export default function LoginPage() {
+  const router = useRouter();
+  const setAuth = useAuthStore((state)=>state.setAuth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginMutation = useMutation({
+    mutationFn: async () => {
+      console.log("Attempting API login with:",email);
+      // ✅ FIX: Pass as a single object payload to match LoginPayload interface
+      return apiLogin({ email, password });
+    },
+
+      onSuccess: async (authData) => {
+      console.log("Cleaned API Login Response:", authData);
+      
+      // ✅ Clean token extraction since login.ts already drops down to the correct object layer
+      const token = authData?.token || null;
+      console.log("Extracted Token:", token);
+
+      if (!token) {
+        throw new Error("Login succeeded but no token was found in the API response.");
+      }
+
+      try {
+        localStorage.setItem("token", token);
+      } catch (e) {
+        console.error("Failed to store token in localStorage", e);
+      }
+
+      try {
+        const userProflie = await getCurrentUser()
+      
+
+      const completeAuthPayload = {
+        ...authData,
+        ...userProflie,
+        accessToken: token,
+      };
+
+      setAuth(completeAuthPayload);
+      } catch (e) {
+        console.warn("Could not fetch user profile details, logging in with token only", e);
+        
+        // Fallback: If getting user profile fails, still save the token so they aren't kicked out
+        setAuth({
+          ...authData,
+          accessToken: token,
+        });
+      }
+
+      router.push("/dashboard");
+    },
+    onError: (error) => {
+      console.error("Mutation encountered an error:", error);
+    }
+  });
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    loginMutation.mutate();
+  };
+
+  // Safe mapping for validation error payloads or generic server failures
+  const errorMessage = loginMutation.error instanceof Error
+    ? loginMutation.error.message
+    : (loginMutation.error as any)?.response?.data?.message || "Login failed. Please check your credentials.";
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-300 w-full">
+      <div className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
+        <h2 className="text-xl font-semibold text-slate-800">Sign in to My Inventory</h2>
+        <p className="text-sm text-slate-500 mt-1">Enter your credentials to continue.</p>
+
+        {loginMutation.isError && (
+          <div className="mt-4 rounded border border-rose-100 bg-rose-50 px-3 py-2 text-sm text-rose-700">
+            {errorMessage}
+          </div>
+        )}
+
+        <form onSubmit={submit} className="mt-4 space-y-3">
+          <div>
+            <label className="block text-xs text-slate-500">Email</label>
+            <input 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              className="w-full rounded border border-slate-200 px-3 py-2 text-slate-900 focus:outline-none focus:border-emerald-500" 
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs text-slate-500">Password</label>
+            <input 
+              type="password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+              className="w-full rounded border border-slate-200 px-3 py-2 text-slate-900 focus:outline-none focus:border-emerald-500" 
+            />
+          </div>
+
+          <div className="flex items-center justify-between mt-4">
+            <button 
+              type="submit" 
+              disabled={loginMutation.isPending} 
+              className="rounded bg-emerald-500 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-600 disabled:opacity-60 transition"
+            >
+              {loginMutation.isPending ? "Signing in..." : "Sign in"}
+            </button>
+            <a href="/auth/signup" className="text-sm text-slate-500 hover:underline">Create account</a>
+          </div>
+         
+        </form>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/auth/signup/page.tsx">
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signup as apiSignup } from "@/lib/api/auth/signUp";
+import { useAuth } from "@/context/AuthContext";
+
+export default function SignupPage() {
+  const router = useRouter();
+  const { fetchMe } = useAuth();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const validate = () => {
+    if (!name.trim() || name.length < 2) {
+      setError("Please enter a valid name.");
+      return false;
+    }
+    if (!email.trim() || !email.includes("@")) {
+      setError("Please enter a valid email address.");
+      return false;
+    }
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters.");
+      return false;
+    }
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError(null);
+
+    if (!validate()) {
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await apiSignup(name, email, password);
+      const token = response?.token ?? response?.token ?? null;
+      if (!token) {
+        throw new Error("Registration succeeded but no token was returned.");
+      }
+
+      localStorage.setItem("token", token);
+
+      try {
+        await fetchMe();
+      } catch (e) {
+        console.warn("fetchMe after signup failed", e);
+      }
+
+      router.push("/");
+    } catch (err: any) {
+      console.error(err);
+      const message = err?.message || (err?.body?.message ?? "Registration failed. Please try again.");
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-6">
+      <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
+        <div className="mb-6 text-center">
+          <h1 className="text-2xl font-semibold text-slate-900">Create your account</h1>
+          <p className="mt-2 text-sm text-slate-500">Start managing inventory with a secure admin-friendly dashboard.</p>
+        </div>
+
+        {error && (
+          <div className="mb-4 rounded border border-rose-100 bg-rose-50 px-4 py-3 text-sm text-rose-700">{error}</div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-semibold text-slate-500">Name</label>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              placeholder="Jane Doe"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-500">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-500">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              placeholder="Create a strong password"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-500">Confirm Password</label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              placeholder="Repeat your password"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {loading ? "Creating account..." : "Create account"}
+          </button>
+        </form>
+
+        <p className="mt-5 text-center text-sm text-slate-500">
+          Already have an account?{' '}
+          <a href="/auth/login" className="font-semibold text-emerald-600 hover:text-emerald-700">Log in</a>
+        </p>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/products/page.tsx">
+"use client";
+
+import React from "react";
+import { useDeleteProduct, useProducts } from "../../hooks/products/useproduct";
+
+export default function ProductsPage() {
+  const { data: productsList, isLoading, isError, error } = useProducts();
+  const deleteMutation = useDeleteProduct();
+
+  if (isLoading) return <div className="p-8 text-center text-slate-500 animate-pulse">Loading inventory...</div>;
+  if (isError) return <div className="p-8 text-rose-600">Error: {(error as Error).message}</div>;
+
+  return (
+    <div className="p-8 max-w-7xl mx-auto">
+      
+      {/* 1. HEADER SECTION */}
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-2xl font-bold text-slate-900">Products Inventory</h1>
+        <button className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">
+          Add Product
+        </button>
+      </div>
+
+      {/* 2. THE PRODUCTS CONTAINER */}
+      <div className="space-y-4"> 
+        {productsList?.data?.map((product: any) => (
+          <div 
+            key={product.id} 
+            className="flex items-center justify-between bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:bg-slate-50/70 transition-colors"
+          >
+            {/* Left side: Product Name & SKU */}
+            <div className="space-y-1">
+              <div className="font-semibold text-slate-900 text-base">{product.name}</div>
+              <div className="font-mono text-xs text-slate-400">SKU: {product.sku || "—"}</div>
+            </div>
+
+            {/* Right side: Stock badge and Delete Button */}
+            <div className="flex items-center space-x-6">
+              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                {product.quantity} units
+              </span>
+
+              <button
+                onClick={() => {
+                  if (confirm(`Permanently remove "${product.name}"?`)) {
+                    deleteMutation.mutate(product.id);
+                  }
+                }}
+                disabled={deleteMutation.isPending}
+                className="text-xs font-semibold text-rose-600 hover:text-rose-800 disabled:opacity-40"
+              >
+                {deleteMutation.isPending ? "Removing..." : "Delete"}
+              </button>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/reports/page.tsx">
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+
+interface InventorySummaryItem { category: string; quantity: number }
+interface StockValueItem { category: string; value: number }
+
+export default function ReportsPage() {
+  const { user } = useAuth();
+  const isAdmin = user?.role === "ADMIN";
+  const [inventorySummary, setInventorySummary] = useState<InventorySummaryItem[]>([]);
+  const [stockValue, setStockValue] = useState<StockValueItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isAdmin) return setLoading(false);
+    let mounted = true;
+    async function load() {
+      setLoading(true);
+      try {
+        const [iRes, vRes] = await Promise.all([fetch('/api/v1/reports/inventory-summary'), fetch('/api/v1/reports/stock-value')]);
+        if (!mounted) return;
+        if (iRes.ok) setInventorySummary(await iRes.json());
+        if (vRes.ok) setStockValue(await vRes.json());
+      } catch (err) {
+        console.error('Report load failed', err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+    load();
+    return () => { mounted = false; };
+  }, [isAdmin]);
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-slate-50 p-6">
+        <div className="max-w-xl mx-auto rounded-lg border border-slate-200 bg-white p-8 text-center">
+          <h2 className="text-xl font-semibold text-rose-600">403 — Access Denied</h2>
+          <p className="mt-2 text-sm text-slate-600">Administrator credentials required to view Reports.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const maxQty = Math.max(...inventorySummary.map((i) => i.quantity), 1);
+  const maxValue = Math.max(...stockValue.map((s) => s.value), 1);
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-6">
+      <header className="mb-6 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-slate-800">Executive Reports</h1>
+          <p className="text-sm text-slate-500">High-level inventory analytics and stock value.</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button className="rounded bg-emerald-500 text-white px-3 py-2 text-sm hover:bg-emerald-600">Export Spreadsheet</button>
+          <button className="rounded border border-slate-200 px-3 py-2 text-sm">Print Summary</button>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-slate-800 mb-3">Inventory Summary (by category)</h2>
+          {loading ? (
+            <div className="space-y-3">
+              <div className="h-4 w-3/4 animate-pulse rounded bg-slate-200" />
+              <div className="h-4 w-1/2 animate-pulse rounded bg-slate-200" />
+            </div>
+          ) : inventorySummary.length === 0 ? (
+            <div className="text-sm text-slate-500">No data</div>
+          ) : (
+            <ul className="space-y-3">
+              {inventorySummary.map((it) => (
+                <li key={it.category} className="flex items-center gap-3">
+                  <div className="flex-1">
+                    <div className="text-sm text-slate-800">{it.category}</div>
+                    <div className="mt-2 h-3 bg-slate-100 rounded overflow-hidden">
+                      <div className="h-3 bg-emerald-400" style={{ width: `${(it.quantity / maxQty) * 100}%` }} />
+                    </div>
+                  </div>
+                  <div className="text-sm font-medium text-slate-900">{it.quantity}</div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-slate-800 mb-3">Stock Value (by category)</h2>
+          {loading ? (
+            <div className="space-y-3">
+              <div className="h-4 w-3/4 animate-pulse rounded bg-slate-200" />
+            </div>
+          ) : stockValue.length === 0 ? (
+            <div className="text-sm text-slate-500">No data</div>
+          ) : (
+            <ul className="space-y-3">
+              {stockValue.map((it) => (
+                <li key={it.category} className="flex items-center gap-3">
+                  <div className="flex-1">
+                    <div className="text-sm text-slate-800">{it.category}</div>
+                    <div className="mt-2 h-3 bg-slate-100 rounded overflow-hidden">
+                      <div className="h-3 bg-emerald-400" style={{ width: `${(it.value / maxValue) * 100}%` }} />
+                    </div>
+                  </div>
+                  <div className="text-sm font-medium text-slate-900">${it.value.toLocaleString()}</div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/settings/page.tsx">
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+
+interface Category { id: string; name: string; description?: string }
+interface Unit { id: string; name: string; abbreviation?: string }
+
+export default function SettingsPage() {
+  const { user } = useAuth();
+  const isAdmin = user?.role === "ADMIN";
+
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [units, setUnits] = useState<Unit[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [newCat, setNewCat] = useState({ name: "", description: "" });
+  const [newUnit, setNewUnit] = useState({ name: "", abbreviation: "" });
+  const [savingCat, setSavingCat] = useState(false);
+  const [savingUnit, setSavingUnit] = useState(false);
+
+  useEffect(() => {
+    if (!isAdmin) return setLoading(false);
+    let mounted = true;
+    async function load() {
+      setLoading(true);
+      try {
+        const [cRes, uRes] = await Promise.all([fetch('/api/v1/categories'), fetch('/api/v1/units-of-measure')]);
+        if (!mounted) return;
+        if (cRes.ok) setCategories(await cRes.json());
+        if (uRes.ok) setUnits(await uRes.json());
+      } catch (err) {
+        console.error('Load failed', err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+    load();
+    return () => { mounted = false; };
+  }, [isAdmin]);
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-slate-50 p-6">
+        <div className="max-w-xl mx-auto rounded-lg border border-slate-200 bg-white p-8 text-center">
+          <h2 className="text-xl font-semibold text-rose-600">403 — Access Denied</h2>
+          <p className="mt-2 text-sm text-slate-600">Administrator credentials required to view Settings.</p>
+        </div>
+      </div>
+    );
+  }
+
+  async function createCategory() {
+    if (!newCat.name) return;
+    setSavingCat(true);
+    try {
+      const res = await fetch('/api/v1/categories', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newCat) });
+      if (!res.ok) throw new Error('Create failed');
+      const created = await res.json();
+      setCategories((s) => [created, ...s]);
+      setNewCat({ name: '', description: '' });
+    } catch (err) { console.error(err); alert('Failed to create category'); } finally { setSavingCat(false); }
+  }
+
+  async function deleteCategory(id: string) {
+    if (!confirm('Delete category?')) return;
+    try {
+      const res = await fetch(`/api/v1/categories/${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Delete failed');
+      setCategories((s) => s.filter((c) => c.id !== id));
+    } catch (err) { console.error(err); alert('Delete failed'); }
+  }
+
+  async function createUnit() {
+    if (!newUnit.name) return;
+    setSavingUnit(true);
+    try {
+      const res = await fetch('/api/v1/units-of-measure', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newUnit) });
+      if (!res.ok) throw new Error('Create failed');
+      const created = await res.json();
+      setUnits((s) => [created, ...s]);
+      setNewUnit({ name: '', abbreviation: '' });
+    } catch (err) { console.error(err); alert('Failed to create unit'); } finally { setSavingUnit(false); }
+  }
+
+  async function deleteUnit(id: string) {
+    if (!confirm('Delete unit?')) return;
+    try {
+      const res = await fetch(`/api/v1/units-of-measure/${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Delete failed');
+      setUnits((s) => s.filter((u) => u.id !== id));
+    } catch (err) { console.error(err); alert('Delete failed'); }
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-6">
+      <header className="mb-6">
+        <h1 className="text-2xl font-semibold text-slate-800">Administrative Settings</h1>
+        <p className="text-sm text-slate-500">Manage categories and units of measure.</p>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-slate-800 mb-3">Category Manager</h2>
+          <div className="mb-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input placeholder="Name" value={newCat.name} onChange={(e) => setNewCat((s) => ({ ...s, name: e.target.value }))} className="col-span-2 rounded border border-slate-200 px-3 py-2" />
+            <button onClick={createCategory} disabled={savingCat} className="rounded bg-emerald-500 text-white px-3 py-2">{savingCat ? 'Saving...' : 'Create'}</button>
+            <input placeholder="Description" value={newCat.description} onChange={(e) => setNewCat((s) => ({ ...s, description: e.target.value }))} className="col-span-3 rounded border border-slate-200 px-3 py-2 mt-2" />
+          </div>
+
+          {loading ? (
+            <div className="text-sm text-slate-500">Loading…</div>
+          ) : (
+            <ul className="space-y-2">
+              {categories.map((c) => (
+                <li key={c.id} className="flex items-center justify-between rounded border border-slate-100 p-2">
+                  <div>
+                    <div className="font-medium text-slate-800">{c.name}</div>
+                    <div className="text-xs text-slate-500">{c.description}</div>
+                  </div>
+                  <div>
+                    <button onClick={() => deleteCategory(c.id)} className="text-sm rounded px-2 py-1 bg-rose-50 text-rose-700 border border-rose-100">Delete</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-slate-800 mb-3">Units of Measure</h2>
+          <div className="mb-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input placeholder="Name (e.g. Kilogram)" value={newUnit.name} onChange={(e) => setNewUnit((s) => ({ ...s, name: e.target.value }))} className="col-span-2 rounded border border-slate-200 px-3 py-2" />
+            <button onClick={createUnit} disabled={savingUnit} className="rounded bg-emerald-500 text-white px-3 py-2">{savingUnit ? 'Saving...' : 'Create'}</button>
+            <input placeholder="Abbrev (kg)" value={newUnit.abbreviation} onChange={(e) => setNewUnit((s) => ({ ...s, abbreviation: e.target.value }))} className="col-span-3 rounded border border-slate-200 px-3 py-2 mt-2" />
+          </div>
+
+          {loading ? (
+            <div className="text-sm text-slate-500">Loading…</div>
+          ) : (
+            <ul className="space-y-2">
+              {units.map((u) => (
+                <li key={u.id} className="flex items-center justify-between rounded border border-slate-100 p-2">
+                  <div>
+                    <div className="font-medium text-slate-800">{u.name} <span className="text-xs text-slate-500">{u.abbreviation}</span></div>
+                  </div>
+                  <div>
+                    <button onClick={() => deleteUnit(u.id)} className="text-sm rounded px-2 py-1 bg-rose-50 text-rose-700 border border-rose-100">Delete</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/suppliers/page.tsx">
+"use client";
+
+import { useAuthStore } from "@/zustand/useAuthStore";
+import React, { useEffect, useState } from "react";
+
+
+interface Supplier {
+  id: string;
+  name: string;
+  contactName?: string;
+  email?: string;
+  phone?: string;
+}
+
+export default function SuppliersPage() {
+  const user = useAuthStore((state) => state.auth);
+  const isAdmin = user?.role === "ADMIN";
+  const [suppliers, setSuppliers] = useState<Supplier[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [showCreate, setShowCreate] = useState(false);
+  const [createLoading, setCreateLoading] = useState(false);
+  const [newSupplier, setNewSupplier] = useState({ name: "", contactName: "", email: "", phone: "" });
+
+  useEffect(() => {
+    let mounted = true;
+    async function load() {
+      setLoading(true);
+      try {
+        const res = await fetch("/api/v1/suppliers");
+        if (!mounted) return;
+        if (res.ok) setSuppliers(await res.json());
+      } catch (err) {
+        console.error("Failed to load suppliers", err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+    load();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  async function submitCreate() {
+    setCreateLoading(true);
+    try {
+      const res = await fetch("/api/v1/suppliers", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newSupplier) });
+      if (!res.ok) throw new Error("Create failed");
+      const created = await res.json();
+      setSuppliers((s) => [{ id: created.id ?? Date.now().toString(), name: created.name ?? newSupplier.name, contactName: created.contactName ?? newSupplier.contactName, email: created.email ?? newSupplier.email, phone: created.phone ?? newSupplier.phone }, ...s]);
+      setShowCreate(false);
+      setNewSupplier({ name: "", contactName: "", email: "", phone: "" });
+    } catch (err) {
+      console.error(err);
+      alert("Failed to create supplier");
+    } finally {
+      setCreateLoading(false);
+    }
+  }
+
+  async function handleDelete(id: string) {
+    if (!confirm("Delete this supplier?")) return;
+    try {
+      const res = await fetch(`/api/v1/suppliers/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Delete failed");
+      setSuppliers((s) => s.filter((x) => x.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Delete failed");
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-6">
+      <header className="mb-6 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-slate-800">Suppliers</h1>
+          <p className="text-sm text-slate-500">Supplier directory and contact details.</p>
+        </div>
+        <div className="flex items-center gap-3">
+          {isAdmin && <button onClick={() => setShowCreate(true)} className="rounded bg-emerald-500 text-white px-4 py-2 text-sm hover:bg-emerald-600">+ Add Supplier</button>}
+        </div>
+      </header>
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {loading ? (
+          <div className="col-span-3 space-y-2">
+            <div className="h-20 rounded bg-slate-200 animate-pulse" />
+            <div className="h-20 rounded bg-slate-200 animate-pulse" />
+          </div>
+        ) : suppliers.length === 0 ? (
+          <div className="col-span-3 text-sm text-slate-500">No suppliers found.</div>
+        ) : (
+          suppliers.map((s) => (
+            <div key={s.id} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-slate-900 font-medium">{s.name}</div>
+                  <div className="text-xs text-slate-500">{s.contactName}</div>
+                </div>
+                <div className="text-sm text-slate-700">{s.phone}</div>
+              </div>
+              <div className="mt-3 text-sm text-slate-600">{s.email}</div>
+              <div className="mt-4 flex items-center justify-end gap-2">
+                <button disabled={!isAdmin} onClick={() => isAdmin && handleDelete(s.id)} className={`text-sm rounded px-2 py-1 ${isAdmin ? 'bg-rose-50 text-rose-700 border border-rose-100' : 'opacity-50 cursor-not-allowed bg-white border border-slate-100 text-slate-400'}`}>Delete</button>
+              </div>
+            </div>
+          ))
+        )}
+      </section>
+
+      {/* Create Supplier Modal */}
+      {showCreate && isAdmin && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
+          <div className="w-full max-w-md rounded bg-white p-6">
+            <h3 className="text-lg font-medium text-slate-800">Add Supplier</h3>
+            <div className="mt-4 space-y-3">
+              <div>
+                <label className="block text-xs text-slate-500">Company Name</label>
+                <input value={newSupplier.name} onChange={(e) => setNewSupplier((s) => ({ ...s, name: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+              </div>
+              <div>
+                <label className="block text-xs text-slate-500">Contact Name</label>
+                <input value={newSupplier.contactName} onChange={(e) => setNewSupplier((s) => ({ ...s, contactName: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs text-slate-500">Email</label>
+                  <input value={newSupplier.email} onChange={(e) => setNewSupplier((s) => ({ ...s, email: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+                </div>
+                <div>
+                  <label className="block text-xs text-slate-500">Phone</label>
+                  <input value={newSupplier.phone} onChange={(e) => setNewSupplier((s) => ({ ...s, phone: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end gap-2 mt-4">
+                <button onClick={() => setShowCreate(false)} className="rounded border border-slate-200 px-3 py-2 text-sm">Cancel</button>
+                <button onClick={submitCreate} disabled={createLoading} className="rounded bg-emerald-500 text-white px-4 py-2 text-sm hover:bg-emerald-600">{createLoading ? 'Saving...' : 'Create'}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/transactions/page.tsx">
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+
+interface Movement {
+  id: string;
+  productName: string;
+  type: "IN" | "OUT" | string;
+  quantity: number;
+  occurredAt: string;
+  notes?: string;
+  user?: { name: string };
+}
+
+export default function TransactionsPage() {
+  const { user } = useAuth();
+  const [movements, setMovements] = useState<Movement[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+    async function load() {
+      setLoading(true);
+      try {
+        const res = await fetch("/api/v1/stock-movements");
+        if (!mounted) return;
+        if (res.ok) {
+          const data = await res.json();
+          setMovements(
+            data.map((m: any) => ({
+              id: m.id,
+              productName: m.productName ?? m.product?.name ?? "-",
+              type: m.type,
+              quantity: m.quantity ?? 0,
+              occurredAt: m.occurredAt ?? m.createdAt ?? new Date().toISOString(),
+              notes: m.notes ?? m.note ?? "",
+              user: m.user ?? m.performedBy ?? undefined,
+            }))
+          );
+        }
+      } catch (err) {
+        console.error("Failed to load movements", err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+    load();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-6">
+      <header className="mb-6">
+        <h1 className="text-2xl font-semibold text-slate-800">Stock Movement Ledger</h1>
+        <p className="text-sm text-slate-500">Immutable log of stock movements (accessible to all roles).</p>
+      </header>
+
+      <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        {loading ? (
+          <div className="space-y-3">
+            <div className="h-4 w-3/4 animate-pulse rounded bg-slate-200" />
+            <div className="h-4 w-full animate-pulse rounded bg-slate-200" />
+            <div className="h-4 w-1/2 animate-pulse rounded bg-slate-200" />
+          </div>
+        ) : movements.length === 0 ? (
+          <div className="text-sm text-slate-500">No movements recorded.</div>
+        ) : (
+          <ul className="space-y-3">
+            {movements.map((m) => (
+              <li key={m.id} className="flex items-start justify-between gap-4 border-b border-slate-100 pb-3">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3">
+                    <span className={`text-xs font-semibold rounded px-2 py-1 ${m.type === 'IN' ? 'text-emerald-700 bg-emerald-50' : 'text-rose-600 bg-rose-50'}`}>
+                      {m.type}
+                    </span>
+                    <div className="text-sm font-medium text-slate-900">{m.productName}</div>
+                  </div>
+                  <div className="text-xs text-slate-500 mt-1">{new Date(m.occurredAt).toLocaleString()} • {m.user?.name ?? 'system'}</div>
+                  {m.notes && <div className="mt-2 text-sm text-slate-700">{m.notes}</div>}
+                </div>
+
+                <div className="flex flex-col items-end">
+                  <div className={`text-lg font-semibold ${m.type === 'IN' ? 'text-emerald-600' : 'text-rose-600'}`}>{m.quantity > 0 ? `+${m.quantity}` : m.quantity}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/globals.css">
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+</file>
+
+<file path="src/app/layout.tsx">
+"use client";
+
+import { usePathname } from "next/navigation";
+import AuthWrapper from "@/components/AuthWrapper";
+import AppShell from "@/components/AppShell"; 
+
+import QueryProvider from "@/providers/QueryProvider";
+import "./globals.css"; // 👈 CRITICAL FIX 1: Imports Tailwind CSS styles!
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const onAuthPage = pathname.startsWith("/auth");
+
+  return (
+    <html lang="en">
+      {/* 👈 CRITICAL FIX 2: Exactly ONE body element keeps styles consistent */}
+      <body className="min-h-screen bg-slate-50 antialiased">
+        <QueryProvider>
+          
+          {onAuthPage ? (
+            // SCENARIO 1: Clean centered frame for Login / Sign Up
+            <div className="flex items-center justify-center min-h-screen bg-slate-100 w-full">
+              
+                {children}
+              
+            </div>
+          ) : (
+            // SCENARIO 2: Main Application System Frame
+            <AuthWrapper>
+              <AppShell>
+                {children}
+              </AppShell>
+            </AuthWrapper>
+          )}
+
+        </QueryProvider>
+      </body>
+    </html>
+  );
+}
+</file>
+
+<file path="src/app/page.tsx">
+"use client";
+
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import AuthWrapper from "@/components/AuthWrapper";
+import MetricCard from "@/components/MetricCard";
+import MovementsList from "@/components/MovementsList";
+import { getDashboardStats } from "@/lib/api/dashboard/getDashboardStats";
+import { getRecentStockMovements } from "@/lib/api/dashboard/getRecentStockMovements";
+import { useAuthStore } from "@/zustand/useAuthStore";
+
+
+interface Stats {
+  totalProducts: number;
+  stockValue: number;
+  lowStockItems: number;
+  totalQuantity: number;
+}
+
+interface Movement {
+  id: string;
+  productName: string;
+  quantity: number;
+  type: string;
+  occurredAt: string;
+  notes?: string;
+  user?: { name: string };
+}
+
+function DashboardContent() {
+  const user = useAuthStore((state) => state.auth);
+  const isAdmin = user?.role === "ADMIN";
+
+  const statsQuery = useQuery<Stats>({
+    queryKey: ["dashboard", "stats"],
+    queryFn: () => getDashboardStats(),
+    retry: false,
+  });
+
+  const movementsQuery = useQuery<Movement[]>({
+    queryKey: ["dashboard", "recent-stock-movements"],
+    queryFn: () => getRecentStockMovements(),
+    retry: false,
+  });
+
+  const loading = statsQuery.isLoading || movementsQuery.isLoading;
+  const error = statsQuery.isError || movementsQuery.isError;
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-6">
+      <header className="mb-6">
+        <h1 className="text-3xl font-semibold text-slate-800">Inventory Dashboard</h1>
+        <p className="text-sm text-slate-500">Overview mapped to /api/v1/dashboard/* endpoints</p>
+      </header>
+
+      <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <MetricCard label="Total Products" value={statsQuery.data?.totalProducts ?? 0} loading={statsQuery.isLoading} />
+        {isAdmin && <MetricCard label="Total Stock Value" value={statsQuery.data?.stockValue ?? 0} loading={statsQuery.isLoading} currency />}
+        <MetricCard label="Low Stock Items" value={statsQuery.data?.lowStockItems ?? 0} loading={statsQuery.isLoading} />
+        <MetricCard label="Total Quantity" value={statsQuery.data?.totalQuantity ?? 0} loading={statsQuery.isLoading} />
+      </section>
+
+      {error && (
+        <div className="mb-6 rounded-lg border border-rose-100 bg-rose-50 p-4 text-sm text-rose-700">
+          Failed to load dashboard data. Please refresh the page.
+        </div>
+      )}
+
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-slate-800 mb-3">Recent Stock Movements</h2>
+          <MovementsList movements={movementsQuery.data ?? []} loading={movementsQuery.isLoading} />
+        </div>
+
+        <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-slate-800 mb-3">Quick Actions</h2>
+          <div className="space-y-3">
+            <button className="w-full rounded bg-emerald-500 text-white py-2 px-3 text-sm hover:bg-emerald-600">Record Stock Movement</button>
+            <button className="w-full rounded border border-slate-200 bg-white text-slate-700 py-2 px-3 text-sm hover:bg-slate-50">Add Product</button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="mt-8 text-xs text-slate-400">Stock Value is admin-only and will be hidden from USER roles.</footer>
+    </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <AuthWrapper>
+      <DashboardContent />
+    </AuthWrapper>
+  );
+}
+</file>
+
+<file path="src/components/AppShell.tsx">
+"use client";
+
+import React from "react";
+import { useAuthStore } from "@/zustand/useAuthStore"; // 1. Import your boss's store
+import Sidebar from "@/components/Sidebar";
+
+export default function AppShell({ children }: { children: React.ReactNode }) {
+  // 2. Grab the auth data and actions directly from the Zustand store
+  const auth = useAuthStore((state) => state.auth);
+  const logout = useAuthStore((state) => state.logout);
+  const setAuth = useAuthStore((state) => state.setAuth);
+
+  const user = auth?.user;
+
+  // 3. Mock the role switcher using your boss's setAuth action
+  const handleMockRoleChange = (newRole: "ADMIN" | "USER") => {
+    if (auth) {
+      setAuth({
+        ...auth,
+        user: {
+          ...auth.user,
+          role: newRole,
+        } as any, // Temporary cast for mocking
+      });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1">
+          <header className="flex items-center justify-between border-b border-slate-200 bg-white p-4">
+            <div>
+              <h1 className="text-lg font-semibold text-slate-800">My Inventory</h1>
+              <div className="text-xs text-slate-500">
+                {user ? user.email : "Guest"}
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <label className="text-xs text-slate-500">Role</label>
+              <select
+                value={user?.role ?? "USER"}
+                onChange={(e) => handleMockRoleChange(e.target.value as any)}
+                className="rounded border border-slate-200 bg-white px-2 py-1 text-sm"
+              >
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+              </select>
+              <button
+                onClick={logout}
+                className="ml-3 rounded bg-emerald-500 text-white px-3 py-1 text-sm hover:bg-emerald-600"
+              >
+                Logout
+              </button>
+            </div>
+          </header>
+
+          <main className="p-6">{children}</main>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+// "use client";
+
+// import React from "react";
+// import { useAuth } from "@/context/AuthContext";
+// import Sidebar from "@/components/Sidebar";
+
+// export default function AppShell({ children }: { children: React.ReactNode }) {
+//   const { user, setMockRole, logout } = useAuth();
+
+//   return (
+//     <div className="min-h-screen bg-slate-50">
+//       <div className="flex">
+//         <Sidebar />
+//         <div className="flex-1">
+//           <header className="flex items-center justify-between border-b border-slate-200 bg-white p-4">
+//             <div>
+//               <h1 className="text-lg font-semibold text-slate-800">My Inventory</h1>
+//               <div className="text-xs text-slate-500">{user ? user.email : "Guest"}</div>
+//             </div>
+//             <div className="flex items-center gap-3">
+//               <label className="text-xs text-slate-500">Role</label>
+//               <select
+//                 value={user?.role ?? "USER"}
+//                 onChange={(e) => setMockRole(e.target.value as any)}
+//                 className="rounded border border-slate-200 bg-white px-2 py-1 text-sm"
+//               >
+//                 <option value="USER">USER</option>
+//                 <option value="ADMIN">ADMIN</option>
+//               </select>
+//               <button onClick={logout} className="ml-3 rounded bg-emerald-500 text-white px-3 py-1 text-sm hover:bg-emerald-600">
+//                 Logout
+//               </button>
+//             </div>
+//           </header>
+
+//           <main className="p-6">{children}</main>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+</file>
+
+<file path="src/components/AuthWrapper.tsx">
+// "use client";
+
+// import React, { useEffect } from "react";
+// import { useRouter } from "next/navigation";
+// import { AuthProvider, useAuth } from "@/context/AuthContext";
+
+// function getToken() {
+//   if (typeof window === "undefined") return null;
+//   try {
+//     const storageToken = localStorage.getItem("token");
+//     if (storageToken) return storageToken;
+//     const match = document.cookie.match(/(?:^|; )token=([^;]+)/);
+//     return match ? match[1] : null;
+//   } catch {
+//     return null;
+//   }
+// }
+
+// function AuthGuard({ children }: { children: React.ReactNode }) {
+//   const { user, loading } = useAuth();
+//   const router = useRouter();
+
+//   useEffect(() => {
+//     if (typeof window === "undefined") return;
+//     const path = window.location.pathname;
+//     const token = getToken();
+//     const onAuthPage = path.startsWith("/auth");
+
+//     if (!token && !loading && !onAuthPage) {
+//       router.replace("/auth/login");
+//       return;
+//     }
+
+//     if (token && !loading && !user && !onAuthPage) {
+//       router.replace("/auth/login");
+//     }
+//   }, [loading, user, router]);
+
+//   if (loading) {
+//     return (
+//       <div className="min-h-screen flex items-center justify-center bg-slate-50">
+//         <div className="rounded-lg bg-white px-6 py-5 shadow-sm text-slate-700">Checking authentication...</div>
+//       </div>
+//     );
+//   }
+
+//   return <>{children}</>;
+// }
+
+// export default function AuthWrapper({ children }: { children: React.ReactNode }) {
+//   return (
+//     <AuthProvider>
+//       <AuthGuard>{children}</AuthGuard>
+//     </AuthProvider>
+//   );
+// }
+
+
+"use client";
+
+import React, { useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useAuthStore } from "@/zustand/useAuthStore"; // Make sure this path matches where your store file is located!
+
+function AuthGuard({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  // 1. Pull the authentication state directly from your new Zustand store
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const isLoggingOut = useAuthStore((state) => state.isLoggingOut);
+
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+
+  },[]);
+
+  useEffect(() => {
+    if (!isMounted) return; 
+    const onAuthPage = pathname?.startsWith("/auth") || pathname === "/login";
+
+    // 2. If the user is NOT logged in and trying to access a protected page, redirect to Login
+    if (!isAuthenticated && !onAuthPage) {
+      router.replace("/auth/login");
+    }
+
+    // 3. If the user IS logged in but wanders back to the auth/login page, redirect them to the home dashboard
+    if (isAuthenticated && onAuthPage) {
+      router.replace("/");
+    }
+  }, [isAuthenticated, pathname, router, isMounted]);
+
+  
+  // Show a loading screen if the app is currently in the middle of logging out
+  if (isLoggingOut ||!isMounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="rounded-lg bg-white px-6 py-5 shadow-sm text-slate-700">
+            Checking authentication...
+        </div>
+      </div>
+    );
+  }
+
+  return <>{children}</>;
+}
+
+export default function AuthWrapper({ children }: { children: React.ReactNode }) {
+  // Since Zustand manages state globally without requiring Providers,
+  // we can completely remove the old <AuthProvider> wrapper!
+  return <AuthGuard> {children}</AuthGuard>; 
+}
+</file>
+
+<file path="src/components/CategoryBars.tsx">
+
+</file>
+
+<file path="src/components/MetricCard.tsx">
+"use client";
+
+import React from "react";
+
+interface Props {
+  label: string;
+  value?: string | number;
+  loading?: boolean;
+  currency?: boolean;
+}
+
+export default function MetricCard({ label, value, loading, currency }: Props) {
+  return (
+    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="text-sm text-slate-500">{label}</div>
+      <div className="mt-2 text-2xl font-bold text-slate-900">
+        {loading ? (
+          <span className="inline-block h-6 w-24 animate-pulse rounded bg-slate-200" />
+        ) : (
+          <span>{currency && typeof value === 'number' ? value.toLocaleString(undefined, { style: 'currency', currency: 'USD' }) : String(value ?? 0)}</span>
+        )}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/components/MovementsList.tsx">
+"use client";
+
+import React from "react";
+
+export interface Movement {
+  id: string;
+  productName: string;
+  quantity: number;
+  type: string;
+  occurredAt: string;
+  user?: { name: string };
+}
+
+export default function MovementsList({ movements, loading }: { movements: any; loading?: boolean }) {
+  if (loading) {
+    return (
+      <div className="space-y-2">
+        <div className="h-6 w-full animate-pulse rounded bg-slate-200" />
+        <div className="h-6 w-full animate-pulse rounded bg-slate-200" />
+        <div className="h-6 w-full animate-pulse rounded bg-slate-200" />
+      </div>
+    );
+  }
+
+  // 🟢 We use our safe extraction check right here at the top!
+  const actualMovements = Array.isArray(movements) ? movements : movements?.data ?? [];
+
+  if (!actualMovements || actualMovements.length === 0) {
+    return <div className="text-sm text-slate-500">No recent movements</div>;
+  }
+
+  return (
+    <ul className="divide-y divide-slate-100">
+      {actualMovements.map((movement: any) => (
+        <li key={movement.id} className="py-3 flex items-start justify-between">
+          <div>
+            {/* 🟢 Fixed: Changed movement.productName fallback if backend structure differs */}
+            <div className="text-sm font-medium text-slate-900">
+              {movement.productName || movement.product?.name || "Unknown Product"}
+            </div>
+            {/* 🟢 Fixed: Changed all "mv." typos to "movement." */}
+            <div className="text-xs text-slate-500">
+              {movement.occurredAt ? new Date(movement.occurredAt).toLocaleString() : "—"} | {movement.type} | {movement.user?.name ?? 'system'}
+            </div>
+          </div>
+          {/* 🟢 Fixed: Changed "mv." typo here as well */}
+          <div className={`text-sm font-semibold ${movement.quantity > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+            {movement.quantity > 0 ? `+${movement.quantity}` : movement.quantity}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+</file>
+
+<file path="src/components/Sidebar.tsx">
+"use client";
+
+
+import { useAuthStore } from "@/zustand/useAuthStore";
+import Link from "next/link";
+
+
+export default function Sidebar() {
+  const user = useAuthStore((state) => state.auth);
+  const role = user?.role ?? 'USER';
+
+  return (
+    <aside className="w-64 bg-white border-r border-slate-200 p-4 hidden md:block">
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold text-slate-800">My Inventory</h2>
+        <div className="text-xs text-slate-500 mt-1">{user ? user.name : 'Guest'}</div>
+      </div>
+
+      <nav className="space-y-1 text-sm">
+        <Link href="/" className="block px-3 py-2 rounded hover:bg-slate-50">Dashboard</Link>
+        <Link href="/products" className="block px-3 py-2 rounded hover:bg-slate-50">Products</Link>
+        {role === 'ADMIN' && (
+          <>
+            <Link href="/categories" className="block px-3 py-2 rounded hover:bg-slate-50">Categories</Link>
+            <Link href="/units" className="block px-3 py-2 rounded hover:bg-slate-50">Units of Measure</Link  >
+            <Link href="/suppliers" className="block px-3 py-2 rounded hover:bg-slate-50">Suppliers</Link>
+            <Link href="/reports" className="block px-3 py-2 rounded hover:bg-slate-50">Reports</Link>
+          </>
+        )}
+      </nav>
+    </aside>
+  );
+}
+</file>
+
+<file path="src/context/AuthContext.tsx">
+"use client";
+
+import { getCurrentUser } from "@/lib/api/auth/getCurrentUser";
+import React, { createContext, useContext, useEffect, useState } from "react";
+
+
+type Role = "ADMIN" | "USER";
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: Role;
+}
+
+interface AuthContextValue {
+  user: User | null;
+  loading: boolean;
+  fetchMe: () => Promise<void>;
+  setMockRole: (r: Role) => void;
+  logout: () => void;
+}
+
+const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+
+function getToken() {
+  if (typeof window === "undefined") return null;
+  try {
+    const storageToken = localStorage.getItem("token");
+    if (storageToken) return storageToken;
+    
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchMe = async () => { 
+    const token = getToken();
+    if (!token) {
+      setUser(null);
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const data = await getCurrentUser();
+      setUser(data);
+    } catch (e) {
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const initializeAuth = async () => {
+      await fetchMe();
+    };
+    initializeAuth();
+  }, []);
+   
+ 
+    
+  const setMockRole = (r: Role) => {
+    setUser((prev) =>
+      prev
+        ? { ...prev, role: r }
+        : { id: r === "ADMIN" ? "demo-admin" : "demo-user", 
+          name: r === "ADMIN" ? "Demo Admin" : "Demo User", 
+          email: r === "ADMIN" ? "admin@example.com" : "user@example.com", 
+          role: r }
+    );
+  };
+
+  const logout = () => {
+    setUser(null);
+    try {
+      localStorage.removeItem("token");
+    } catch {}
+  };
+
+  return <AuthContext.Provider value={{ user, loading, fetchMe, setMockRole, logout }}>{children}</AuthContext.Provider>;
+};
+
+export const useAuth = () => {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
+  return ctx;
+};
+</file>
+
+<file path="src/hooks/products/useproduct.ts">
+// src/hooks/useProducts.ts
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { deleteProduct } from "@/lib/api/products/deleteProduct";
+import { getAllProducts } from "@/lib/api/products/getAllProducts";
+
+
+
+/**
+ * Hook to handle fetching all products
+ */
+export function useProducts() {
+  return useQuery({
+    queryKey: ["products"],
+    queryFn: async () => { 
+      const response = await getAllProducts();
+      return (response as unknown) as {data: any [] };
+      },
+    
+  });
+}
+
+/**
+ * Hook to handle deleting a single product
+ */
+export function useDeleteProduct() {
+  const queryClient = useQueryClient();
+
+  // const {mutate, isPending} = useMutation
+
+  return useMutation({
+    mutationFn: async (id: string | number) => {
+      return deleteProduct(id);
+    },
+    onSuccess: () => {
+      // Auto-refresh the products list cache keys
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+    onError: (err: any) => {
+      alert(err?.message || "Something went wrong while removing this item.");
+    },
+  });
+}
+</file>
+
+<file path="src/lib/api/auth/getCurrentUser.ts">
+// src/lib/api/auth/getCurrentUser.ts
+
+// 1. Change the old apiFetch import to our new apiClient
+import { apiClient } from "../axiosPrivate"; 
+
+/**
+ * Get current authenticated user
+ */
+export async function getCurrentUser() {
+  // 2. Switch from the custom fetch layout to axios format
+  const response = await apiClient.get("/auth/me"); 
+  return response.data;
+}
+</file>
+
+<file path="src/lib/api/auth/login.ts">
+import { apiClient } from "../axiosPrivate";
+
+export interface LoginPayload {
+  name?: string;
+  email?: string;
+  password?: string; 
+}
+
+// 1. FIX THIS: Match the exact property names coming from Laravel!
+export interface AuthResponse {
+  token: string; // Changed from access_token to token
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+    created_at: string;
+  };
+}
+
+/**
+ * Log in a user and receive a Bearer token
+ */
+export async function login(payload: LoginPayload): Promise<AuthResponse> {
+  const response = await apiClient.post<{
+    success: boolean;
+    message: string;
+    data?: AuthResponse;
+  }>("/auth/login", payload);
+  
+  return response.data.data!; 
+}
+</file>
+
+<file path="src/lib/api/auth/logout.ts">
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Revoke the current active access token
+ */
+export async function logout() {
+  const response = await apiClient.post<any>("/auth/logout");
+  return response.data;
+}
+</file>
+
+<file path="src/lib/api/auth/signUp.ts">
+import { apiClient } from "../axiosPrivate";
+
+export interface SignUpPayload {
+  name?: string;
+  email?: string;
+  password?: string; 
+}
+
+export interface AuthResponse {
+  access_token: string;
+  token_type: string;
+}
+/**
+ * Register a new user account
+ */
+export async function signup(data: SignUpPayload) {
+  const response = await apiClient.post<AuthResponse>(
+    "/auth/signup",
+    data
+  );
+  return response.data;
+}
+</file>
+
+<file path="src/lib/api/auth/updateProfile.ts">
+import { apiClient } from "../axiosPrivate";
+
+export interface UpdateProfilePayload {
+  name?: string;
+  email?: string;
+  password?: string; // If your profile update endpoint allows changing passwords
+}
+
+export interface User {
+  id: number | string;
+  name: string;
+  email: string;
+  role: string;
+  created_at?: string;
+  updated_at?: string;
+}
+/**
+ * Update the authenticated user's profile information
+ */
+export async function updateProfile(data: UpdateProfilePayload) {
+  const response = await apiClient.put<User>("/auth/profile", data);
+  return response.data;
+}
+</file>
+
+<file path="src/lib/api/categories/createCategories.ts">
+import { apiClient } from "../axiosPrivate";
+import { CategoryPayload, CategoryResponse } from "@/types/categories";
+
+
+/**
+ * Create a new category (Admin only)
+ */
+export async function createCategory(payload: CategoryPayload) {
+  const response = await apiClient.post<{ data: CategoryResponse }>("/categories", payload);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/categories/deleteCategory.ts">
+import { apiClient } from "../axiosPrivate";
+import { CategoryResponse } from "@/types/categories";
+
+
+/**
+ * Delete a category completely (Admin only)
+ */
+export async function deleteCategory(id: string | number) {
+  const response = await apiClient.delete<{ data: CategoryResponse }>(`/categories/${id}`);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/categories/getCategories.ts">
+import {  CategoryResponse } from "@/types/categories";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * List all product categories
+ */
+export async function getCategories() {
+  const response = await apiClient.get<{data:{ data: CategoryResponse[] }}>("/categories");
+  return response.data.data.data;
+}
+</file>
+
+<file path="src/lib/api/categories/getCategory.ts">
+import { CategoryResponse } from "@/types/categories";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Show details for a single category
+ */
+export async function getCategory(id: string | number) {
+  const response = await apiClient.get<{ data: CategoryResponse }>(`/categories/${id}`);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/categories/updateCategory.ts">
+import {CategoryPayload, CategoryResponse } from "@/types/categories";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Update an existing category name (Admin only)
+ */
+export async function updateCategory(id: string | number, payload: CategoryPayload) {
+  const response = await apiClient.put<{ data: CategoryResponse }>(`/categories/${id}`, payload);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/dashboard/getDashboardStats.ts">
+import { DashboardStats } from "@/types/dashboard";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Fetch core dashboard overview figures (totals for products, value, low stock, quantities)
+ */
+export async function getDashboardStats() {
+  const response = await apiClient.get<{ data: DashboardStats }>("/dashboard/stats");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/dashboard/getInventoryByCategory.ts">
+import { InventoryByCategoryResponse } from "@/types/dashboard";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Fetch the exact volume distribution breakdown of physical inventory per category
+ */
+export async function getInventoryByCategory() {
+  const response = await apiClient.get<{ data: InventoryByCategoryResponse }>("/dashboard/inventory-by-category");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/dashboard/getRecentStockMovements.ts">
+import { RecentStockMovementsResponse } from "@/types/dashboard";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Fetch the stream of most recent activity and updates across stock operations
+ */
+export async function getRecentStockMovements() {
+  const response = await apiClient.get<{ data: RecentStockMovementsResponse }>("/dashboard/recent-stock-movements");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/dashboard/getTopCategories.ts">
+import { TopCategoriesResponse } from "@/types/dashboard";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Fetch your leading product categories sorted cleanly by overall financial stock valuation
+ */
+export async function getTopCategories() {
+  const response = await apiClient.get<{ data: TopCategoriesResponse }>("/dashboard/top-categories");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/products/createProduct.ts">
+// src/lib/api/products/createProduct.ts
+
+
+import { ProductPayload, ProductResponse } from "@/types/product";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Create a new product (Admin only)
+ */
+export async function createProduct(payload: ProductPayload) {
+  const response = await apiClient.post<{data: ProductResponse[]}>("/products", payload);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/products/deleteProduct.ts">
+// src/lib/api/products/deleteProduct.ts
+
+import { apiClient } from "../axiosPrivate";
+
+/**
+ * Delete a product by its ID (Admin only)
+ */
+export async function deleteProduct(id: string) {
+  // Axios .delete handles removing items by appending the ID to the URL path
+  const response = await apiClient.delete(`/products/${id}`);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/products/getAllProducts.ts">
+// src/lib/api/products/getAllProducts.ts
+
+
+import { ProductResponse } from "@/types/product";
+import { apiClient } from "../axiosPrivate";
+
+export async function getAllProducts() {
+  const response = await apiClient.get<{ data: ProductResponse }>("/products");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/products/getLowStockProducts.ts">
+import { ProductResponse } from "@/types/product";
+import { apiClient } from "../axiosPrivate";
+
+export async function getLowStockProducts() {
+  const response = await apiClient.get<{ data: ProductResponse}>("/products/low-stock");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/products/getSingleProduct.ts">
+import { ProductResponse } from "@/types/product";
+import { apiClient } from "../axiosPrivate";
+
+/**
+ * List all products that are at or below their reorder level
+ */
+export async function getSingleProduct(id: string | number) {
+  const response = await apiClient.get<{ data: ProductResponse }>(`/products/${id}`);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/reports/getInventorySummary.ts">
+import { InventorySummaryResponse } from "@/types/report";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Fetch inventory metrics summary grouped by category (Admin only)
+ */
+export async function getInventorySummary() {
+  const response = await apiClient.get<{ data: InventorySummaryResponse }>("/reports/inventory-summary");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/reports/getStockValue.ts">
+import { StockValueResponse } from "@/types/report";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Fetch total monetary/stock value assessment reports (Admin only)
+ */
+export async function getStockValue() {
+  const response = await apiClient.get<{ data: StockValueResponse }>("/reports/stock-value");
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/stock-movements/getAllStockMovements.ts">
+// import { apiClient } from "../client";
+
+import { StockMovementResponse } from "@/types/stockMovement";
+import { apiClient } from "../axiosPrivate";
+
+export async function getStockMovements () {
+  const response = await apiClient.get<{data: StockMovementResponse[]}>("/stock-movements")
+  return response.data.data
+}
+</file>
+
+<file path="src/lib/api/stock-movements/getSingleStockMovement.ts">
+import { StockMovementResponse } from "@/types/stockMovement";
+import { apiClient} from "../axiosPrivate";
+
+
+/**
+ * Show details for a single specific stock movement entry
+ */
+export async function getStockMovement(id: string | number) {
+  const response = await apiClient.get<{data: StockMovementResponse}>(`/stock-movements/${id}`)
+  return response.data.data
+ 
+  
+}
+</file>
+
+<file path="src/lib/api/stock-movements/recordStockMovement.ts">
+import { StockMovementPayload, StockMovementResponse } from "@/types/stockMovement";
+import { apiClient } from "../axiosPrivate";
+
+
+
+/**
+ * Record a brand new stock movement (add stock, reduce stock, adjustment)
+ */
+export async function recordStockMovement(payload: StockMovementPayload) {
+const response = await apiClient.post<{data: StockMovementResponse}>("/stock-movements", payload)
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/suppliers/createSupplier.ts">
+import { SupplierResponse, SupplierResponsePayload } from "@/types/suppliers";
+import { apiClient} from "../axiosPrivate";
+
+
+/**
+ * Create a new supplier (Admin only)
+ */
+export async function createSupplier(payload: SupplierResponsePayload) {
+const response = await apiClient.post<{data: SupplierResponse} >("/suppliers", payload);
+return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/suppliers/deleteSupplier.ts">
+import { apiClient } from "../axiosPrivate";
+import { SupplierResponse } from "@/types/suppliers";
+
+
+
+/**
+ * Soft-delete a supplier (Admin only)
+ */
+export async function deleteSupplier(id: string | number) {
+const response = await apiClient.delete<{data: SupplierResponse}>(`/suppliers/${id}`)
+return response.data.data
+}
+</file>
+
+<file path="src/lib/api/suppliers/getAllSuppliers.ts">
+import { apiClient } from "../axiosPrivate";
+import { SupplierResponse } from "@/types/suppliers";
+
+
+
+/**
+ * List all suppliers
+ */
+export async function getSuppliers() {
+ const response = await apiClient.get<{data: SupplierResponse[]}>("/suppliers")
+ return response.data.data  
+}
+</file>
+
+<file path="src/lib/api/suppliers/getSingleSupplier.ts">
+import { SupplierResponse } from "@/types/suppliers";
+import { apiClient } from "../axiosPrivate";
+
+
+
+/**
+ * Show details for a single supplier
+ */
+export async function getSupplier(id: string | number) {
+  const response = await apiClient.get<{data: SupplierResponse}>(`/suppliers/${id}`)
+  return response.data.data
+}
+</file>
+
+<file path="src/lib/api/suppliers/updateSupplier.ts">
+import { SupplierResponse, SupplierResponsePayload } from "@/types/suppliers";
+import { apiClient } from "../axiosPrivate";
+
+
+/**
+ * Update an existing supplier's information (Admin only)
+ */
+export async function updateSupplier(id: string | number, payload: SupplierResponsePayload) {
+  const response = await apiClient.put<{data: SupplierResponse}>(`/suppliers/${id}`, payload)
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/units/createUnit.ts">
+import { unitOfMeasureResponse, unitOfMeasureResponsePayload } from "@/types/unit";
+import { apiClient } from "../axiosPrivate";
+
+
+
+/**
+ * Create a unit of measure (Admin only)
+ */
+export async function createUnit(payload: unitOfMeasureResponsePayload) {
+  const response = await apiClient.post<{data: unitOfMeasureResponse}>("/units-of-measure", payload);
+  return response.data.data;
+}
+</file>
+
+<file path="src/lib/api/units/deleteUnit.ts">
+import { unitOfMeasureResponse } from "@/types/unit";
+import { apiClient } from "../axiosPrivate";
+
+
+
+/**
+ * Delete a unit of measure completely (Admin only)
+ */
+export async function deleteUnit(id: string | number) {
+  const response = await apiClient.delete <{data: unitOfMeasureResponse}> (`/units-of-measure/${id}`)
+  return response.data.data
+}
+</file>
+
+<file path="src/lib/api/units/getAllUnits.ts">
+import { unitOfMeasureResponse } from "@/types/unit";
+import { apiClient} from "../axiosPrivate";
+
+
+/**
+ * List all units of measure
+ */
+export async function getUnits() {
+  const response = await apiClient.get<{data: unitOfMeasureResponse[]}>("/units-of-measure")
+  return response.data.data
+}
+</file>
+
+<file path="src/lib/api/units/getSingleUnit.ts">
+import { unitOfMeasureResponse } from "@/types/unit";
+import { apiClient } from "../axiosPrivate";
+
+
+
+/**
+ * Show details for a single unit of measure
+ */
+export async function getUnit(id: string | number) {
+  const response = await apiClient.get<{data: unitOfMeasureResponse}>(`/units-of-measure/${id}`)
+  return response.data.data
+}
+</file>
+
+<file path="src/lib/api/units/updateUnit.ts">
+import { unitOfMeasureResponse, unitOfMeasureResponsePayload } from "@/types/unit"
+import { apiClient } from "../axiosPrivate"
+
+
+
+/**
+ * Update an existing unit of measure (Admin only)
+ */
+export async function updateUnit(id: string | number, payload: unitOfMeasureResponsePayload) {
+  const response = await apiClient.put<{data: unitOfMeasureResponse}> (`/units-of-measure/${id}`, payload)
+  return response.data.data
+ 
+}
+</file>
+
+<file path="src/lib/api/axiosPrivate.ts">
+// src/lib/api/client.ts
+import axios from "axios";
+
+// 1. Set up your base URL configuration
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL 
+  ? process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, "") 
+  : "";
+
+export const apiClient = axios.create({
+  baseURL: BASE_URL,
+});
+
+// 2. Request Interceptor: Automatically attach the Bearer token
+apiClient.interceptors.request.use((config) => {
+  if (typeof window !== "undefined") {
+    try {
+      const token = localStorage.getItem("token") || (document.cookie.match(/(?:^|; )token=([^;]+)/)?.[1] ?? null);
+      if (token) {
+        config.headers["Authorization"] = `Bearer ${token}`;
+      }
+    } catch (e) {
+      // ignore
+    }
+  }
+  return config;
+});
+
+// 3. Response Interceptor: Handle auto-logout on 401 errors globally
+apiClient.interceptors.response.use(
+  (response) => response, // Pass successful responses straight through
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      if (typeof window !== "undefined") {
+        window.location.href = "/auth/login";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
+
+
+
+
+
+
+
+
+
+
+// import { useAuthStore } from "@/zustand/useAuthStore";
+// import { showToast } from "@/utils/toastConfig";
+
+// import { handleApiError } from "@/utils/errorHandler";
+// import axios from "axios";
+
+// /**
+//  * Axios instance for authenticated requests with automatic token refresh
+//  */
+// export const axiosPrivate = axios.create({
+//   baseURL: process.env.NEXT_PUBLIC_API_URL as string,
+//   headers: { "Content-Type": "application/json" },
+//   timeout: 60000,
+// });
+
+// // Request interceptor to add authorization header
+// axiosPrivate.interceptors.request.use(
+//   (config) => {
+//     const accessToken = useAuthStore.getState().auth?.accessToken;
+//     if (accessToken && !config.headers["Authorization"]) {
+//       config.headers["Authorization"] = `Bearer ${accessToken}`;
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error),
+// );
+
+// // Response interceptor to handle token refresh on 401 errors
+// axiosPrivate.interceptors.response.use(
+//   (response) => response,
+//   async (error) => {
+//     if (handleApiError(error)) {
+//       return Promise.reject(error);
+//     }
+
+//     // 🔴 No refresh token → just logout
+//     if (error?.response?.status === 401) {
+//       const logout = useAuthStore.getState().logout;
+
+//       showToast({
+//         msg: "Session expired. Please login again.",
+//         type: "ERROR",
+//       });
+
+//       logout();
+//     }
+
+//     if (error?.response?.status === 403) {
+//       showToast({
+//         msg: "Access denied. You don't have permission.",
+//         type: "ERROR",
+//       });
+//     }
+
+//     return Promise.reject(error);
+//   },
+// );
+</file>
+
+<file path="src/providers/QueryProvider.tsx">
+"use client";
+
+import React, { useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+export default function QueryProvider({ children }: { children: React.ReactNode }) {
+  const [queryClient] = useState(() => new QueryClient());
+
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+}
+</file>
+
+<file path="src/store/config/sharedConfig.ts">
+// src/store/sharedConfig.ts
+export const sharedPersistConfig = {
+  PERSIST_KEY: "My-inventory-web",
+  BASE_URL: process.env.NEXT_PUBLIC_API_URL as string,
+};
+</file>
+
+<file path="src/types/categories.ts">
+export interface CategoryResponse {
+  id: string;
+  name: string;
+  description: string;
+  products_count: number;
+  created_at: string;
+}
+
+export type CategoryPayload = Pick<CategoryResponse, "name" | "description">;
+</file>
+
+<file path="src/types/dashboard.ts">
+export interface Root {
+  success: boolean
+  message: string
+  data: DashboardStats
+}
+
+export interface DashboardStats {
+  total_products: number
+  total_stock_value: number
+  low_stock_items: number
+  total_quantity: number
+}
+
+
+
+export interface RecentStockMovementsResponse {
+  id: string
+  product: Product
+  user: User
+  type: string
+  quantity: string
+  quantity_before: string
+  quantity_after: string
+  unit_cost: string
+  reference_number: string
+  notes: string
+  occurred_at: string
+  created_at: string
+}
+
+export interface Product {
+  id: string
+  name: string
+  sku: string
+  description: string
+  reorder_level: string
+  cost_price: string
+  is_active: boolean
+  created_at: string
+}
+
+export interface User {
+  id: string
+  name: string
+  email: string
+  role: string
+  created_at: string
+}
+
+export interface InventoryByCategoryResponse {
+  id: string
+  name: string
+  total_products: number
+  active_products: number
+  total_quantity: number
+  total_value: number
+  low_stock_count: number
+}
+
+
+// export interface Root {
+//   success: boolean
+//   message: string
+//   data: TopCategoriesResponse
+// }
+
+export interface TopCategoriesResponse {
+  id: string
+  name: string
+  product_count: number
+  total_quantity: number
+  total_value: number
+}
+</file>
+
+<file path="src/types/product.ts">
+// 1. Import the existing types you already created!
+
+import { CategoryResponse } from "./categories";
+
+export interface ProductPayload {
+  name: string
+  sku: string
+  description: string
+  category_id: string
+  unit_of_measure_id: string
+  reorder_level: number
+  cost_price: number
+  is_active: boolean
+  supplier_ids: string[]
+}
+
+export interface StockLevel {
+  quantity_on_hand: string;
+  last_updated_at?: string;
+}
+
+
+// 2. Rename 'Daum' to 'ProductResponse' (Much cleaner!)
+export interface ProductResponse {
+  id: string;
+  name: string;
+  sku: string;
+  description: string;
+  category: CategoryResponse;     // Uses your imported category type
+  unit_of_measure: string; // Uses your imported UOM type
+  reorder_level: string;
+  cost_price: string;
+  is_active: boolean;
+  stock_level: StockLevel;
+  created_at: string;
+}
+
+// 3. Rename 'Root' to 'PaginatedProductsApiResponse' so you know what it is
+export interface PaginatedProductsApiResponse {
+  success: boolean;
+  message: string;
+  data: {
+    data: ProductResponse[]; // Your clean list of products
+   
+  };
+}
+</file>
+
+<file path="src/types/report.ts">
+export interface InventorySummaryResponse {
+  total_products: number
+  active_products: number
+  low_stock_count: number
+  by_category: ByCategory[]
+}
+
+export interface ByCategory {
+  category: string
+  product_count: number
+}
+
+
+
+export interface StockValueItem {
+  id: string
+  name: string
+  sku: string
+  cost_price: string
+  quantity_on_hand: string
+  total_value: string
+}
+
+export interface StockValueResponse {
+  items: StockValueItem[]
+  grand_total: number
+}
+</file>
+
+<file path="src/types/schema.d.ts">
+/**
+ * This file was auto-generated by openapi-typescript.
+ * Do not make direct changes to the file.
+ */
+
+export interface paths {
+    "/api/v1/auth/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Login and receive a Bearer token */
+        post: operations["a7997e7c1e3bfed64d4e56de82415931"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/signup": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Register a new user */
+        post: operations["1bbf904f1386d25975cb4070d396698f"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/logout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Revoke current access token */
+        post: operations["f6b8957b4c0b25636613a9f0512a8ba9"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get the authenticated user */
+        get: operations["37d33f0281f67d31d05b4c45eea0143b"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Update the authenticated user's profile */
+        put: operations["32110a28f8df36453a3e40f44baf10ad"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/categories": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all categories */
+        get: operations["e225c2b7eb5daf7fb16e00f4f07ff030"];
+        put?: never;
+        /** Create a new category (admin only) */
+        post: operations["dd76b8d73b7ea8b4951f03d7c0904c92"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/categories/{category}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Show a single category */
+        get: operations["d5023633bd2ab475b5f7d3fe21113fd9"];
+        /** Update a category (admin only) */
+        put: operations["fef831466f74165300ad79335535294d"];
+        post?: never;
+        /** Delete a category (admin only) */
+        delete: operations["9d956da3b4cf5d9bf6b8b59812334243"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/products": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all products */
+        get: operations["1ce27f90dd8c39cea9520bf45d58c7c2"];
+        put?: never;
+        /** Create a product (admin only) */
+        post: operations["acaa0d3fdc74fd4b534e70fc016cf7f1"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/products/{product}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Show a product */
+        get: operations["9d6564b9647b6b46ca1d3eb86c51643e"];
+        /** Update a product (admin only) */
+        put: operations["10db88cc185f628118bfa9a84d1401bb"];
+        post?: never;
+        /** Soft-delete a product (admin only) */
+        delete: operations["dc780252f855e97451083ce643a83174"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/products/low-stock": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List products at or below their reorder level */
+        get: operations["960ce0dd7d7811e829133e2dd833fc33"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/dashboard/stats": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Key dashboard stats (total products, stock value, low stock items, total quantity) */
+        get: operations["f29341f7f0141a51a16be687a6f4de83"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/dashboard/recent-stock-movements": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Recent stock movements */
+        get: operations["f59cbfef5583584573c2d36bac107331"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/dashboard/top-categories": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Top categories ranked by total stock value */
+        get: operations["05552cd3d095e17f4ac75ce7ff23635a"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/dashboard/inventory-by-category": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Inventory breakdown by category */
+        get: operations["29777ddfc1954bfb8d4a1464b51af81c"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/reports/inventory-summary": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Inventory summary by category (admin only) */
+        get: operations["a1eedfa8a35cbf0c3b43e7221edacd85"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/reports/stock-value": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Total stock value report (admin only) */
+        get: operations["73a0b4070e271f553c8f1dc3f2c6ce34"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/stock-movements": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List stock movements */
+        get: operations["56bd8b3f0ff45d75d9ee169b42b7b511"];
+        put?: never;
+        /** Record a new stock movement */
+        post: operations["26866531d617c2f792191d2714bf943e"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/stock-movements/{stock_movement}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Show a single stock movement */
+        get: operations["cf09db8d0ab090234f4120f1e3c148e2"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/suppliers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all suppliers */
+        get: operations["f83117376e14a7f74ad31fc9f7312fb6"];
+        put?: never;
+        /** Create a supplier (admin only) */
+        post: operations["a4657ad682bbe07aee1bb6018a080736"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/suppliers/{supplier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Show a supplier */
+        get: operations["2e510fed3048b06303fcd1a8c34b40e3"];
+        /** Update a supplier (admin only) */
+        put: operations["564838b3fde6653ff177e8acee01d4e9"];
+        post?: never;
+        /** Soft-delete a supplier (admin only) */
+        delete: operations["d971ec860f46a8479dac5b045f97f0f2"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/units-of-measure": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all units of measure */
+        get: operations["a75fcff66550d144de5447fe0fadad19"];
+        put?: never;
+        /** Create a unit of measure (admin only) */
+        post: operations["2db0d4ba3060f2623119dd6927c82e01"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/units-of-measure/{unit_of_measure}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Show a unit of measure */
+        get: operations["f811fdc32c5eefc24cc27d1610329dd8"];
+        /** Update a unit of measure (admin only) */
+        put: operations["fa43c245318b620fd4027d60ebc9c1a1"];
+        post?: never;
+        /** Delete a unit of measure (admin only) */
+        delete: operations["a8b8af6a5b8cf62e30c4efd7006447ea"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+}
+export type webhooks = Record<string, never>;
+export interface components {
+    schemas: never;
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
+}
+export type $defs = Record<string, never>;
+export interface operations {
+    a7997e7c1e3bfed64d4e56de82415931: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /**
+                     * Format: email
+                     * @example admin@inventory.test
+                     */
+                    email: string;
+                    /** @example password */
+                    password: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Login successful */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid credentials */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "1bbf904f1386d25975cb4070d396698f": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @example Jane Doe */
+                    name: string;
+                    /**
+                     * Format: email
+                     * @example jane@example.com
+                     */
+                    email: string;
+                    /** @example password */
+                    password: string;
+                    /** @example password */
+                    password_confirmation: string;
+                    /**
+                     * @example user
+                     * @enum {string}
+                     */
+                    role?: "admin" | "user";
+                };
+            };
+        };
+        responses: {
+            /** @description User created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    f6b8957b4c0b25636613a9f0512a8ba9: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Logged out */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "37d33f0281f67d31d05b4c45eea0143b": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Authenticated user */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "32110a28f8df36453a3e40f44baf10ad": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    /** @example Jane Doe */
+                    name?: string;
+                    /**
+                     * Format: email
+                     * @example jane@example.com
+                     */
+                    email?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Profile updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    e225c2b7eb5daf7fb16e00f4f07ff030: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list of categories */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    dd76b8d73b7ea8b4951f03d7c0904c92: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @example Proteins */
+                    name: string;
+                    description?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description Category created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    d5023633bd2ab475b5f7d3fe21113fd9: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                category: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Category details */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    fef831466f74165300ad79335535294d: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                category: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    description?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description Category updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "9d956da3b4cf5d9bf6b8b59812334243": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                category: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "1ce27f90dd8c39cea9520bf45d58c7c2": {
+        parameters: {
+            query?: {
+                category_id?: string;
+                supplier_id?: string;
+                search?: string;
+                per_page?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list of products */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    acaa0d3fdc74fd4b534e70fc016cf7f1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    sku: string;
+                    description?: string | null;
+                    /** Format: uuid */
+                    category_id: string;
+                    /** Format: uuid */
+                    unit_of_measure_id: string;
+                    reorder_level: number;
+                    cost_price?: number | null;
+                    is_active?: boolean;
+                    supplier_ids?: string[];
+                };
+            };
+        };
+        responses: {
+            /** @description Product created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "9d6564b9647b6b46ca1d3eb86c51643e": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                product: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Product details */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "10db88cc185f628118bfa9a84d1401bb": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                product: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    sku: string;
+                    /** Format: uuid */
+                    category_id: string;
+                    /** Format: uuid */
+                    unit_of_measure_id: string;
+                    reorder_level: number;
+                    cost_price?: number | null;
+                    is_active?: boolean;
+                    supplier_ids?: string[];
+                };
+            };
+        };
+        responses: {
+            /** @description Updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    dc780252f855e97451083ce643a83174: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                product: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "960ce0dd7d7811e829133e2dd833fc33": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Low-stock products */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    f29341f7f0141a51a16be687a6f4de83: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Dashboard stats */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    f59cbfef5583584573c2d36bac107331: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Recent stock movements */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "05552cd3d095e17f4ac75ce7ff23635a": {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Top categories by stock value */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "29777ddfc1954bfb8d4a1464b51af81c": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Inventory breakdown by category */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    a1eedfa8a35cbf0c3b43e7221edacd85: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Summary data */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "73a0b4070e271f553c8f1dc3f2c6ce34": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Stock value data */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "56bd8b3f0ff45d75d9ee169b42b7b511": {
+        parameters: {
+            query?: {
+                product_id?: string;
+                type?: "purchase" | "consumption" | "adjustment" | "waste" | "return";
+                from?: string;
+                to?: string;
+                per_page?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list of movements */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "26866531d617c2f792191d2714bf943e": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: uuid */
+                    product_id: string;
+                    /** @enum {string} */
+                    type: "purchase" | "consumption" | "adjustment" | "waste" | "return";
+                    quantity: number;
+                    unit_cost?: number | null;
+                    reference_number?: string | null;
+                    notes?: string | null;
+                    /** Format: date-time */
+                    occurred_at?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description Movement recorded */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error or insufficient stock */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    cf09db8d0ab090234f4120f1e3c148e2: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                stock_movement: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Movement details */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    f83117376e14a7f74ad31fc9f7312fb6: {
+        parameters: {
+            query?: {
+                per_page?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list of suppliers */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    a4657ad682bbe07aee1bb6018a080736: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    contact_person?: string | null;
+                    /** Format: email */
+                    email?: string | null;
+                    phone?: string | null;
+                    address?: string | null;
+                    is_active?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "2e510fed3048b06303fcd1a8c34b40e3": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                supplier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Supplier details */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "564838b3fde6653ff177e8acee01d4e9": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                supplier: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    contact_person?: string | null;
+                    /** Format: email */
+                    email?: string | null;
+                    phone?: string | null;
+                    address?: string | null;
+                    is_active?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    d971ec860f46a8479dac5b045f97f0f2: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                supplier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    a75fcff66550d144de5447fe0fadad19: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    "2db0d4ba3060f2623119dd6927c82e01": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @example Kilogram */
+                    name: string;
+                    /** @example kg */
+                    abbreviation: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    f811fdc32c5eefc24cc27d1610329dd8: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                unit_of_measure: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Unit details */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    fa43c245318b620fd4027d60ebc9c1a1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                unit_of_measure: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    abbreviation: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    a8b8af6a5b8cf62e30c4efd7006447ea: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                unit_of_measure: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+}
+</file>
+
+<file path="src/types/stockMovement.ts">
+export interface StockMovementResponse {
+  id: string
+  product?: Product
+  user: User
+  type: string
+  quantity: string
+  quantity_before: string
+  quantity_after: string
+  unit_cost: string
+  reference_number: string
+  notes: string
+  occurred_at: string
+  created_at: string
+}
+
+export interface Product {
+  id: string
+  name: string
+  sku: string
+  description: string
+  reorder_level: string
+  cost_price: string
+  is_active: boolean
+  created_at: string
+}
+
+export interface User {
+  id: string
+  name: string
+  email: string
+  role: string
+  created_at: string
+}
+
+export interface StockMovementPayload {
+  product_id: string
+  type: string
+  quantity: number
+  unit_cost: number
+  reference_number: string
+  notes: string
+  occurred_at: string
+}
+</file>
+
+<file path="src/types/suppliers.ts">
+export interface SupplierResponse {
+  id: string
+  name: string
+  contact_person: string
+  email: string
+  phone: string
+  address: string
+  is_active: boolean
+  created_at: string
+}
+
+export interface SupplierResponsePayload {
+  name: string
+  contact_person: string
+  email: string
+  phone: string
+  address: string
+  is_active: boolean
+}
+</file>
+
+<file path="src/types/unit.ts">
+export interface unitOfMeasureResponse {
+  id: string
+  name: string
+  abbreviation: string
+  created_at: string
+}
+
+export interface unitOfMeasureResponsePayload {
+  name: string
+  abbreviation: string
+}
+</file>
+
+<file path="src/types/user.ts">
+export interface UserLoggedInType {
+  accessToken: string;
+  user?: LoginUser;
+}
+
+export type AuthRole = "admin" | "user";
+
+export interface LoginResponse {
+  success: boolean;
+  message: string;
+  data: LoginData;
+}
+
+export interface LoginData {
+  user: LoginUser;
+  token: string;
+}
+
+export interface LoginUser {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  created_at: string;
+}
+
+export interface SignUpResponse {
+  success: boolean;
+  message: string;
+  data: SignUpData;
+}
+
+export interface SignUpData {
+  user: SignUpUser;
+  token: string;
+}
+
+export interface SignUpUser {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  created_at: string;
+}
+
+export interface LogoutResponse {
+  success: boolean;
+  message: string;
+  data: any;
+}
+
+export interface GetUserResponse {
+  success: boolean;
+  message: string;
+  data: GetUserData;
+}
+
+export interface GetUserData {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  created_at: string;
+}
+
+export interface UpdateProfileResponse {
+  success: boolean;
+  message: string;
+  data: UpdateProfilePayload;
+}
+
+export interface UpdateProfilePayload {
+  name: string;
+  email: string;
+}
+</file>
+
+<file path="src/zustand/useAuthStore.tsx">
+"use client";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { produce } from "immer";
+
+import { LoginUser, UserLoggedInType } from "@/types/user";
+import { sharedPersistConfig } from "@/store/config/sharedConfig";
+
+// Define the shape of your app state
+interface AuthState {
+  accessToken: string | null;
+  setToken: (token: string) => void;
+  user: LoginUser | null;
+  auth: UserLoggedInType | null;
+  logout: () => void;
+  setAuth: (auth: UserLoggedInType) => void;
+  updateAuth: (auth: UserLoggedInType) => void;
+  isLoggingOut: boolean;
+  isAuthenticated: boolean;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+}
+
+// Create the zustand store with middleware for persistence and immer
+export const useAuthStore = create<AuthState>()(
+  persist<AuthState>(
+    (set) => ({
+      accessToken: null,
+      setToken: (token: string) => set({ accessToken: token }),
+      user: null,
+      auth: null, // Initialize the user state as null
+      isAuthenticated: false,
+      isLoggingOut: false,
+      setIsAuthenticated: (isAuthenticated: boolean) =>
+        set(
+          produce((state: AuthState) => {
+            state.isAuthenticated = isAuthenticated;
+          }),
+        ),
+        
+      setAuth: (auth: UserLoggedInType) =>
+        set(
+          produce((state: AuthState) => {
+            state.auth = auth;
+            state.accessToken = auth?.accessToken; // ✅ ADD THIS LINE
+            state.isAuthenticated = !!auth?.accessToken;
+          }),
+        ),
+      updateAuth: (auth: UserLoggedInType) =>
+        set(
+          produce((state: AuthState) => {
+            if (state.auth) {
+              Object.assign(state.auth, {
+                accessToken: auth?.accessToken,
+              } as UserLoggedInType); // Update the user state partially
+            }
+          }),
+        ),
+      logout: () => {
+        set({ isLoggingOut: true });
+        set(
+          produce((state: AuthState) => {
+            state.auth = null; // Clear the auth state
+            state.isAuthenticated = false; // Set isAuthenticated to false
+          }),
+        );
+        sessionStorage.removeItem(sharedPersistConfig.PERSIST_KEY);
+        try {
+          localStorage.removeItem(sharedPersistConfig.PERSIST_KEY);
+        } catch {
+          /* ignore */
+        }
+        set({ isLoggingOut: false });
+        return window.location.replace("/login");
+      },
+    }),
+    {
+      name: sharedPersistConfig.PERSIST_KEY,
+      // Tab-scoped: closing the browser tab/window clears the session (login required again).
+      storage: createJSONStorage(() => {
+        if (typeof window === "undefined") {
+          return {
+            getItem: () => null,
+            setItem: () => {},
+            removeItem: () => {},
+          } as unknown as Storage;
+        }
+        return window.sessionStorage;
+      }),
+    },
+  ),
+);
+</file>
+
+<file path="src/global.d.ts">
+// src/global.d.ts
+
+import * as React from 'react';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+    interface Element extends React.ReactElement<any, any> { }
+  }
+}
+</file>
+
+<file path="src/zustand-fake.d.ts">
+// // src/zustand-fake.d.ts
+
+// declare module "zustand" {
+//   export function create<T>(...args: any[]): any;
+// }
+
+// declare module "zustand/middleware" {
+//   export function persist<T>(...args: any[]): any;
+//   export function createJSONStorage(...args: any[]): any;
+// }
+
+// declare module "immer" {
+//   export function produce(...args: any[]): any;
+// }
+
+// // ⬇️ ADD THIS PART FOR NEXT.JS NAVIGATION ⬇️
+// declare module "next/navigation" {
+//   export function useRouter(): {
+//     push: (url: string) => void;
+//     replace: (url: string) => void;
+//     prefetch: (url: string) => void;
+//     back: () => void;
+//     forward: () => void;
+//     refresh: () => void;
+//   };
+//   export function usePathname(): string;
+// }
+</file>
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="AGENTS.md">
+<!-- BEGIN:nextjs-agent-rules -->
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+<!-- END:nextjs-agent-rules -->
+</file>
+
+<file path="CLAUDE.md">
+@AGENTS.md
+</file>
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+  reactCompiler: true,
+};
+
+export default nextConfig;
+</file>
+
+<file path="package.json">
+{
+  "name": "my-inventory-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.101.1",
+    "axios": "^1.18.1",
+    "immer": "^11.1.11",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+</file>
+
+<file path="pnpm-workspace.yaml">
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+</file>
+
+<file path="postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+</file>
+
+</files>
