@@ -13,15 +13,16 @@ export const apiClient = axios.create({
 // 2. Request Interceptor: Automatically attach the Bearer token
 apiClient.interceptors.request.use((config) => {
   if (typeof window !== "undefined") {
-    try {
-      const token = localStorage.getItem("token") || (document.cookie.match(/(?:^|; )token=([^;]+)/)?.[1] ?? null);
-      if (token) {
-        config.headers["Authorization"] = `Bearer ${token}`;
-      }
-    } catch (e) {
-      // ignore
+    const token = localStorage.getItem("token");
+
+    const isLoginRequest =
+      config.url?.includes("/login");
+
+    if (token && !isLoginRequest) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
   }
+
   return config;
 });
 

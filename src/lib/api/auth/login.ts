@@ -1,5 +1,11 @@
 import { apiClient } from "../axiosPrivate";
 
+
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+  ? process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, "")
+  : "";
+
+console.log("API Base URL:", BASE_URL);
 export interface LoginPayload {
   name?: string;
   email?: string;

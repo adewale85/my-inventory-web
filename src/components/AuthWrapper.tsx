@@ -82,9 +82,9 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
     const onAuthPage = pathname?.startsWith("/auth") || pathname === "/login";
 
     // 2. If the user is NOT logged in and trying to access a protected page, redirect to Login
-    if (!isAuthenticated && !onAuthPage) {
-      router.replace("/auth/login");
-    }
+    // if (!isAuthenticated && !onAuthPage) {
+    //   router.replace("/auth/login");
+    // }
 
     // 3. If the user IS logged in but wanders back to the auth/login page, redirect them to the home dashboard
     if (isAuthenticated && onAuthPage) {
