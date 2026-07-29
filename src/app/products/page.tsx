@@ -3,6 +3,7 @@
 import ProductFilters from "@/components/products/ProductFilters";
 import ProductsHeader from "@/components/products/productsHeader";
 import ProductTable from "@/components/products/ProductsTable";
+import TablePagination from "@/components/products/TablePagination";
 
 // import { useDeleteProduct } from "@/hooks/products/useDeleteProduct";
 // import { useGetAllProducts } from "@/hooks/products/useGetAllProduct";
@@ -84,6 +85,8 @@ export default function ProductsPage () {
       <ProductsHeader/>
       <ProductFilters/>
       <ProductTable/>
+      <TablePagination/>
+      
     </div> 
   )
 }
