@@ -1,48 +1,84 @@
-import { Plus } from "lucide-react";
+"use client";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
 import { Button } from "../ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
-import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
-export default function AddProductModal () {
-    return (
-       <Dialog>
-        <DialogTrigger asChild>
-        <Button className="flex items-center gap-2">
-            <Plus className="h-4 w-4"/>
-            Add product
-        </Button>
-        </DialogTrigger>
+interface AddProductModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
 
-        <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-                <DialogTitle>Add New Produc</DialogTitle>
-                <DialogDescription>
-                    Enter the details for the new product here. Click save when you're done
-                </DialogDescription>
-            </DialogHeader>
+export default function AddProductModal({
+  open,
+  onOpenChange,
+}: AddProductModalProps) {
 
-            <div className="grid gap-4 py-4">
+
+  return (
+    <Dialog
+      open={open}
+      onOpenChange={onOpenChange}
+    >
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Add New Product</DialogTitle>
+
+          <DialogDescription>
+            Enter the details for the new product.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="grid gap-4 py-4">
           <div className="grid gap-2">
             <Label htmlFor="name">Product Name</Label>
-            <Input id="name" placeholder="e.g. Silk Evening Dress" />
+
+            <Input
+              id="name"
+              placeholder="e.g. Rice"
+            />
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="price">Price ($)</Label>
-              <Input id="price" type="number" placeholder="0.00" />
+              <Label htmlFor="price">
+                Cost Price
+              </Label>
+
+              <Input
+                id="price"
+                type="number"
+              />
             </div>
+
             <div className="grid gap-2">
-              <Label htmlFor="stock">Stock Quantity</Label>
-              <Input id="stock" type="number" placeholder="10" />
+              <Label htmlFor="stock">
+                Reorder Level
+              </Label>
+
+              <Input
+                id="stock"
+                type="number"
+              />
             </div>
           </div>
         </div>
+
         <DialogFooter>
-            <Button type="submit">Save Product</Button>
+          <Button>
+            Save Product
+          </Button>
         </DialogFooter>
-        </DialogContent>
-       </Dialog>
-    )
+      </DialogContent>
+    </Dialog>
+  );
 }

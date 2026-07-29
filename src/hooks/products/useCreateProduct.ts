@@ -6,7 +6,7 @@ export const useCreateProduct = () => {
     const {mutate: createProduct, isPending} = useMutation ({
         mutationFn: productapi.createProduct,
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["product"]})
+            queryClient.invalidateQueries({queryKey: ["products"]})
         },
     });
     return {createProduct, isPending}

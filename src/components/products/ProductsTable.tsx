@@ -1,13 +1,17 @@
 "use client"
 import { useGetAllProducts } from "@/hooks/products/useGetAllProduct";
-import { Table, TableBody, TableHead, TableHeader, TableRow } from "../ui/table";
-import { useDeleteProduct } from "@/hooks/products/useDeleteProduct";
+// 1. Import TableRow and TableCell
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
+import { Badge } from "../ui/badge";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { Button } from "../ui/button";
+import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
+import { mockProducts } from "@/mock/products";
 
 export default function ProductTable () {
 
     const {products, isPending, isError, error} = useGetAllProducts();
-
-    const {deleteProduct, isPending: isDeleting} = useDeleteProduct()
+    const displayProducts = products?.length > 0 ? products : mockProducts;
 
     if (isPending) {
         return(
@@ -17,50 +21,71 @@ export default function ProductTable () {
         )
     }
 
-    if (isError) {
-        return(
-            <div className="p-8 text-red-600">
-                Error: {(error as Error).message}
-            </div>
-        )
-    }
-
     return (
-        <div>
+        <div className="rounded-md border">
             <Table>
                 <TableHeader>
-                <TableRow>
-                    <TableHead>Product</TableHead>
-                    <TableHead>SKU</TableHead>
-                    <TableHead>Category</TableHead>
-                    <TableHead>Quantity</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="w-17.5 text-right">Action</TableHead>
-                </TableRow>
+                    <TableRow>
+                        <TableHead>Product</TableHead>
+                        <TableHead>SKU</TableHead>
+                        <TableHead>Category</TableHead>
+                        <TableHead>Quantity</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead className="w-[80px] text-right">Action</TableHead>
+                    </TableRow>
                 </TableHeader>
 
                 <TableBody>
-                    <div>
-                        {products.map((product)=>(
-                            <div key={product.id} className="flex justify-between items-center border rounded-lg p-4">
+                    {displayProducts.map((product) => (
+                        // 2. Wrap each row in <TableRow>
+                        <TableRow key={product.id}>
+                            {/* Product Name & Description */}
+                            <TableCell className="font-medium">
                                 <div>
-                                    <h2 className="font-semibold"> {product.name}</h2>
-                                    <p className="text-sm text-gray-500">{product.sku}</p>
+                                    <h2 className="font-semibold text-foreground">{product.name}</h2>
+                                    <p className="text-sm text-muted-foreground">{product.description || "No description"}</p>
                                 </div>
+                            </TableCell>
 
-                                <div className="flex gap-4 items-center">
-                                    <span>{product.description}</span>
-                                    
-                                    <button onClick={()=>deleteProduct(product.id)}
-                                    disabled= {isDeleting}
-                                    className="text-red-600">
-                                    
-                                    {isDeleting ? "Deleting..." : "Delete"}
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                            {/* SKU */}
+                            <TableCell>{product.sku}</TableCell>
+
+                            {/* Category */}
+                            <TableCell>{product.category?.name}</TableCell>
+
+                            {/* Quantity */}
+                            <TableCell>{product.stock_level?.quantity_on_hand ?? 0}</TableCell>
+
+                            {/* Status */}
+                            <TableCell>
+                                <Badge variant={product.is_active ? "default" : "secondary"}>
+                                    {product.is_active ? "Active" : "Inactive"}
+                                </Badge>
+                            </TableCell>
+
+                            {/* Action Dropdown */}
+                            <TableCell className="text-right">
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button variant="ghost" size="icon">
+                                            <MoreHorizontal className="h-4 w-4"/>
+                                        </Button>
+                                    </DropdownMenuTrigger>
+
+                                    <DropdownMenuContent align="end">
+                                        <DropdownMenuItem>
+                                            <Pencil className="mr-2 h-4 w-4" />
+                                            Edit
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem className="text-red-600 focus:text-red-600">
+                                            <Trash2 className="mr-2 h-4 w-4" />
+                                            Delete
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </div>

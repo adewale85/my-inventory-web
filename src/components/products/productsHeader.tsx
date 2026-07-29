@@ -2,12 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import AddProductModal from "./AddProductModal";
-import { useState } from "react";
 
+interface ProductsHeaderProps {
+    onAddProduct: () => void
+}
 
-export default function ProductsHeader() {
-    const [isOpen, setIsOpen] = useState(false)
+export default function ProductsHeader({
+    onAddProduct,
+}: ProductsHeaderProps) {
+  
   return (
     <div className="flex items-center justify-between">
       <div>
@@ -20,12 +23,12 @@ export default function ProductsHeader() {
         </p>
       </div>
 
-      <Button onClick={() => setIsOpen(true)}>
+      <Button onClick={onAddProduct}>
       <Plus className="mr-2 h-4 w-4" />
       Add Product
     </Button>
 
-    <AddProductModal open={isOpen} onOpenChange={setIsOpen} />
+    {/* <AddProductModal open={isOpen} onOpenChange={setIsOpen} /> */}
     </div>
   );
 }
