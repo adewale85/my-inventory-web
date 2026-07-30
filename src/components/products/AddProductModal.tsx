@@ -13,8 +13,10 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { ProductFormValues, productSchema } from "@/schemas/productSchema";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 interface AddProductModalProps {
   open: boolean;
@@ -56,99 +58,157 @@ export default function AddProductModal({
         </DialogHeader>
 
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="grid gap-4 py-4"
-        >
-          <div className="grid gap-2">
-            <Label htmlFor="name">Product Name</Label>
+  onSubmit={form.handleSubmit(onSubmit)}
+  className="space-y-5"
+>
+  {/* Product Name */}
+  <div className="grid gap-2">
+    <Label htmlFor="name">Product Name</Label>
 
-            <Input
-              id="name"
-              placeholder="e.g. Rice"
-              {...form.register("name")}
-            />
-          </div>
+    <Input
+      id="name"
+      placeholder="e.g. Rice"
+      {...form.register("name")}
+    />
+  </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="sku">SKU</Label>
+  {/* SKU */}
+  <div className="grid gap-2">
+    <Label htmlFor="sku">SKU</Label>
 
-              <Input
-                id="sku"
-                placeholder="e.g. RICE-001"
-                {...form.register("sku")}
-              />
-            </div>
+    <Input
+      id="sku"
+      placeholder="e.g. RICE-001"
+      {...form.register("sku")}
+    />
+  </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="description">Description</Label>
+  {/* Description */}
+  <div className="grid gap-2">
+    <Label htmlFor="description">Description</Label>
 
-              <Input
-                id="description"
-                placeholder="Enter product description"
-                {...form.register("description")}
-              />
-            </div>
+    <Input
+      id="description"
+      placeholder="Enter product description"
+      {...form.register("description")}
+    />
+  </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="price">Cost Price</Label>
+  {/* Category + Unit */}
+  <div className="grid grid-cols-2 gap-4">
+    <div className="grid gap-2">
+      <Label>Category</Label>
 
-              <Input
-                id="price"
-                type="number"
-                {...form.register("cost_price")}
-              />
-            </div>
+      <Controller
+        control={form.control}
+        name="category_id"
+        render={({ field }) => (
+          <Select
+            value={field.value}
+            onValueChange={field.onChange}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Select Category" />
+            </SelectTrigger>
 
-            <div className="grid gap-2">
-              <Label htmlFor="stock">Reorder Level</Label>
+            <SelectContent>
+              <SelectItem value="food">
+                Food
+              </SelectItem>
 
-              <Input
-                id="stock"
-                type="number"
-                {...form.register("reorder_level")}
-              />
-            </div>
-          </div>
+              <SelectItem value="drinks">
+                Drinks
+              </SelectItem>
 
+              <SelectItem value="electronics">
+                Electronics
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        )}
+      />
+    </div>
 
+    <div className="grid gap-2">
+      <Label>Unit of Measure</Label>
 
-          <div className="grid gap-2">
-            <Label htmlFor="category">Category</Label>
+      <Controller
+        control={form.control}
+        name="unit_of_measure_id"
+        render={({ field }) => (
+          <Select
+            value={field.value}
+            onValueChange={field.onChange}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Select Unit" />
+            </SelectTrigger>
 
-            <Input
-              id="category"
-              placeholder="Category ID"
-              {...form.register("category_id")}
-            />
-          </div>
+            <SelectContent>
+              <SelectItem value="kg">
+                Kilogram (kg)
+              </SelectItem>
 
+              <SelectItem value="g">
+                Gram (g)
+              </SelectItem>
 
+              <SelectItem value="ltr">
+                Liter (L)
+              </SelectItem>
 
-          <div className="grid gap-2">
-            <Label htmlFor="uom">Unit of Measure</Label>
+              <SelectItem value="pcs">
+                Pieces
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        )}
+      />
+    </div>
+  </div>
 
-            <Input
-              id="uom"
-              placeholder="Unit ID"
-              {...form.register("unit_of_measure_id")}
-            />
-          </div>
+  {/* Cost Price + Reorder Level */}
+  <div className="grid grid-cols-2 gap-4">
+    <div className="grid gap-2">
+      <Label htmlFor="price">Cost Price</Label>
 
-          <div className="flex items-center gap-3">
-            <input
-              id="active"
-              type="checkbox"
-              {...form.register("is_active")}
-            />
+      <Input
+        id="price"
+        type="number"
+        {...form.register("cost_price")}
+      />
+    </div>
 
-            <Label htmlFor="active">Active Product</Label>
-          </div>
+    <div className="grid gap-2">
+      <Label htmlFor="stock">Reorder Level</Label>
 
-          <DialogFooter>
-            <Button type="submit">Save Product</Button>
-          </DialogFooter>
-        </form>
+      <Input
+        id="stock"
+        type="number"
+        {...form.register("reorder_level")}
+      />
+    </div>
+  </div>
+
+  {/* Status */}
+  <div className="flex items-center gap-3">
+    <input
+      id="active"
+      type="checkbox"
+      {...form.register("is_active")}
+    />
+
+    <Label htmlFor="active">
+      Active Product
+    </Label>
+  </div>
+
+  <DialogFooter>
+    <Button type="submit">
+      Save Product
+    </Button>
+  </DialogFooter>
+</form>
       </DialogContent>
     </Dialog>
   );
