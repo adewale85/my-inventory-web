@@ -16,7 +16,7 @@ interface ProductTableProps {
     product: ProductResponse
   ) => void;
 }
-export default function ProductTable ({setProductToDelete,}
+export default function ProductTable ({setProductToDelete, setProductToEdit}
     : ProductTableProps) {
 
     const {products, isPending, isError, error} = useGetAllProducts();
@@ -82,7 +82,7 @@ export default function ProductTable ({setProductToDelete,}
                                     </DropdownMenuTrigger>
 
                                     <DropdownMenuContent align="end">
-                                        <DropdownMenuItem>
+                                        <DropdownMenuItem onClick={()=>setProductToEdit(product)}>
                                             <Pencil className="mr-2 h-4 w-4" />
                                             Edit
                                         </DropdownMenuItem>
