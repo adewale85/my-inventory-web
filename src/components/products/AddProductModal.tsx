@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { useCreateProduct } from "@/hooks/products/useCreateProduct";
+import { toast } from "sonner";
 
 interface AddProductModalProps {
   open: boolean;
@@ -48,7 +49,19 @@ export default function AddProductModal({
    
 const onSubmit = (data: ProductFormValues) => {
     // console.log(data); 
-    createProduct (data)
+    createProduct (data, {
+      onSuccess: () => {
+        toast.success("Product created succesfully")
+
+        form.reset();
+
+        onOpenChange(false)
+      },
+
+      onError: (error) => {
+        toast.error (error.message || "failed to create product.")
+      }
+    })
   };
 
   return (
