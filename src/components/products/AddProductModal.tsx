@@ -164,6 +164,12 @@ const onSubmit = (data: ProductFormValues) => {
           </Select>
         )}
       />
+
+      {form.formState.errors.category_id && (
+        <p className="text-sm text-red-500" >
+          {form.formState.errors.category_id.message}
+        </p>
+      )}
     </div>
 
     <div className="grid gap-2">
@@ -201,6 +207,12 @@ const onSubmit = (data: ProductFormValues) => {
           </Select>
         )}
       />
+
+      {form.formState.errors.unit_of_measure_id && (
+        <p className="text-sm text-red-500">
+          {form.formState.errors.unit_of_measure_id.message}
+        </p>
+      )}
     </div>
   </div>
 
@@ -257,8 +269,8 @@ const onSubmit = (data: ProductFormValues) => {
     disabled={isPending}
     >
       {isPending ? "saving..." : "Save Product"}
-    </Button>
-  </DialogFooter>
+    </Button> 
+  </DialogFooter> 
 </form>
       </DialogContent>
     </Dialog>

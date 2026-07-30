@@ -2,33 +2,71 @@
 import {Trash2 } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { Button } from "../ui/button";
+import { ProductResponse } from "@/types/product";
+import { useDeleteProduct } from "@/hooks/products/useDeleteProduct";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../ui/dialog";
 
 
-export default function DeleteProductModal ({productName} : {productName: string}) {
+
+interface DeleteProductModalProps {
+  product: ProductResponse | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export default function DeleteProductModal ({product, open, onOpenChange} : DeleteProductModalProps) {
+    
+    const {deleteProduct, isPending} = useDeleteProduct()
+
+    const handleDelete = () => {
+        if(!product) return;
+        
+        deleteProduct(product.id, {
+            onSuccess: () => {
+                onOpenChange(false)
+            }
+        })
+        onOpenChange(false)
+    }
+
     return (
-        <AlertDialog>
-            <AlertDialogTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700 hover:bg-red-50">
-                    <Trash2 className="h-4 w-4"/> 
-                </Button>
-            </AlertDialogTrigger>
+         <Dialog
+      open={open}
+      onOpenChange={onOpenChange}
+    >
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Delete Product</DialogTitle>
 
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        This action cannot be undone. this will permanently delete {" "}
-                        <span className="font-semibold text-foreground">"{productName}"</span> from your store inventory
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
+          <DialogDescription>
+            Are you sure you want to delete{" "}
+            <span className="font-semibold text-foreground">
+              {product?.name}
+            </span>
+            ?
+            <br />
+            This action cannot be undone.
+          </DialogDescription>
+        </DialogHeader>
 
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction className="bg-red-500 hover:bg-red-700">
-                        Delete product
-                    </AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
+        <DialogFooter>
+          <Button
+            variant="outline"
+            onClick={() => onOpenChange(false)}
+            disabled={isPending}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            variant="destructive"
+            onClick={handleDelete}
+            disabled={isPending}
+          >
+            {isPending ? "Deleting..." : "Delete"}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
     )
 }

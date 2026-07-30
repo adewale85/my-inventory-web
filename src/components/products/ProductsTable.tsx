@@ -7,8 +7,17 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Button } from "../ui/button";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { mockProducts } from "@/mock/products";
+import { ProductResponse } from "@/types/product";
 
-export default function ProductTable () {
+
+// const [productToDelete, setProductToDelete] = useState <ProductResponse | null>(null);
+interface ProductTableProps {
+  setProductToDelete: (
+    product: ProductResponse
+  ) => void;
+}
+export default function ProductTable ({setProductToDelete,}
+    : ProductTableProps) {
 
     const {products, isPending, isError, error} = useGetAllProducts();
     const displayProducts = products?.length > 0 ? products : mockProducts;
@@ -77,7 +86,9 @@ export default function ProductTable () {
                                             <Pencil className="mr-2 h-4 w-4" />
                                             Edit
                                         </DropdownMenuItem>
-                                        <DropdownMenuItem className="text-red-600 focus:text-red-600">
+                                        <DropdownMenuItem className="text-red-600 focus:text-red-600"
+                                        onClick={()=> setProductToDelete(product)}
+                                        >
                                             <Trash2 className="mr-2 h-4 w-4" />
                                             Delete
                                         </DropdownMenuItem>
