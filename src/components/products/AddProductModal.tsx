@@ -17,11 +17,13 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { useCreateProduct } from "@/hooks/products/useCreateProduct";
 
 interface AddProductModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
+
 
 export default function AddProductModal({
   open,
@@ -42,8 +44,11 @@ export default function AddProductModal({
     },
   });
 
-  const onSubmit = (data: ProductFormValues) => {
-    console.log(data);
+ const {createProduct, isPending} = useCreateProduct ();
+   
+const onSubmit = (data: ProductFormValues) => {
+    // console.log(data); 
+    createProduct (data)
   };
 
   return (
@@ -204,8 +209,10 @@ export default function AddProductModal({
   </div>
 
   <DialogFooter>
-    <Button type="submit">
-      Save Product
+    <Button type="submit"
+    disabled={isPending}
+    >
+      {isPending ? "saving..." : "Save Product"}
     </Button>
   </DialogFooter>
 </form>
