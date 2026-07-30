@@ -88,6 +88,12 @@ const onSubmit = (data: ProductFormValues) => {
       placeholder="e.g. Rice"
       {...form.register("name")}
     />
+
+    {form.formState.errors.name && (
+      <p className="text-sm text-red-500">
+        {form.formState.errors.name.message} 
+      </p>
+    )}
   </div>
 
   {/* SKU */}
@@ -99,6 +105,12 @@ const onSubmit = (data: ProductFormValues) => {
       placeholder="e.g. RICE-001"
       {...form.register("sku")}
     />
+
+    {form.formState.errors.sku && (
+      <p className="text-sm text-red-500">
+        {form.formState.errors.sku.message}
+      </p>
+    )}
   </div>
 
   {/* Description */}
@@ -110,6 +122,13 @@ const onSubmit = (data: ProductFormValues) => {
       placeholder="Enter product description"
       {...form.register("description")}
     />
+
+     {form.formState.errors.description && (
+      <p className="text-sm text-red-500">
+        {form.formState.errors.description.message}
+      </p>
+    )}
+   
   </div>
 
   {/* Category + Unit */}
@@ -195,6 +214,12 @@ const onSubmit = (data: ProductFormValues) => {
         type="number"
         {...form.register("cost_price")}
       />
+
+      {form.formState.errors.cost_price && (
+        <p className="text-sm text-red-500">
+          {form.formState.errors.cost_price.message}
+        </p>
+      )}
     </div>
 
     <div className="grid gap-2">
@@ -205,6 +230,12 @@ const onSubmit = (data: ProductFormValues) => {
         type="number"
         {...form.register("reorder_level")}
       />
+
+      {form.formState.errors.reorder_level && (
+        <p className="text-sm text-red-500">
+          {form.formState.errors.reorder_level.message}
+        </p>
+      )}
     </div>
   </div>
 
