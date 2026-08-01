@@ -5,7 +5,7 @@ import { apiClient } from "../axiosPrivate";
 /**
  * List all product categories
  */
-export async function getCategories() {
+export async function getAllCategories() {
   const response = await apiClient.get<{data:{ data: CategoryResponse[] }}>("/categories");
   return response.data.data.data;
 }

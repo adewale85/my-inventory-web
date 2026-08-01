@@ -5,18 +5,24 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { ProductFormValues } from "@/schemas/productSchema"
+import { useGetCategories } from "@/hooks/categories/useCategories"
+import { useGetAllUnit } from "@/hooks/units/useGetAllUnit"
 
 
 interface ProductFormProps {
     form: UseFormReturn<ProductFormValues>
 }
 
+
 export default function ProductForm ({
     form,
 }: ProductFormProps) {
+    
+    const {categories, isPendingCategories} = useGetCategories();
+    const {units, isPendingUnits} = useGetAllUnit();
+
     return (
-        <> 
-        
+        <>         
     {/* Product Name */}
   <div className="grid gap-2">
     <Label htmlFor="name">Product Name</Label>
@@ -84,21 +90,20 @@ export default function ProductForm ({
             onValueChange={field.onChange}
           >
             <SelectTrigger>
-              <SelectValue placeholder="Select Category" />
+              <SelectValue placeholder={
+                isPendingCategories 
+                ? "Loading categories..." 
+                : "Select Category"} />
+                
             </SelectTrigger>
 
             <SelectContent>
-              <SelectItem value="food">
-                Food
-              </SelectItem>
-
-              <SelectItem value="drinks">
-                Drinks
-              </SelectItem>
-
-              <SelectItem value="electronics">
-                Electronics
-              </SelectItem>
+                {categories?.map((category)=>(
+                <SelectItem key={category.id}value={category.id}>
+                    {category.name}
+                </SelectItem>
+                ))}
+            
             </SelectContent>
           </Select>
         )}
@@ -123,25 +128,18 @@ export default function ProductForm ({
             onValueChange={field.onChange}
           >
             <SelectTrigger>
-              <SelectValue placeholder="Select Unit" />
+              <SelectValue placeholder={isPendingUnits 
+                ? "Loading units..." 
+                : "Select Unit"} />
             </SelectTrigger>
 
             <SelectContent>
-              <SelectItem value="kg">
-                Kilogram (kg)
-              </SelectItem>
+            {units?.map((unit)=> (
 
-              <SelectItem value="g">
-                Gram (g)
-              </SelectItem>
-
-              <SelectItem value="ltr">
-                Liter (L)
-              </SelectItem>
-
-              <SelectItem value="pcs">
-                Pieces
-              </SelectItem>
+             <SelectItem key={unit.id} value={unit.id}>
+                {unit.name}
+             </SelectItem>
+            ))}
             </SelectContent>
           </Select>
         )}
@@ -202,7 +200,7 @@ export default function ProductForm ({
       Active Product
     </Label>
   </div>
-        </div>
+    
         </>
     )
 }

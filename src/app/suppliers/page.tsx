@@ -3,7 +3,6 @@
 import { useAuthStore } from "@/zustand/useAuthStore";
 import React, { useEffect, useState } from "react";
 
-
 interface Supplier {
   id: string;
   name: string;
@@ -20,7 +19,12 @@ export default function SuppliersPage() {
 
   const [showCreate, setShowCreate] = useState(false);
   const [createLoading, setCreateLoading] = useState(false);
-  const [newSupplier, setNewSupplier] = useState({ name: "", contactName: "", email: "", phone: "" });
+  const [newSupplier, setNewSupplier] = useState({
+    name: "",
+    contactName: "",
+    email: "",
+    phone: "",
+  });
 
   useEffect(() => {
     let mounted = true;
@@ -45,10 +49,23 @@ export default function SuppliersPage() {
   async function submitCreate() {
     setCreateLoading(true);
     try {
-      const res = await fetch("/api/v1/suppliers", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newSupplier) });
+      const res = await fetch("/api/v1/suppliers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newSupplier),
+      });
       if (!res.ok) throw new Error("Create failed");
       const created = await res.json();
-      setSuppliers((s) => [{ id: created.id ?? Date.now().toString(), name: created.name ?? newSupplier.name, contactName: created.contactName ?? newSupplier.contactName, email: created.email ?? newSupplier.email, phone: created.phone ?? newSupplier.phone }, ...s]);
+      setSuppliers((s) => [
+        {
+          id: created.id ?? Date.now().toString(),
+          name: created.name ?? newSupplier.name,
+          contactName: created.contactName ?? newSupplier.contactName,
+          email: created.email ?? newSupplier.email,
+          phone: created.phone ?? newSupplier.phone,
+        },
+        ...s,
+      ]);
       setShowCreate(false);
       setNewSupplier({ name: "", contactName: "", email: "", phone: "" });
     } catch (err) {
@@ -76,10 +93,19 @@ export default function SuppliersPage() {
       <header className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-slate-800">Suppliers</h1>
-          <p className="text-sm text-slate-500">Supplier directory and contact details.</p>
+          <p className="text-sm text-slate-500">
+            Supplier directory and contact details.
+          </p>
         </div>
         <div className="flex items-center gap-3">
-          {isAdmin && <button onClick={() => setShowCreate(true)} className="rounded bg-emerald-500 text-white px-4 py-2 text-sm hover:bg-emerald-600">+ Add Supplier</button>}
+          {isAdmin && (
+            <button
+              onClick={() => setShowCreate(true)}
+              className="rounded bg-emerald-500 text-white px-4 py-2 text-sm hover:bg-emerald-600"
+            >
+              + Add Supplier
+            </button>
+          )}
         </div>
       </header>
 
@@ -90,10 +116,15 @@ export default function SuppliersPage() {
             <div className="h-20 rounded bg-slate-200 animate-pulse" />
           </div>
         ) : suppliers.length === 0 ? (
-          <div className="col-span-3 text-sm text-slate-500">No suppliers found.</div>
+          <div className="col-span-3 text-sm text-slate-500">
+            No suppliers found.
+          </div>
         ) : (
           suppliers.map((s) => (
-            <div key={s.id} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+            <div
+              key={s.id}
+              className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
+            >
               <div className="flex items-start justify-between">
                 <div>
                   <div className="text-slate-900 font-medium">{s.name}</div>
@@ -103,7 +134,13 @@ export default function SuppliersPage() {
               </div>
               <div className="mt-3 text-sm text-slate-600">{s.email}</div>
               <div className="mt-4 flex items-center justify-end gap-2">
-                <button disabled={!isAdmin} onClick={() => isAdmin && handleDelete(s.id)} className={`text-sm rounded px-2 py-1 ${isAdmin ? 'bg-rose-50 text-rose-700 border border-rose-100' : 'opacity-50 cursor-not-allowed bg-white border border-slate-100 text-slate-400'}`}>Delete</button>
+                <button
+                  disabled={!isAdmin}
+                  onClick={() => isAdmin && handleDelete(s.id)}
+                  className={`text-sm rounded px-2 py-1 ${isAdmin ? "bg-rose-50 text-rose-700 border border-rose-100" : "opacity-50 cursor-not-allowed bg-white border border-slate-100 text-slate-400"}`}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))
@@ -117,27 +154,69 @@ export default function SuppliersPage() {
             <h3 className="text-lg font-medium text-slate-800">Add Supplier</h3>
             <div className="mt-4 space-y-3">
               <div>
-                <label className="block text-xs text-slate-500">Company Name</label>
-                <input value={newSupplier.name} onChange={(e) => setNewSupplier((s) => ({ ...s, name: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+                <label className="block text-xs text-slate-500">
+                  Company Name
+                </label>
+                <input
+                  value={newSupplier.name}
+                  onChange={(e) =>
+                    setNewSupplier((s) => ({ ...s, name: e.target.value }))
+                  }
+                  className="w-full rounded border border-slate-200 px-3 py-2"
+                />
               </div>
               <div>
-                <label className="block text-xs text-slate-500">Contact Name</label>
-                <input value={newSupplier.contactName} onChange={(e) => setNewSupplier((s) => ({ ...s, contactName: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+                <label className="block text-xs text-slate-500">
+                  Contact Name
+                </label>
+                <input
+                  value={newSupplier.contactName}
+                  onChange={(e) =>
+                    setNewSupplier((s) => ({
+                      ...s,
+                      contactName: e.target.value,
+                    }))
+                  }
+                  className="w-full rounded border border-slate-200 px-3 py-2"
+                />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs text-slate-500">Email</label>
-                  <input value={newSupplier.email} onChange={(e) => setNewSupplier((s) => ({ ...s, email: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+                  <input
+                    value={newSupplier.email}
+                    onChange={(e) =>
+                      setNewSupplier((s) => ({ ...s, email: e.target.value }))
+                    }
+                    className="w-full rounded border border-slate-200 px-3 py-2"
+                  />
                 </div>
                 <div>
                   <label className="block text-xs text-slate-500">Phone</label>
-                  <input value={newSupplier.phone} onChange={(e) => setNewSupplier((s) => ({ ...s, phone: e.target.value }))} className="w-full rounded border border-slate-200 px-3 py-2" />
+                  <input
+                    value={newSupplier.phone}
+                    onChange={(e) =>
+                      setNewSupplier((s) => ({ ...s, phone: e.target.value }))
+                    }
+                    className="w-full rounded border border-slate-200 px-3 py-2"
+                  />
                 </div>
               </div>
 
               <div className="flex items-center justify-end gap-2 mt-4">
-                <button onClick={() => setShowCreate(false)} className="rounded border border-slate-200 px-3 py-2 text-sm">Cancel</button>
-                <button onClick={submitCreate} disabled={createLoading} className="rounded bg-emerald-500 text-white px-4 py-2 text-sm hover:bg-emerald-600">{createLoading ? 'Saving...' : 'Create'}</button>
+                <button
+                  onClick={() => setShowCreate(false)}
+                  className="rounded border border-slate-200 px-3 py-2 text-sm"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={submitCreate}
+                  disabled={createLoading}
+                  className="rounded bg-emerald-500 text-white px-4 py-2 text-sm hover:bg-emerald-600"
+                >
+                  {createLoading ? "Saving..." : "Create"}
+                </button>
               </div>
             </div>
           </div>

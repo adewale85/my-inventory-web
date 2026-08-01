@@ -1,4 +1,5 @@
 
+import { categoriesApi } from "@/lib/api/categories";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useCreateCategory = () => {

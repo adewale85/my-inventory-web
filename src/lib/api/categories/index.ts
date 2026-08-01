@@ -1,12 +1,12 @@
 import { createCategory } from "./createCategory";
 import { deleteCategory } from "./deleteCategory";
-import { getCategories } from "./getCategories";
+import { getAllCategories } from "./getAllCategories";
 import { getCategory } from "./getCategory";
 import { updateCategory } from "./updateCategory";
 
+
 export const categoriesApi = {
-    getAllCategories: 
-    getCategories,
+    getAllCategories,
     getCategory,
     createCategory,
     deleteCategory,

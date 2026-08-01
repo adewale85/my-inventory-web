@@ -16,9 +16,9 @@ export default function ProductsPage() {
 
   const [openAddModal, setOpenAddModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState <ProductResponse | null> (null);
-  const [productToEdit, setProductToEdit] = useState <ProductResponse | null> (null) 
+  // const [productToEdit, setProductToEdit] = useState <ProductResponse | null> (null) 
 
-  return (
+  return ( 
     <div className="space-y-6 p-6">
       
       <ProductsHeader
@@ -31,7 +31,7 @@ export default function ProductsPage() {
 
       <ProductTable 
       setProductToDelete={setProductToDelete}
-      setProductToEdit={setProductToEdit}
+      // setProductToEdit={setProductToEdit}
       
        />
 
