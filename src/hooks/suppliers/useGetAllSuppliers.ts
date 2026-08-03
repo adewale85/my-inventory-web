@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useGetAllSuppliers = () => {
     const {
-        data: suppliers, isPending: isPendingSuppliers
+        data: suppliers = [], isPending: isPendingSuppliers
     } = useQuery ({
         queryKey: ["suppliers"],
         queryFn: supplierApi.getAllSuppliers

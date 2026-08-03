@@ -1,0 +1,55 @@
+import { SupplierResponse } from "@/types/suppliers";
+
+
+export const mockSuppliers: SupplierResponse[] = [
+  {
+    id: "1",
+    name: "Dangote Foods",
+    contact_person: "John Adewale",
+    email: "john@dangotefoods.com",
+    phone: "+2348012345678",
+    address: "12 Marina Road, Lagos",
+    is_active: true,
+    created_at: "2026-08-01T09:00:00Z",
+  },
+  {
+    id: "2",
+    name: "Nestlé Nigeria",
+    contact_person: "Mary Okafor",
+    email: "mary@nestle.com",
+    phone: "+2348098765432",
+    address: "Industrial Estate, Agbara, Ogun",
+    is_active: true,
+    created_at: "2026-08-02T10:15:00Z",
+  },
+  {
+    id: "3",
+    name: "BUA Foods",
+    contact_person: "Samuel Ibrahim",
+    email: "samuel@buafoods.com",
+    phone: "+2348034567890",
+    address: "Abuja Central Business District",
+    is_active: false,
+    created_at: "2026-08-03T14:20:00Z",
+  },
+  {
+    id: "4",
+    name: "Olam Nigeria",
+    contact_person: "Grace Williams",
+    email: "grace@olam.com",
+    phone: "+2348076543210",
+    address: "Ikeja, Lagos",
+    is_active: true,
+    created_at: "2026-08-04T08:30:00Z",
+  },
+  {
+    id: "5",
+    name: "Flour Mills Nigeria",
+    contact_person: "David Musa",
+    email: "david@fmnplc.com",
+    phone: "+2348061122334",
+    address: "Apapa, Lagos",
+    is_active: true,
+    created_at: "2026-08-05T16:45:00Z",
+  },
+];

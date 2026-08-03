@@ -40,7 +40,7 @@ export default function ProductTable ({setProductToDelete }
                         <TableHead>Category</TableHead>
                         <TableHead>Quantity</TableHead>
                         <TableHead>Status</TableHead>
-                        <TableHead className="w-[80px] text-right">Action</TableHead>
+                        <TableHead className="w-20 text-right">Action</TableHead>
                     </TableRow>
                 </TableHeader>
 
