@@ -1,6 +1,7 @@
 "use client";
 
 import TablePagination from "@/components/products/TablePagination";
+import DeleteSupplierModal from "@/components/Suppliers/DeleteSupplierModal";
 import SupplierFilters from "@/components/Suppliers/SupplierFilters";
 import SuppliersHeader from "@/components/Suppliers/SuppliersHeader";
 import SuppliersTable from "@/components/Suppliers/SuppliersTable";
@@ -18,8 +19,20 @@ export default function SuppliersPage() {
       <SuppliersHeader onAddSupplier={()=>setOpenAddModal(true)}/>
       <SupplierFilters />
       <SuppliersTable setSupplierToDelete={setSupplierToDelete} 
-      setSupplierToEdit={setSupplierToEdit}/>
+      setSupplierToEdit={setSupplierToEdit}
+      
+      />
       <TablePagination/>
+
+      <DeleteSupplierModal
+        supplier={supplierToDelete}
+        open={!!supplierToDelete}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSupplierToDelete(null);
+          }
+        }}
+      />
     </div>
   )
 }

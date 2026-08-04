@@ -21,10 +21,34 @@ export const useDeleteSupplier = () => {
     const { mutate: deleteSupplier, isPending: deleteIsPending } = useMutation({
         mutationFn: (id: string) => supplierApi.deleteSupplier(id),
         onSuccess: () => {
+
             toast.success("Supplier deleted successfully");
 
-            queryClient.invalidateQueries({ queryKey: ["suppliers"] });
-        }
+            queryClient.invalidateQueries({ queryKey: ["supplier"] });
+        },
+
+        onError: (error: any) => {
+  switch (error.response?.status) {
+    case 403:
+      toast.error("You don't have permission to perform this action.");
+      break;
+
+    case 404:
+      toast.error("Product not found.");
+      break;
+
+    case 422:
+      toast.error("Please check your input.");
+      break;
+
+    default:
+      toast.error("Something went wrong.");
+  }
+}
     });
+
+
+
+
     return { deleteSupplier, deleteIsPending };
 }

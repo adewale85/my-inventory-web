@@ -6,7 +6,7 @@ import { Button } from '../ui/button';
 import { useDeleteSupplier } from '@/hooks/suppliers/useDeleteSupplier';
 
 interface DeleteSupplierModalProps {
-    supplier: SupplierResponse;
+    supplier: SupplierResponse | null;
     open: boolean;
     onOpenChange: (open: boolean) => void;
 }
@@ -39,7 +39,8 @@ export default function DeleteSupplierModal({ supplier, open, onOpenChange } : D
             <DialogDescription>
                 Are you sure you want to delete{" "} 
                 <span>
-                    {supplier.name}</span> ? <br /> This action cannot be undone.    
+                    {supplier?.name}
+                </span> ? <br /> This action cannot be undone.    
             </DialogDescription>
         </DialogHeader>
 
