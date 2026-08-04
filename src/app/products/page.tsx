@@ -16,7 +16,7 @@ export default function ProductsPage() {
 
   const [openAddModal, setOpenAddModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState <ProductResponse | null> (null);
-  // const [productToEdit, setProductToEdit] = useState <ProductResponse | null> (null) 
+  const [productToEdit, setProductToEdit] = useState <ProductResponse | null> (null) 
 
   return ( 
     <div className="space-y-6 p-6">
@@ -31,7 +31,7 @@ export default function ProductsPage() {
 
       <ProductTable 
       setProductToDelete={setProductToDelete}
-      // setProductToEdit={setProductToEdit}
+      setProductToEdit={setProductToEdit}
       
        />
 
@@ -41,7 +41,7 @@ export default function ProductsPage() {
         open={openAddModal}
         onOpenChange={setOpenAddModal}
       />
-
+ 
       <DeleteProductModal
       product={productToDelete}
       open={!!productToDelete}
@@ -51,8 +51,6 @@ export default function ProductsPage() {
     }
   }}
 />
-
-
 
     </div>
   );

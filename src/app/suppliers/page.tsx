@@ -2,6 +2,7 @@
 
 import TablePagination from "@/components/products/TablePagination";
 import DeleteSupplierModal from "@/components/Suppliers/DeleteSupplierModal";
+import EditSupplierModal from "@/components/Suppliers/EditSupplierModal";
 import SupplierFilters from "@/components/Suppliers/SupplierFilters";
 import SuppliersHeader from "@/components/Suppliers/SuppliersHeader";
 import SuppliersTable from "@/components/Suppliers/SuppliersTable";
@@ -18,6 +19,7 @@ export default function SuppliersPage() {
     <div className="space-y-6 p-6">
       <SuppliersHeader onAddSupplier={()=>setOpenAddModal(true)}/>
       <SupplierFilters />
+
       <SuppliersTable setSupplierToDelete={setSupplierToDelete} 
       setSupplierToEdit={setSupplierToEdit}
       
@@ -33,8 +35,19 @@ export default function SuppliersPage() {
           }
         }}
       />
+
+      <EditSupplierModal
+        supplier={supplierToEdit}
+        open={!!supplierToEdit}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSupplierToEdit(null);
+          }
+        }}
+      />
     </div>
-  )
+  );
+    
 }
 
  
