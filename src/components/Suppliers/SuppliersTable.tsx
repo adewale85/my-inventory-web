@@ -5,10 +5,14 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { Button } from '../ui/button';
 import { mockSuppliers } from '@/mock/suppliers';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
-import { MoreHorizontal, Pencil } from 'lucide-react';
-interface SuppliersTableProps {setSupplierToDelete: (supplier: SupplierResponse) => void}
+import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 
-export default function SuppliersTable({ setSupplierToDelete }: SuppliersTableProps) {
+interface SuppliersTableProps {
+    setSupplierToDelete: (supplier: SupplierResponse) => void;
+    setSupplierToEdit: (supplier: SupplierResponse) => void;
+}
+
+export default function SuppliersTable({ setSupplierToDelete, setSupplierToEdit }: SuppliersTableProps) {
 
     const {suppliers, isPendingSuppliers} = useGetAllSuppliers(); 
     const displaySuppliers = suppliers?.length > 0 ? suppliers : mockSuppliers; 
@@ -33,7 +37,7 @@ export default function SuppliersTable({ setSupplierToDelete }: SuppliersTablePr
 
             <TableBody>
                 {displaySuppliers?.map((supplier) => (
-                <TableRow key={supplier.id} className="flex items-center justify-between border-b px-4 py-2">
+                <TableRow key={supplier.id} >
                     <TableCell>{supplier.name}</TableCell>
                     <TableCell>{supplier.contact_person}</TableCell>
                     <TableCell>{supplier.email}</TableCell>
@@ -47,14 +51,14 @@ export default function SuppliersTable({ setSupplierToDelete }: SuppliersTablePr
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
-                                <DropdownMenuItem>
+                                <DropdownMenuItem onClick={()=> setSupplierToEdit(supplier)}> 
                                     <Pencil className="mr-2 h-4 w-4" />
                                     Edit
                                 </DropdownMenuItem>
-                                <DropdownMenuItem>
-                        <Button variant="outline" size="sm" onClick={() => setSupplierToDelete(supplier)}>
-                            Delete
-                        </Button>
+                                <DropdownMenuItem className="text-red-600 focus:text-red-600"
+                                onClick={() => setSupplierToDelete(supplier)}>
+                                    <Trash2 className="mr-2 h-4 w-4" />
+                                    Delete
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

@@ -4,16 +4,21 @@ import TablePagination from "@/components/products/TablePagination";
 import SupplierFilters from "@/components/Suppliers/SupplierFilters";
 import SuppliersHeader from "@/components/Suppliers/SuppliersHeader";
 import SuppliersTable from "@/components/Suppliers/SuppliersTable";
+import { SupplierResponse } from "@/types/suppliers";
+import { useState } from "react";
 
 
 export default function SuppliersPage() {
-
+  
+  const [supplierToDelete, setSupplierToDelete] = useState <SupplierResponse | null> (null);
+  const [supplierToEdit, setSupplierToEdit] = useState <SupplierResponse | null> (null);
 
   return (
     <div className="space-y-6 p-6">
       <SuppliersHeader onAddSupplier={()=>setOpenAddModal(true)}/>
       <SupplierFilters />
-      <SuppliersTable/>
+      <SuppliersTable setSupplierToDelete={setSupplierToDelete} 
+      setSupplierToEdit={setSupplierToEdit}/>
       <TablePagination/>
     </div>
   )
