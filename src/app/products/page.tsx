@@ -31,7 +31,7 @@ export default function ProductsPage() {
 
       <ProductTable 
       setProductToDelete={setProductToDelete}
-      setProductToEdit={setProductToEdit}
+      // setProductToEdit={setProductToEdit}
       
        />
 

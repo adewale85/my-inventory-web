@@ -1,6 +1,7 @@
 "use client";
 
 import TablePagination from "@/components/products/TablePagination";
+import AddSupplierModal from "@/components/Suppliers/AddSupplierModal";
 import DeleteSupplierModal from "@/components/Suppliers/DeleteSupplierModal";
 import EditSupplierModal from "@/components/Suppliers/EditSupplierModal";
 import SupplierFilters from "@/components/Suppliers/SupplierFilters";
@@ -14,10 +15,11 @@ export default function SuppliersPage() {
   
   const [supplierToDelete, setSupplierToDelete] = useState <SupplierResponse | null> (null);
   const [supplierToEdit, setSupplierToEdit] = useState <SupplierResponse | null> (null);
+  const [onAddSupplier, setOnAddSupplier] = useState (false)
 
   return (
     <div className="space-y-6 p-6">
-      <SuppliersHeader onAddSupplier={()=>setOpenAddModal(true)}/>
+      <SuppliersHeader onAddSupplier={()=>setOnAddSupplier(true)}/>
       <SupplierFilters />
 
       <SuppliersTable setSupplierToDelete={setSupplierToDelete} 
@@ -25,6 +27,11 @@ export default function SuppliersPage() {
       
       />
       <TablePagination/>
+
+      <AddSupplierModal 
+      open={onAddSupplier}
+      onOpenChange={setOnAddSupplier}
+      />
 
       <DeleteSupplierModal
         supplier={supplierToDelete}
