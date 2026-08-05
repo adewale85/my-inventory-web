@@ -1,4 +1,5 @@
-import { apiClient } from "../axiosPrivate";
+import { supabase } from "@/supabase/client";
+// import { apiClient } from "../axiosPrivate";
 
 export interface SignUpPayload {
   name?: string;
@@ -6,17 +7,25 @@ export interface SignUpPayload {
   password?: string; 
 }
 
-export interface AuthResponse {
-  access_token: string;
-  token_type: string;
-}
+// export interface AuthResponse {
+//   access_token: string;
+//   token_type: string;
+// }
 /**
  * Register a new user account
  */
 export async function signup(data: SignUpPayload) {
-  const response = await apiClient.post<AuthResponse>(
-    "/auth/signup",
-    data
-  );
-  return response.data;
-}
+    const {data: authData, error} = await supabase.auth.signUp({
+      email: data.email!,
+      password: data.password!
+
+    });
+
+    if (error) {
+      throw error
+    }
+
+    return authData
+  }
+   
+ 

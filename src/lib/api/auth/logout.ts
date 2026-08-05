@@ -8,3 +8,4 @@ export async function logout() {
   const response = await apiClient.post<any>("/auth/logout");
   return response.data;
 }
+
