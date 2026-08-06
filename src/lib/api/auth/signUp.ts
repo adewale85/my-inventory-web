@@ -17,8 +17,12 @@ export interface SignUpPayload {
 export async function signup(data: SignUpPayload) {
     const {data: authData, error} = await supabase.auth.signUp({
       email: data.email!,
-      password: data.password!
-
+      password: data.password!,
+      options:{
+        data:{
+          name: data.name
+        }
+      }
     });
 
     if (error) {

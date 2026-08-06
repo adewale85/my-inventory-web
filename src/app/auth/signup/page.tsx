@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signup as apiSignup } from "@/lib/api/auth/signUp";
-import { useAuth } from "@/context/AuthContext";
+import { useSignup } from "@/hooks/auth/useSignup";
+
 
 export default function SignupPage() {
   const router = useRouter();
-  const { fetchMe } = useAuth();
+ 
+  const { mutateAsync: signup } = useSignup();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -46,21 +47,10 @@ export default function SignupPage() {
 
     setLoading(true);
     try {
-      const response = await apiSignup(name, email, password);
-      const token = response?.token ?? response?.token ?? null;
-      if (!token) {
-        throw new Error("Registration succeeded but no token was returned.");
-      }
+       await signup({ name, email, password });
+   
+      router.push("/auth/login");
 
-      localStorage.setItem("token", token);
-
-      try {
-        await fetchMe();
-      } catch (e) {
-        console.warn("fetchMe after signup failed", e);
-      }
-
-      router.push("/");
     } catch (err: any) {
       console.error(err);
       const message = err?.message || (err?.body?.message ?? "Registration failed. Please try again.");

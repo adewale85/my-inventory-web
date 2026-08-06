@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 
 export const useLogin = () => {
-    const router = useRouter
+    const router = useRouter()
     const setAuth = useAuthStore((state)=>state.setAuth)
 ;
 const {mutate: loginUser, isPending} = useMutation ({
