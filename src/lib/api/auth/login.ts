@@ -1,6 +1,7 @@
 // import { apiClient } from "../axiosPrivate";
 
 import { supabase } from "@/supabase/client";
+import { email } from "zod";
 
 
 // const BASE_URL = process.env.NEXT_PUBLIC_API_URL
@@ -55,5 +56,21 @@ export async function login(payload: LoginPayload) {
   if (error) {
     throw error;
   }
-  return data;
+  const profile = data.user? 
+  await supabase.from("profiles")
+  .select ("*")
+  .eq("id", data.user.id)
+  .single()
+  : null;
+
+  return{
+    accessToken: data.session?.access_token ?? "",
+    user: {
+      id: data.user?.id ?? "",
+      name: profile?.data?.name ?? "",
+      email: data.user?.email ?? "",
+      role: profile?.data?.role ?? "",
+      created_at: profile?.data?.created_at ?? "",
+    },
+  };
 }

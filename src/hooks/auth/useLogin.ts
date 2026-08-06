@@ -11,10 +11,12 @@ export const useLogin = () => {
     const setAuth = useAuthStore((state)=>state.setAuth)
 ;
 const {mutate: loginUser, isPending} = useMutation ({
-    mutationFn: authApi.login
+    mutationFn: authApi.login,
 
     onSuccess: async (authData) => {
+        setAuth(authData)
 
+        router.push("/");
     },
 
      onError: (error) => {
