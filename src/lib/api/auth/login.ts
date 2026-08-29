@@ -1,7 +1,7 @@
 // import { apiClient } from "../axiosPrivate";
 
 import { supabase } from "@/supabase/client";
-import { email } from "zod";
+// import { email } from "zod";
 
 
 // const BASE_URL = process.env.NEXT_PUBLIC_API_URL
@@ -52,9 +52,12 @@ export async function login(payload: LoginPayload) {
     email: payload.email!,
     password: payload.password!
   });  
+
+console.log("LOGIN DATA:", data);
+console.log("LOGIN ERROR:", error);
   
   if (error) {
-    throw error;
+    throw error; 
   }
   const profile = data.user? 
   await supabase.from("profiles")

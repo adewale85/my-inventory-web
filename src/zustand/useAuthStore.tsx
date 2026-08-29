@@ -23,7 +23,7 @@ interface AuthState {
 // Create the zustand store with middleware for persistence and immer
 export const useAuthStore = create<AuthState>()(
   persist<AuthState>(
-    (set) => ({
+    (set) => ({  
       accessToken: null,
       setToken: (token: string) => set({ accessToken: token }),
       user: null,

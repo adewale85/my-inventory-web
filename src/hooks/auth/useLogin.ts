@@ -1,6 +1,5 @@
 
 import { authApi } from "@/lib/api/auth";
-import { login } from "@/lib/api/auth/login";
 import { useAuthStore } from "@/zustand/useAuthStore";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -16,7 +15,7 @@ const {mutate: loginUser, isPending} = useMutation ({
     onSuccess: async (authData) => {
         setAuth(authData)
 
-        router.push("/");
+        router.push("/dashboard");
     },
 
      onError: (error) => {
@@ -24,4 +23,5 @@ const {mutate: loginUser, isPending} = useMutation ({
     },
  });
  return {loginUser, isPending}
-  }
+ } 
+

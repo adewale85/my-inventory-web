@@ -10,7 +10,7 @@ export default function LoginPage() {
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
-  const router = useRouter();
+  // const router = useRouter();
   const { loginUser, isPending } = useLogin();
 
 
