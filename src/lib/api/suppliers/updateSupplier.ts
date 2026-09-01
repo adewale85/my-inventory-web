@@ -10,3 +10,4 @@ export async function updateSupplier(id: string | number, payload: SupplierRespo
   const response = await apiClient.put<{data: SupplierResponse}>(`/suppliers/${id}`, payload)
   return response.data.data;
 }
+
