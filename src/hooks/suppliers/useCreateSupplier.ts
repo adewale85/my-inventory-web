@@ -1,12 +1,12 @@
 import { supplierApi } from "@/lib/api/suppliers";
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
-export const useCreatSupplier = () => {
+export const useCreateSupplier = () => {
     const queryClient = useQueryClient();
     const {mutate: createSupplier, isPending} = useMutation ({
         mutationFn: supplierApi.createSupplier ,
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["supplier"]})
+            queryClient.invalidateQueries({queryKey: ["suppliers"]})
         },
         
     });

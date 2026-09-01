@@ -15,7 +15,8 @@ interface SuppliersTableProps {
 export default function SuppliersTable({ setSupplierToDelete, setSupplierToEdit }: SuppliersTableProps) {
 
     const {suppliers, isPendingSuppliers} = useGetAllSuppliers(); 
-    const displaySuppliers = suppliers?.length > 0 ? suppliers : mockSuppliers; 
+    const displaySuppliers = suppliers;
+    // const displaySuppliers = suppliers?.length > 0 ? suppliers : mockSuppliers; 
 
     if (isPendingSuppliers) {
         return(

@@ -14,14 +14,13 @@ import { Button } from "../ui/button";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-
-
 import { toast } from "sonner";
 
 import { useForm } from "react-hook-form";
 import { SupplierFormValues, supplierSchema } from "@/schemas/supplierSchema";
 import SupplierForm from "./SupplierForm";
-import { useCreatSupplier } from "@/hooks/suppliers/useCreateSupplier";
+import { useCreateSupplier } from "@/hooks/suppliers/useCreateSupplier";
+
 
 interface AddSupplierModalProps {
   open: boolean;
@@ -46,53 +45,44 @@ export default function AddSupplierModal({
     },
   });
 
- const {createSupplier, isPending} = useCreatSupplier();
+ const {createSupplier, isPending} = useCreateSupplier();
    
 const onSubmit = (data: SupplierFormValues) => {
-    // console.log(data); 
-    createSupplier (data, {
-      onSuccess: () => {
-        toast.success("Supplier created succesfully")
+  createSupplier(data, {
+    onSuccess: () => {
+      toast.success("Supplier created successfully");
+      form.reset();
+      onOpenChange(false);
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to create supplier.");
+    },
+  });
+};
 
-        form.reset();
+// 1. Add this error handler to catch validation issues
+const onInvalid = (errors: any) => {
+  console.log("Validation Failed:", errors);
+  toast.error("Please check the form for errors.");
+};
 
-        onOpenChange(false)
-      },
-
-      onError: (error) => {
-        toast.error (error.message || "failed to create supplier.")
-      }
-    })
-  };
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Add New Supplier</DialogTitle>
-
-          <DialogDescription>
-            Enter the details for the new supplier.
-          </DialogDescription>
-        </DialogHeader>
-
+return (
+  <Dialog open={open} onOpenChange={onOpenChange}>
+    <DialogContent className="sm:max-w-[425px]">
+      {/* ... header ... */}
       
+      {/* 2. Pass 'onInvalid' as the second argument to handleSubmit */}
+      <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="space-y-5">
+        <SupplierForm form={form}/>
 
-  <form
-       onSubmit={form.handleSubmit(onSubmit)}
-       className="space-y-5"
-       >
-   <SupplierForm form={form}/>
-
-  <DialogFooter>
-    <Button type="submit"
-    disabled={isPending}
-    >
-      {isPending ? "saving..." : "Save Supplier"}
-    </Button> 
-  </DialogFooter> 
-</form> 
-      </DialogContent>
-    </Dialog>
-  );
+        <DialogFooter>
+          <Button type="submit" disabled={isPending}>
+            {isPending ? "Saving..." : "Save Supplier"}
+          </Button> 
+        </DialogFooter> 
+      </form> 
+    </DialogContent>
+  </Dialog>
+);
 }
+ 
