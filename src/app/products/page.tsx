@@ -11,6 +11,7 @@ import ProductsHeader from "@/components/products/productsHeader";
 import ProductTable from "@/components/products/ProductsTable";
 import { ProductResponse } from "@/types/product";
 import DeleteProductModal from "@/components/products/DeleteProductModal";
+import EditProductModal from "@/components/products/EditProductModal";
 
 export default function ProductsPage() {
 
@@ -31,7 +32,7 @@ export default function ProductsPage() {
 
       <ProductTable 
       setProductToDelete={setProductToDelete}
-      // setProductToEdit={setProductToEdit}
+      setProductToEdit={setProductToEdit}
       
        />
 
@@ -48,6 +49,16 @@ export default function ProductsPage() {
       onOpenChange={(open) => {
       if (!open) {
       setProductToDelete(null);
+    }
+  }}
+/>
+
+      <EditProductModal
+      product={productToEdit}
+      open={!!productToEdit}
+      onOpenChange={(open) => {
+      if (!open) {
+      setProductToEdit(null);
     }
   }}
 />

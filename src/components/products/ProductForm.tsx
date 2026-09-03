@@ -18,8 +18,11 @@ export default function ProductForm ({
     form,
 }: ProductFormProps) {
     
-    const {categories, isPendingCategories} = useGetCategories();
-    const {units, isPendingUnits} = useGetAllUnit();
+    const { categories, isPendingCategories } = useGetCategories();
+    const { units, isPendingUnits } = useGetAllUnit();
+
+    console.log("Categories Result:", categories);
+    console.log("Units Result:", units);
 
     return (
         <>         
@@ -77,81 +80,83 @@ export default function ProductForm ({
   </div>
 
   {/* Category + Unit */}
-  <div className="grid grid-cols-2 gap-4">
-    <div className="grid gap-2">
-      <Label>Category</Label>
+  {/* Category + Unit */}
+<div className="grid grid-cols-2 gap-4">
+  <div className="grid gap-2">
+    <Label>Category</Label>
 
-      <Controller
-        control={form.control}
-        name="category_id"
-        render={({ field }) => (
-          <Select
-            value={field.value}
-            onValueChange={field.onChange}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder={
-                isPendingCategories 
-                ? "Loading categories..." 
-                : "Select Category"} />
-                
-            </SelectTrigger>
+    <Controller
+      control={form.control}
+      name="category_id"
+      render={({ field }) => (
+        <Select
+          value={field.value || ""}
+          onValueChange={field.onChange}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder={
+              isPendingCategories 
+              ? "Loading categories..." 
+              : "Select Category"} 
+            />
+          </SelectTrigger>
 
-            <SelectContent>
-                {categories?.map((category)=>(
-                <SelectItem key={category.id}value={category.id}>
-                    {category.name}
-                </SelectItem>
-                ))}
-            
-            </SelectContent>
-          </Select>
-        )}
-      />
-
-      {form.formState.errors.category_id && (
-        <p className="text-sm text-red-500" >
-          {form.formState.errors.category_id.message}
-        </p>
-      )}
-    </div>
-
-    <div className="grid gap-2">
-      <Label>Unit of Measure</Label>
-
-      <Controller
-        control={form.control}
-        name="unit_of_measure_id"
-        render={({ field }) => (
-          <Select
-            value={field.value}
-            onValueChange={field.onChange}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder={isPendingUnits 
-                ? "Loading units..." 
-                : "Select Unit"} />
-            </SelectTrigger>
-
-            <SelectContent>
-            {units?.map((unit)=> (
-
-             <SelectItem key={unit.id} value={unit.id}>
-                {unit.name}
-             </SelectItem>
+          <SelectContent>
+            {categories?.map((category) => (
+              <SelectItem key={category.id} value={category.id}>
+                {category.name}
+              </SelectItem>
             ))}
-            </SelectContent>
-          </Select>
-        )}
-      />
+          </SelectContent>
 
-      {form.formState.errors.unit_of_measure_id && (
-        <p className="text-sm text-red-500">
-          {form.formState.errors.unit_of_measure_id.message}
-        </p>
+        </Select>
       )}
-    </div>
+    />
+
+    {form.formState.errors.category_id && (
+      <p className="text-sm text-red-500">
+        {form.formState.errors.category_id.message}
+      </p>
+    )}
   </div>
+
+  <div className="grid gap-2">
+    <Label>Unit of Measure</Label>
+
+    <Controller
+      control={form.control}
+      name="unit_of_measure_id"
+      render={({ field }) => (
+        <Select
+          value={field.value || ""}
+          onValueChange={field.onChange}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder={
+              isPendingUnits 
+              ? "Loading units..." 
+              : "Select Unit"} 
+            />
+          </SelectTrigger>
+
+          <SelectContent>
+            {units?.map((unit) => (
+              <SelectItem key={unit.id} value={unit.id}>
+                {unit.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      )}
+    />
+
+    {form.formState.errors.unit_of_measure_id && (
+      <p className="text-sm text-red-500">
+        {form.formState.errors.unit_of_measure_id.message}
+      </p>
+    )}
+  </div>
+</div>
 
   {/* Cost Price + Reorder Level */}
   <div className="grid grid-cols-2 gap-4">
