@@ -117,6 +117,9 @@ import {
 import { ProductResponse } from "@/types/product";
 import { Badge } from "../ui/badge";
 import { useGetCategories } from "@/hooks/categories/useGetCategories";
+import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { Button } from "../ui/button";
 
 
 interface ProductTableProps {
@@ -133,7 +136,7 @@ export default function CategoryTable ({
   if (isPendingCategories) {
     return (
       <div className="p-8 text-center text-slate-500">
-        Loading inventory...
+        Loading categories...
       </div>
     );
   }
@@ -195,12 +198,37 @@ export default function CategoryTable ({
       </TableCell>
 
       <TableCell className="text-right">
-        {/* Edit and Delete will come here */}
-      </TableCell>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <MoreHorizontal className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+
+                  <DropdownMenuContent align="end">
+                    {/* EDIT */}
+                    <DropdownMenuItem
+                      // onClick={() => setProductToEdit(product)}
+                    >
+                      <Pencil className="mr-2 h-4 w-4" />
+                      Edit
+                    </DropdownMenuItem>
+
+                    {/* DELETE */}
+                    <DropdownMenuItem
+                      className="text-red-600 focus:text-red-600"
+                      // onClick={() => setProductToDelete(product)}
+                    >
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      Delete
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </TableCell>
     </TableRow>
   ))}
 </TableBody>
 
-      </Table>    
+    </Table>    
     </div>
   )}

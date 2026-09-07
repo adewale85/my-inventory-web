@@ -138,7 +138,7 @@ export default function ProductTable({
   if (isPending) {
     return (
       <div className="p-8 text-center text-slate-500">
-        Loading inventory...
+        Loading products...
       </div>
     );
   }
