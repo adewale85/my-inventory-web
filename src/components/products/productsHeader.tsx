@@ -24,7 +24,7 @@ export default function ProductsHeader({
       </div>
 
       <Button onClick={onAddProduct}>
-      <Plus className="mr-2 h-4 w-4" />
+      <Plus className="mr-2 size-4" />
       Add Product
     </Button>
 
