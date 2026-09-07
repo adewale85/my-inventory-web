@@ -5,7 +5,7 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { ProductFormValues } from "@/schemas/productSchema"
-import { useGetCategories } from "@/hooks/categories/useCategories"
+import { useGetCategories } from "@/hooks/categories/useGetCategories"
 import { useGetAllUnit } from "@/hooks/units/useGetAllUnit"
 
 
