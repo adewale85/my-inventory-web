@@ -76,8 +76,6 @@ const onSubmit = (data: ProductFormValues) => {
           </DialogDescription>
         </DialogHeader>
 
-      
-
   <form
        onSubmit={form.handleSubmit(onSubmit)}
        className="space-y-5"

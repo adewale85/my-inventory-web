@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 import { Button } from "../ui/button";
 
 
-export default function CategoryHeader () {
+export default function CategoryHeader ({onAddCategory} : {onAddCategory: () => void}) {
     return (
         <div className="flex items-center justify-between">
             <div>
@@ -18,7 +18,7 @@ export default function CategoryHeader () {
       </div>
 
 
-        <Button>
+        <Button onClick={onAddCategory}>  
             <Plus className="mr-2 size-4"/>
             Add Category
         </Button>
