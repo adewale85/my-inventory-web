@@ -21,6 +21,7 @@ import {
 } from "@/schemas/categoriesSchema";
 
 import CategoryForm from "./CategoryForm";
+import { useCreateCategory } from "@/hooks/categories/useCreateCategory";
 
 interface AddCategoryModalProps {
   open: boolean;
@@ -40,14 +41,22 @@ export default function AddCategoryModal({
     },
   });
 
-  const onSubmit = (data: CategoryFormValues) => {
-    console.log("Category form data:", data);
+const { createCategory, isPending } = useCreateCategory();
 
-    toast.success("Category form is working");
+ const onSubmit = (data: CategoryFormValues) => {
+  createCategory(data, {
+    onSuccess: () => {
+      toast.success("Category created successfully");
 
-    form.reset();
-    onOpenChange(false);
-  };
+      form.reset();
+      onOpenChange(false);
+    },
+
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+};
 
   const handleCancel = () => {
     form.reset();
@@ -85,9 +94,9 @@ export default function AddCategoryModal({
               Cancel
             </Button>
 
-            <Button type="submit">
-              Create Category
-            </Button>
+            <Button type="submit" disabled={isPending}>
+  {isPending ? "Creating..." : "Create Category"}
+</Button>
           </DialogFooter>
         </form>
       </DialogContent>
