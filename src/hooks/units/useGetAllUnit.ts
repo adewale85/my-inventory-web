@@ -34,3 +34,26 @@ export const useGetAllUnit = () => {
 
     return {units, isPendingUnits, error}
 }
+
+
+
+
+// import { useQuery } from "@tanstack/react-query"
+// import { getAllUnits } from "@/api/units/unitApi"
+
+// export const useGetAllUnit = () => {
+//   const {
+//     data: units = [],
+//     isPending: isPendingUnits,
+//     error,
+//   } = useQuery({
+//     queryKey: ["units"],
+//     queryFn: getAllUnits,
+//   })
+
+//   return {
+//     units,
+//     isPendingUnits,
+//     error,
+//   }
+// }

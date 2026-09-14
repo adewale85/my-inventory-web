@@ -60,3 +60,29 @@ export const useGetAllSuppliers = () => {
     ...query,
   };
 };
+
+
+
+
+
+
+// import {
+//   unitOfMeasureResponse,
+//   unitOfMeasureResponsePayload,
+// } from "@/types/unit";
+
+// export async function createUnit(
+//   payload: unitOfMeasureResponsePayload
+// ) {
+//   const { data, error } = await supabase
+//     .from("units")
+//     .insert(payload)
+//     .select()
+//     .single();
+
+//   if (error) {
+//     throw new Error(error.message);
+//   }
+
+//   return data as unitOfMeasureResponse;
+// }
