@@ -24,8 +24,8 @@ export const useCreateUnit = () => {
     const queryClient = useQueryClient();
 
     const {
-        mutate: createUnitMutation,
-        isPending: isCreateUnitPending,
+        mutate: createUnits,
+        isPending: isUnitPending,
         error,
     } = useMutation ({
 
@@ -39,8 +39,8 @@ export const useCreateUnit = () => {
     });
 
     return {
-        createUnitMutation,
-        isCreateUnitPending,
+        createUnits,
+        isUnitPending,
         error,
     }
 }

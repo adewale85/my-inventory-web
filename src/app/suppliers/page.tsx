@@ -24,8 +24,8 @@ export default function SuppliersPage() {
 
       <SuppliersTable setSupplierToDelete={setSupplierToDelete} 
       setSupplierToEdit={setSupplierToEdit}
-      
       />
+      
       <TablePagination/>
 
       <AddSupplierModal 
