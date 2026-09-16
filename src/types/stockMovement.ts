@@ -1,47 +1,66 @@
 
-
-
 export interface StockMovementResponse {
-  id: string
-  product?: Product
-  user: User
-  type: string
-  quantity: string
-  quantity_before: string
-  quantity_after: string
-  unit_cost: string
-  reference_number: string
-  notes: string
-  occurred_at: string
-  created_at: string
-}
-
-export interface Product {
-  id: string
-  name: string
-  sku: string
-  description: string
-  reorder_level: string
-  cost_price: string
-  is_active: boolean
-  created_at: string
-}
-
-export interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-  created_at: string
+  id: string;
+  product_id: string;
+  type: "IN" | "OUT";
+  quantity: number;
+  note: string | null;
+  created_by: string | null;
+  created_at: string;
 }
 
 export interface StockMovementPayload {
-  product_id: string
-  type: string
-  quantity: number
-  unit_cost: number
-  reference_number: string
-  notes: string
-  occurred_at: string
+  product_id: string;
+  type: "IN" | "OUT";
+  quantity: number;
+  note?: string;
+  created_by?: string;
 }
+
+
+// export interface StockMovementResponse {
+//   id: string
+//   product?: Product
+//   user: User
+//   type: string
+//   quantity: string
+//   quantity_before: string
+//   quantity_after: string
+//   unit_cost: string
+//   reference_number: string
+//   notes: string
+//   occurred_at: string
+//   created_at: string
+// }
+
+// export interface Product {
+//   id: string
+//   name: string
+//   sku: string
+//   description: string
+//   reorder_level: string
+//   cost_price: string
+//   is_active: boolean
+//   created_at: string
+// }
+
+// export interface User {
+//   id: string
+//   name: string
+//   email: string
+//   role: string
+//   created_at: string
+// }
+
+// export interface StockMovementPayload {
+//   product_id: string
+//   type: string
+//   quantity: number
+//   unit_cost: number
+//   reference_number: string
+//   notes: string
+//   occurred_at: string
+// }
+
+
 
