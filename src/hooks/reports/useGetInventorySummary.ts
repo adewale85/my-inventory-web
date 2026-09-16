@@ -10,3 +10,5 @@ export const useGetInventorySummary = () => {
     });
     return {getInventorySummary, inventorySummaryIsPending}
 }
+
+

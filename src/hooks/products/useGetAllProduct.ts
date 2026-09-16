@@ -67,6 +67,7 @@
 // };
 
 
+
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/supabase/client";
 
@@ -81,4 +82,8 @@ export const useGetAllProducts = () => {
   });
 
   return { products, isPending, error };
-};
+}; 
+
+
+
+

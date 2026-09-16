@@ -9,3 +9,5 @@ export async function getStockValue() {
   const response = await apiClient.get<{ data: StockValueResponse }>("/reports/stock-value");
   return response.data.data;
 }
+
+
