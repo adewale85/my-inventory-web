@@ -23,6 +23,7 @@ export default function Sidebar() {
             <Link href="/units" className="block px-3 py-2 rounded hover:bg-slate-50">Units of Measure</Link  >
             <Link href="/suppliers" className="block px-3 py-2 rounded hover:bg-slate-50">Suppliers</Link>
             <Link href="/reports" className="block px-3 py-2 rounded hover:bg-slate-50">Reports</Link>
+            <Link href="/stock-movement" className="block px-3 py-2 rounded hover:bg-slate-50">StockMovement</Link>
           
         {role === 'ADMIN' && (
           <>
@@ -30,6 +31,7 @@ export default function Sidebar() {
             <Link href="/units" className="block px-3 py-2 rounded hover:bg-slate-50">Units of Measure</Link  >
             <Link href="/suppliers" className="block px-3 py-2 rounded hover:bg-slate-50">Suppliers</Link>
             <Link href="/reports" className="block px-3 py-2 rounded hover:bg-slate-50">Reports</Link>
+            <Link href="/stock-movement" className="block px-3 py-2 rounded hover:bg-slate-50">StockMovement</Link>
           </>
         )}
       </nav>

@@ -176,6 +176,8 @@ export default function ProductForm ({
       )}
     </div>
 
+
+    
     <div className="grid gap-2">
       <Label htmlFor="stock">Reorder Level</Label>
 
