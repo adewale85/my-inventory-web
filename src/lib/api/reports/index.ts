@@ -1,7 +1,7 @@
-import { getInventorySummary } from "./getInventorySummary";
+import { getInventoryReport} from "./getInventorySummary";
 import { getStockValue } from "./getStockValue";
 
 export const reportapi = {
-    getInventorySummary,
+    getInventoryReport,
     getStockValue
 }

@@ -117,11 +117,112 @@
 // }
 
 
-import React from 'react'
+"use client";
 
-export default function page() {
+import { useGetInventoryReport } from "@/hooks/reports/useGetInventoryReport";
+
+
+export default function ReportsPage() {
+  const {
+    getInventoryReport,
+    inventoryReportIsPending,
+    error
+  } = useGetInventoryReport();
+
+  if (inventoryReportIsPending) {
+    return <p>Loading report...</p>;
+  }
+
+  if (error) {
+    return (
+      <p className="text-red-500">
+        Failed to load inventory report.
+      </p>
+    );
+  }
+
   return (
-    <div>page</div>
-  )
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold">
+          Inventory Report
+        </h1>
+
+        <p className="text-muted-foreground">
+          Overview of products and current inventory levels.
+        </p>
+      </div>
+
+      <div className="overflow-x-auto rounded-lg border">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b bg-slate-50 text-left">
+              <th className="p-3">Product</th>
+              <th className="p-3">SKU</th>
+              <th className="p-3">Quantity</th>
+              <th className="p-3">Reorder Level</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Stock Value</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {getInventoryReport.map((item) => {
+              const quantity = Number(
+                item.inventory?.quantity ?? 0
+              );
+
+              const costPrice = Number(
+                item.cost_price ?? 0
+              );
+
+              const reorderLevel = Number(
+                item.reorder_level ?? 0
+              );
+
+              const isLowStock =
+                quantity < reorderLevel;
+
+              const stockValue =
+                quantity * costPrice;
+
+              return (
+                <tr
+                  key={item.id}
+                  className="border-b"
+                >
+                  <td className="p-3">
+                    {item.name}
+                  </td>
+
+                  <td className="p-3">
+                    {item.sku}
+                  </td>
+
+                  <td className="p-3">
+                    {quantity}
+                  </td>
+
+                  <td className="p-3">
+                    {reorderLevel}
+                  </td>
+
+                  <td className="p-3">
+                    {isLowStock
+                      ? "Low Stock"
+                      : "In Stock"}
+                  </td>
+
+                  <td className="p-3">
+                    ₦{stockValue.toLocaleString()}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
 
