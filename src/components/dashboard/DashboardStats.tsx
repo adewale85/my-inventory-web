@@ -26,7 +26,7 @@ export default function DashboardStats() {
 
       <StatCard
         title="Stock Value"
-        value={dashboard?.total_tock_value ?? 0}
+        value={dashboard?.total_stock_value ?? 0}
         description="Current inventory worth"
         icon={Wallet}
         color="green"

@@ -39,25 +39,33 @@ export async function getDashboardStats () {
     throw new Error ("Error fetching stock value:" + inventoryError.message)
   }
 
-  console.log("Dashboard products:", products);
 
+  products?.forEach((product) => {
+  console.log(
+    "Cost Price:",
+    product.cost_price,
+    "Quantity:",
+    product.inventory?.quantity
+  );
+});
 
-    const totalStockValue = 
-    products?.reduce((total, product)=>{
-    const quantity = product.inventory?.quantity;
-    const costPrice = product.cost_price ?? 0;
+   const totalStockValue =
+  products?.reduce((total, product) => {
+    const quantity = Number(product.inventory?.quantity ?? 0);
+    const costPrice = Number(product.cost_price ?? 0);
 
-    return total + Number(quantity) * Number(costPrice)
+    return total + quantity * costPrice;
   }, 0) ?? 0;
 
 
-  const totalQuantity = 
-    products?.reduce((total, product) => {
-    const quantity = product.inventory?.quantity ?? 0;
+  const totalQuantity =
+  products?.reduce((total, product) => {
+    const quantity = Number(product.inventory?.quantity ?? 0);
 
-    return total + Number(quantity);
+    return total + quantity;
   }, 0) ?? 0;
 
+ 
   return {
     total_products: count ?? 0,
     total_stock_value: totalStockValue,
