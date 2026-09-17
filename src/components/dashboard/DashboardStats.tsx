@@ -36,7 +36,7 @@ export default function DashboardStats() {
 
       <StatCard
         title="Low Stock Items"
-        value={dashboard?.total_tock_value ?? 0}
+        value={dashboard?.low_stock_items ?? 0}
         description="Require attention"
         icon={TriangleAlert}
         color="orange"

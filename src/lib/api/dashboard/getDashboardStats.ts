@@ -30,6 +30,7 @@ export async function getDashboardStats () {
   .from ("products")
   .select (`
     cost_price,
+    reorder_level,
     inventory (
     quantity
     )
@@ -65,10 +66,21 @@ export async function getDashboardStats () {
     return total + quantity;
   }, 0) ?? 0;
 
+  
+
+  const lowStockitems = 
+  products?.filter ((product) => {
+    const quantity = Number (product.inventory?.quantity ?? 0)
+    const reorderLevel = Number (product.reorder_level ?? 0)
+
+    return quantity < reorderLevel;
+  }, ).length ?? 0;
+
  
-  return {
+  return {    
     total_products: count ?? 0,
     total_stock_value: totalStockValue,
-    total_quantity: totalQuantity
+    total_quantity: totalQuantity,
+    low_stock_items: lowStockitems
   };
 }
