@@ -25,7 +25,42 @@ export async function getDashboardStats () {
     );
   }
   
-  return{
+
+  const {data: products, error: inventoryError} = await supabase
+  .from ("products")
+  .select (`
+    cost_price,
+    inventory (
+    quantity
+    )
+  `);
+
+  if (inventoryError) {
+    throw new Error ("Error fetching stock value:" + inventoryError.message)
+  }
+
+  console.log("Dashboard products:", products);
+
+
+    const totalStockValue = 
+    products?.reduce((total, product)=>{
+    const quantity = product.inventory?.quantity;
+    const costPrice = product.cost_price ?? 0;
+
+    return total + Number(quantity) * Number(costPrice)
+  }, 0) ?? 0;
+
+
+  const totalQuantity = 
+    products?.reduce((total, product) => {
+    const quantity = product.inventory?.quantity ?? 0;
+
+    return total + Number(quantity);
+  }, 0) ?? 0;
+
+  return {
     total_products: count ?? 0,
+    total_stock_value: totalStockValue,
+    total_quantity: totalQuantity
   };
 }

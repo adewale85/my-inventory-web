@@ -26,7 +26,7 @@ export default function DashboardStats() {
 
       <StatCard
         title="Stock Value"
-        value={dashboard?.total_stock_value ?? 0}
+        value={dashboard?.total_tock_value ?? 0}
         description="Current inventory worth"
         icon={Wallet}
         color="green"
@@ -36,7 +36,7 @@ export default function DashboardStats() {
 
       <StatCard
         title="Low Stock Items"
-        value={dashboard?.low_stock_items ?? 0}
+        value={dashboard?.total_tock_value ?? 0}
         description="Require attention"
         icon={TriangleAlert}
         color="orange"
