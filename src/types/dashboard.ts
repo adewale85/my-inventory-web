@@ -24,7 +24,7 @@ export interface RecentStockMovementsResponse {
   unit_cost: string
   reference_number: string
   notes: string
-  occurred_at: string
+  // occurred_at: string
   created_at: string
 }
 

@@ -7,7 +7,7 @@ export async function processStockMovement (payload: StockMovementPayload) {
         p_quantity: payload.quantity,
         p_type: payload.type,
         p_note: payload.note,
-        p_created_by: payload.created_by
+       
     });
 
     if (error) {

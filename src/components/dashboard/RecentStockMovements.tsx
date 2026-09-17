@@ -26,11 +26,11 @@ export default function RecentStockMovement() {
     return [...recentStockMovements]
       .sort(
         (a, b) =>
-          new Date(a.occurred_at).getTime() -
-          new Date(b.occurred_at).getTime()
+          new Date(a.created_at).getTime() -
+          new Date(b.created_at).getTime()
       )
       .map((movement) => ({
-        date: new Date(movement.occurred_at).toLocaleDateString("en-US", {
+        date: new Date(movement.created_at).toLocaleDateString("en-US", {
           month: "short",
           day: "numeric",
         }),
