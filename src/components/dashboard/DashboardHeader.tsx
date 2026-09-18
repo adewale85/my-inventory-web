@@ -1,5 +1,7 @@
 "use client";
 
+
+
 export default function DashboardHeader() {
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
@@ -9,6 +11,7 @@ export default function DashboardHeader() {
   });
 
   return (
+    
     <div className="mb-8 flex items-start justify-between">
       <div>
         <h1 className="text-4xl font-bold tracking-tight text-slate-900">
@@ -26,5 +29,6 @@ export default function DashboardHeader() {
         </p>
       </div>
     </div>
+    
   );
 }

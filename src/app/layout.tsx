@@ -20,12 +20,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
       {/* 👈 CRITICAL FIX 2: Exactly ONE body element keeps styles consistent */}
-      <body className="min-h-screen bg-slate-50 antialiased">
+      <body className="min-h-screen w-full bg-slate-50 antialiased">
         <QueryProvider>
           
           {onAuthPage ? (
             // SCENARIO 1: Clean centered frame for Login / Sign Up
-            <div className="flex items-center justify-center min-h-screen bg-slate-100 w-full">
+            <div className="flex items-center justify-center min-h-screen bg-slate-100">
               
                 {children}
               
