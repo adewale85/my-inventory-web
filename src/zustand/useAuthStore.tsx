@@ -5,6 +5,7 @@ import { produce } from "immer";
 
 import { LoginUser, UserLoggedInType } from "@/types/user";
 import { sharedPersistConfig } from "@/store/config/sharedConfig";
+import { supabase } from "@/supabase/client";
 
 // Define the shape of your app state
 interface AuthState {
@@ -12,7 +13,7 @@ interface AuthState {
   setToken: (token: string) => void;
   user: LoginUser | null;
   auth: UserLoggedInType | null;
-  logout: () => void;
+  logout: () => Promise<void>
   setAuth: (auth: UserLoggedInType) => void;
   updateAuth: (auth: UserLoggedInType) => void;
   isLoggingOut: boolean;
@@ -55,23 +56,35 @@ export const useAuthStore = create<AuthState>()(
             }
           }),
         ),
-      logout: () => {
-        set({ isLoggingOut: true });
-        set(
-          produce((state: AuthState) => {
-            state.auth = null; // Clear the auth state
-            state.isAuthenticated = false; // Set isAuthenticated to false
-          }),
-        );
-        sessionStorage.removeItem(sharedPersistConfig.PERSIST_KEY);
-        try {
-          localStorage.removeItem(sharedPersistConfig.PERSIST_KEY);
-        } catch {
-          /* ignore */
-        }
-        set({ isLoggingOut: false });
-        return window.location.replace("/login");
-      },
+
+      logout: async () => {
+  set({ isLoggingOut: true });
+
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    set({ isLoggingOut: false });
+    throw new Error("Logout failed: " + error.message);
+  }
+
+  set({
+    auth: null,
+    user: null,
+    accessToken: null,
+    isAuthenticated: false,
+    isLoggingOut: false,
+  });
+
+  sessionStorage.removeItem(sharedPersistConfig.PERSIST_KEY);
+
+  try {
+    localStorage.removeItem(sharedPersistConfig.PERSIST_KEY);
+  } catch {
+    /* ignore */
+  }
+
+  window.location.replace("auth/login");
+},
     }),
     {
       name: sharedPersistConfig.PERSIST_KEY,
