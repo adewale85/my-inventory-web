@@ -5,13 +5,14 @@ import { useState } from "react";
 
 import ProductFilters from "@/components/products/ProductFilters";
 
-import TablePagination from "@/components/products/TablePagination";
+
 import AddProductModal from "@/components/products/AddProductModal";
 import ProductsHeader from "@/components/products/productsHeader";
 import ProductTable from "@/components/products/ProductsTable";
 import { ProductResponse } from "@/types/product";
 import DeleteProductModal from "@/components/products/DeleteProductModal";
 import EditProductModal from "@/components/products/EditProductModal";
+import TablePagination from "@/components/Categories/TablePagination";
 
 export default function ProductsPage() {
 
@@ -20,7 +21,7 @@ export default function ProductsPage() {
   const [productToEdit, setProductToEdit] = useState <ProductResponse | null> (null) 
 
   return ( 
-    <div className="space-y-6 p-6">
+    <div className="mx-auto w-full max-w-[1200px] space-y-6 ">
       
       <ProductsHeader
         onAddProduct={() =>
@@ -30,11 +31,13 @@ export default function ProductsPage() {
 
       <ProductFilters />
 
+       <div className="min-w-0">
       <ProductTable 
       setProductToDelete={setProductToDelete}
       setProductToEdit={setProductToEdit}
       
        />
+       </div> 
 
       <TablePagination />
 

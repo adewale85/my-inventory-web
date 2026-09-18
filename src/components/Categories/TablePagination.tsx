@@ -7,7 +7,7 @@ export default function TablePagination () {
         Showing <span className="font-medium">1</span> to <span className="font-medium">10</span> of <span className="font-medium">32</span> products
       </p> 
 
-      <Pagination className="w-auto mx-0">
+      <Pagination className="w-auto mx-0 py-6">
         <PaginationContent>
             <PaginationItem>
                 <PaginationPrevious href="#" />

@@ -1,38 +1,53 @@
-"use client"
+
+"use client";
 
 import { Search } from "lucide-react";
 import { Input } from "../ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
-export default function ProductFilters () {
-    return (
-        <div className="flex flex-col gap-4 rounded-xl border bg-white p-4 shadow-sm md:flex-row md:items-center">
-            <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"/>
-                <Input placeholder="Search products..." className="pl-10"/>
-            </div>
+export default function ProductFilters() {
+  return (
+    <div className="flex flex-col gap-4 rounded-xl border bg-white p-4 shadow-sm md:flex-row md:items-center">
+      {/* Search */}
+      <div className="relative min-w-0 flex-1">
+        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
 
-            <Select>
-                <SelectTrigger className="w-full md:w-48rem">
-                <SelectValue placeholder="Category"/>
-                </SelectTrigger>
-                <SelectContent>
-                 <SelectItem value="all">All Categories</SelectItem>
-                </SelectContent>
-            </Select>
+        <Input
+          placeholder="Search products..."
+          className="w-full pl-10"
+        />
+      </div>
 
+      {/* Category */}
+      <Select>
+        <SelectTrigger className="w-full md:w-48">
+          <SelectValue placeholder="Category" />
+        </SelectTrigger>
 
-            <Select>
-                <SelectTrigger className="w-full md:w-48rem">
-                <SelectValue placeholder="Status"/>
-                </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Categories</SelectItem>
+        </SelectContent>
+      </Select>
 
-                <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="all">Inactive</SelectItem>
-                </SelectContent>
-            </Select>
-        </div>
-    )
+      {/* Status */}
+      <Select>
+        <SelectTrigger className="w-full md:w-48">
+          <SelectValue placeholder="Status" />
+        </SelectTrigger>
+
+        <SelectContent>
+          <SelectItem value="all">All Status</SelectItem>
+          <SelectItem value="active">Active</SelectItem>
+          <SelectItem value="inactive">Inactive</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  );
 }
+
