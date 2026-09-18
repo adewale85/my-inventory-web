@@ -40,7 +40,7 @@ export default function CategoriesPage() {
   const [openAddCategory, setOpenAddCategory] = useState(false);
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="space-y-6">
       <CategoryHeader
         onAddCategory={() => setOpenAddCategory(true)}
       />

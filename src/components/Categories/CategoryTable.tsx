@@ -141,63 +141,123 @@ export default function CategoryTable ({
     );
   }
 
-  return (
-    <div className="rounded-md border">
-      <Table>
-       <TableHeader>
-  <TableRow>
-    <TableHead>Category Name</TableHead>
-    <TableHead>Description</TableHead>
-    <TableHead>Products</TableHead>
-    <TableHead>Status</TableHead>
-    <TableHead className="w-20 text-right">Action</TableHead>
-  </TableRow>
-</TableHeader>
 
-
-{/* <TableBody>
-    {categories?.map((category)=>(
-      <TableRow key={category.id}>
-    <TableCell className="font-medium">{category.}</TableCell>
-    <TableCell>Drinks and juices</TableCell>
-    <TableCell>12</TableCell>
-    <TableCell>
-      <Badge>Active</Badge>
-    </TableCell>
-    <TableCell className="text-right"> */}
-      {/* Actions will go here */}
-    {/* </TableCell>
-  </TableRow>
-    ))}
-  
-</TableBody> */}
-
-
-
-<TableBody>
-  {categories?.map((category) => (
-    <TableRow key={category.id}>
-      <TableCell className="font-medium">
-        {category.name}
-      </TableCell>
-
-      <TableCell>
-        {category.description || "No description"}
-      </TableCell>
-
-      <TableCell>
-        {category.products_count ?? 0}
-      </TableCell>
-
-      <TableCell>
-        <Badge
-          variant={category.is_active ? "default" : "secondary"}
+return (
+  <>
+    {/* =========================
+        MOBILE CATEGORY CARDS
+    ========================== */}
+    <div className="space-y-4 md:hidden">
+      {categories?.map((category) => (
+        <div
+          key={category.id}
+          className="rounded-xl border bg-white p-4 shadow-sm"
         >
-          {category.is_active ? "Active" : "Inactive"}
-        </Badge>
-      </TableCell>
+          {/* Category Header */}
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h2 className="truncate font-semibold text-foreground">
+                {category.name}
+              </h2>
 
-      <TableCell className="text-right">
+              <p className="mt-1 text-sm text-muted-foreground">
+                {category.description || "No description"}
+              </p>
+            </div>
+
+            {/* Actions */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  <Pencil className="mr-2 h-4 w-4" />
+                  Edit
+                </DropdownMenuItem>
+
+                <DropdownMenuItem className="text-red-600 focus:text-red-600">
+                  <Trash2 className="mr-2 h-4 w-4" />
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
+          {/* Category Details */}
+          <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <p className="text-muted-foreground">Products</p>
+
+              <p className="mt-1 font-medium">
+                {category.products_count ?? 0}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-muted-foreground">Status</p>
+
+              <div className="mt-1">
+                <Badge
+                  variant={
+                    category.is_active ? "default" : "secondary"
+                  }
+                >
+                  {category.is_active ? "Active" : "Inactive"}
+                </Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* =========================
+        DESKTOP CATEGORY TABLE
+    ========================== */}
+    <div className="hidden rounded-md border md:block">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Category Name</TableHead>
+            <TableHead>Description</TableHead>
+            <TableHead>Products</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead className="w-20 text-right">
+              Action
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+
+        <TableBody>
+          {categories?.map((category) => (
+            <TableRow key={category.id}>
+              <TableCell className="font-medium">
+                {category.name}
+              </TableCell>
+
+              <TableCell>
+                {category.description || "No description"}
+              </TableCell>
+
+              <TableCell>
+                {category.products_count ?? 0}
+              </TableCell>
+
+              <TableCell>
+                <Badge
+                  variant={
+                    category.is_active ? "default" : "secondary"
+                  }
+                >
+                  {category.is_active ? "Active" : "Inactive"}
+                </Badge>
+              </TableCell>
+
+              <TableCell className="text-right">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon">
@@ -207,28 +267,25 @@ export default function CategoryTable ({
 
                   <DropdownMenuContent align="end">
                     {/* EDIT */}
-                    <DropdownMenuItem
-                      // onClick={() => setProductToEdit(product)}
-                    >
+                    <DropdownMenuItem>
                       <Pencil className="mr-2 h-4 w-4" />
                       Edit
                     </DropdownMenuItem>
 
                     {/* DELETE */}
-                    <DropdownMenuItem
-                      className="text-red-600 focus:text-red-600"
-                      // onClick={() => setProductToDelete(product)}
-                    >
+                    <DropdownMenuItem className="text-red-600 focus:text-red-600">
                       <Trash2 className="mr-2 h-4 w-4" />
                       Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TableCell>
-    </TableRow>
-  ))}
-</TableBody>
-
-    </Table>    
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
+  </>
+
+
   )}

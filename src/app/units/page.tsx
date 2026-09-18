@@ -3,9 +3,10 @@
 import UnitsHeader from '@/components/units/UnitsHeader'
 import UnitsFilters from '@/components/units/UnitsFilters'
 import UnitsTable from '@/components/units/UnitsTable'
-import TablePagination from '@/components/products/TablePagination'
+
 import AddUnitsModal from '@/components/units/AddUnitsModal'
 import { useState } from 'react'
+import TablePagination from '@/components/Categories/TablePagination'
 
 
 
