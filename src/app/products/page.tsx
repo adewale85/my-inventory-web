@@ -21,7 +21,7 @@ export default function ProductsPage() {
   const [productToEdit, setProductToEdit] = useState <ProductResponse | null> (null) 
 
   return ( 
-    <div className="mx-auto w-full max-w-[1200px] space-y-6 ">
+    <div className=" space-y-6 ">
       
       <ProductsHeader
         onAddProduct={() =>

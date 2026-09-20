@@ -8,7 +8,7 @@ import React from 'react'
 
 export default function stockMovementPage() {
   return (
-    <PageWrapper>
+    
        <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-bold">
@@ -24,7 +24,7 @@ export default function stockMovementPage() {
 
       <StockMovementHistory />
     </div>
-    </PageWrapper>
+  
   )
 }
 

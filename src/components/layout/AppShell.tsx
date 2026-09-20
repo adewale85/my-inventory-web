@@ -4,6 +4,8 @@ import React from "react";
 import { useAuthStore } from "@/zustand/useAuthStore";
 import Sidebar from "@/components/layout/Sidebar";
 import { Bell, Menu, Moon, Search } from "lucide-react";
+import PageWrapper from "../PageWrapper";
+
 
 export default function AppShell({
   children,
@@ -17,13 +19,16 @@ export default function AppShell({
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   return (
+ 
     <div className="min-h-screen bg-slate-50">
       <div className="flex">
+        
         <Sidebar
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
         />
-
+       
+      {/* <PageWrapper> */}
         <div className="flex-1">
           <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6">
             {/* Left side */}
@@ -95,7 +100,9 @@ export default function AppShell({
 
           <main className="p-4 sm:p-6">{children}</main>
         </div>
+        {/* </PageWrapper> */}
       </div>
     </div>
+   
   );
 }

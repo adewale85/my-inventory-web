@@ -121,12 +121,11 @@
 
 import { useGetInventoryReport } from "@/hooks/reports/useGetInventoryReport";
 
-
 export default function ReportsPage() {
   const {
     getInventoryReport,
     inventoryReportIsPending,
-    error
+    error,
   } = useGetInventoryReport();
 
   if (inventoryReportIsPending) {
@@ -142,18 +141,118 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className=" space-y-6">
+      {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold sm:text-3xl">
           Inventory Report
         </h1>
 
-        <p className="text-muted-foreground">
+        <p className="text-sm text-muted-foreground sm:text-base">
           Overview of products and current inventory levels.
         </p>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border">
+      {/* ================= MOBILE VIEW ================= */}
+      <div className="space-y-4 md:hidden">
+        {getInventoryReport.map((item) => {
+          const quantity = Number(
+            item.inventory?.quantity ?? 0
+          );
+
+          const costPrice = Number(
+            item.cost_price ?? 0
+          );
+
+          const reorderLevel = Number(
+            item.reorder_level ?? 0
+          );
+
+          const isLowStock =
+            quantity < reorderLevel;
+
+          const stockValue =
+            quantity * costPrice;
+
+          return (
+            <div
+              key={item.id}
+              className="rounded-lg border bg-white p-4 shadow-sm"
+            >
+              {/* Product + Status */}
+              <div className="mb-4 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h2 className="truncate font-semibold">
+                    {item.name}
+                  </h2>
+
+                  <p className="text-sm text-muted-foreground">
+                    SKU: {item.sku}
+                  </p>
+                </div>
+
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium ${
+                    isLowStock
+                      ? "bg-red-100 text-red-700"
+                      : "bg-green-100 text-green-700"
+                  }`}
+                >
+                  {isLowStock
+                    ? "Low Stock"
+                    : "In Stock"}
+                </span>
+              </div>
+
+              {/* Report Details */}
+              <div className="grid grid-cols-2 gap-4 border-t pt-4">
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Quantity
+                  </p>
+
+                  <p className="font-medium">
+                    {quantity}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Reorder Level
+                  </p>
+
+                  <p className="font-medium">
+                    {reorderLevel}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Cost Price
+                  </p>
+
+                  <p className="font-medium">
+                    ₦{costPrice.toLocaleString()}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Stock Value
+                  </p>
+
+                  <p className="font-medium">
+                    ₦{stockValue.toLocaleString()}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ================= DESKTOP VIEW ================= */}
+      <div className="hidden overflow-x-auto rounded-lg border md:block">
         <table className="w-full">
           <thead>
             <tr className="border-b bg-slate-50 text-left">
