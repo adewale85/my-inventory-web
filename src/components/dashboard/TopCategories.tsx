@@ -5,10 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 
 export default function TopCategories () {
     const {
-        topCategories,isPendingdataTopCategories 
-    } =  useGetTopCategories()
+        topCategories, isPendingTopCategories, error
+    } = useGetTopCategories()
 
-    if (isPendingdataTopCategories) {
+    if (isPendingTopCategories) {
+
+
+      console.log("TOP CATEGORIES:", topCategories);
+      console.log("TOP CATEGORIES ERROR:", error);
         return(
             <Card>
                 <CardHeader>
