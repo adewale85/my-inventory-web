@@ -1,13 +1,14 @@
 "use client";
 
+import { useAuthStore } from "@/zustand/useAuthStore";
 import React, { useEffect, useState } from "react";
-import { useAuth } from "@/context/AuthContext";
+
 
 interface Category { id: string; name: string; description?: string }
 interface Unit { id: string; name: string; abbreviation?: string }
 
 export default function SettingsPage() {
-  const { user } = useAuth();
+  const { user } = useAuthStore()
   const isAdmin = user?.role === "ADMIN";
 
   const [categories, setCategories] = useState<Category[]>([]);
@@ -20,7 +21,7 @@ export default function SettingsPage() {
   const [savingUnit, setSavingUnit] = useState(false);
 
   useEffect(() => {
-    if (!isAdmin) return setLoading(false);
+    if (!isAdmin) return setLoading (false);
     let mounted = true;
     async function load() {
       setLoading(true);

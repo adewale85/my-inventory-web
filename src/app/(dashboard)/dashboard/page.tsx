@@ -7,7 +7,7 @@ import TopCategories from "@/components/dashboard/TopCategories";
 
 export default function DashboardPage() {
   return (
-    <div className="mx-auto w-full max-w-[1200px] space-y-6">
+    <div className="mx-auto w-full max-w-300 space-y-6">
       {/* Dashboard Header */}
       <DashboardHeader />
 

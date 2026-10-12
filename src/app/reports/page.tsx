@@ -123,7 +123,7 @@ import { useGetInventoryReport } from "@/hooks/reports/useGetInventoryReport";
 
 export default function ReportsPage() {
   const {
-    getInventoryReport,
+    getInventoryReport: inventoryReport,
     inventoryReportIsPending,
     error,
   } = useGetInventoryReport();
@@ -155,7 +155,7 @@ export default function ReportsPage() {
 
       {/* ================= MOBILE VIEW ================= */}
       <div className="space-y-4 md:hidden">
-        {getInventoryReport.map((item) => {
+        {inventoryReport?.map((item) => {
           const quantity = Number(
             item.inventory?.quantity ?? 0
           );
@@ -211,9 +211,9 @@ export default function ReportsPage() {
                     Quantity
                   </p>
 
-                  <p className="font-medium">
+                  {/* <p className="font-medium">
                     {quantity}
-                  </p>
+                  </p> */}
                 </div>
 
                 <div>
@@ -266,7 +266,7 @@ export default function ReportsPage() {
           </thead>
 
           <tbody>
-            {getInventoryReport.map((item) => {
+            {inventoryReport?.map((item) => {
               const quantity = Number(
                 item.inventory?.quantity ?? 0
               );

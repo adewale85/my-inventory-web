@@ -114,23 +114,23 @@ import {
 } from "../ui/table";
 
 
-import { ProductResponse } from "@/types/product";
 import { Badge } from "../ui/badge";
 import { useGetCategories } from "@/hooks/categories/useGetCategories";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
+import { CategoryResponse } from "@/types/categories";
 
 
-interface ProductTableProps {
-  setProductToDelete: (product: ProductResponse) => void;
-  setProductToEdit: (product: ProductResponse) => void;
+interface CategoryTableProps {
+  setCategoryToDelete: (category: CategoryResponse) => void;
+  setCategoryToEdit: (category: CategoryResponse) => void;
 }
 
 export default function CategoryTable ({
-
-  
-}: ProductTableProps) {
+  setCategoryToDelete,
+  setCategoryToEdit,
+}: CategoryTableProps) {
   const { categories, isPendingCategories } = useGetCategories();
 
   if (isPendingCategories) {
@@ -174,12 +174,17 @@ return (
               </DropdownMenuTrigger>
 
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => setCategoryToEdit(category)}
+                >
                   <Pencil className="mr-2 h-4 w-4" />
                   Edit
                 </DropdownMenuItem>
 
-                <DropdownMenuItem className="text-red-600 focus:text-red-600">
+                <DropdownMenuItem
+                  className="text-red-600 focus:text-red-600"
+                  onClick={() => setCategoryToDelete(category)}
+                >
                   <Trash2 className="mr-2 h-4 w-4" />
                   Delete
                 </DropdownMenuItem>
@@ -267,13 +272,18 @@ return (
 
                   <DropdownMenuContent align="end">
                     {/* EDIT */}
-                    <DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setCategoryToEdit(category)}
+                    >
                       <Pencil className="mr-2 h-4 w-4" />
                       Edit
                     </DropdownMenuItem>
 
                     {/* DELETE */}
-                    <DropdownMenuItem className="text-red-600 focus:text-red-600">
+                    <DropdownMenuItem
+                      className="text-red-600 focus:text-red-600"
+                      onClick={() => setCategoryToDelete(category)}
+                    >
                       <Trash2 className="mr-2 h-4 w-4" />
                       Delete
                     </DropdownMenuItem>

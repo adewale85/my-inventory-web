@@ -1,12 +1,17 @@
-
-import { apiClient } from "../axiosPrivate";
-import { CategoryResponse } from "@/types/categories";
-
+import { supabase } from "@/supabase/client";
 
 /**
  * Delete a category completely (Admin only)
  */
 export async function deleteCategory(id: string | number) {
-  const response = await apiClient.delete<{ data: CategoryResponse }>(`/categories/${id}`);
-  return response.data.data;
+  const { error } = await supabase
+    .from("categories")
+    .delete()
+    .eq("id", String(id));
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return true;
 }

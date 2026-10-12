@@ -1,26 +1,28 @@
-
-import { categoriesApi } from "@/lib/api/categories";
-import { CategoryPayload } from "@/types/categories";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-type UpdateCategoryPayload = {
-  id: string;
-  payload: CategoryPayload;
-};
+import { updateCategory } from "@/lib/api/categories/updateCategory";
+import { CategoryFormValues } from "@/schemas/categoriesSchema";
 
 export const useUpdateCategory = () => {
   const queryClient = useQueryClient();
 
-  const {mutate: updateCategory, isPending} = useMutation ({
-    mutationFn: ({id, payload}: UpdateCategoryPayload) => 
-      categoriesApi.updateCategory(id, payload),
+  const { mutate: updateCategoryMutation, isPending } = useMutation({
+    mutationFn: ({
+      id,
+      values,
+    }: {
+      id: string;
+      values: CategoryFormValues;
+    }) => updateCategory(id, values),
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['categories'],
+        queryKey: ["categories"],
       });
     },
   });
 
-  return { updateCategory, isPending };
-}
+  return {
+    updateCategory: updateCategoryMutation,
+    isPending,
+  };
+};

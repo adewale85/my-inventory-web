@@ -1,11 +1,24 @@
-import {CategoryPayload, CategoryResponse } from "@/types/categories";
-import { apiClient } from "../axiosPrivate";
-
+import { supabase } from "@/supabase/client";
+import { CategoryFormValues } from "@/schemas/categoriesSchema";
 
 /**
- * Update an existing category name (Admin only)
+ * Update an existing category in Supabase
  */
-export async function updateCategory(id: string | number, payload: CategoryPayload) {
-  const response = await apiClient.put<{ data: CategoryResponse }>(`/categories/${id}`, payload);
-  return response.data.data;
+export async function updateCategory(
+  id: string,
+  values: CategoryFormValues
+) {
+  const { data, error } = await supabase
+    .from("categories")
+    .update(values)
+    .eq("id", id)
+    .select()
+    .single();
+
+  if (error) {
+    console.log("UPDATE CATEGORY ERROR:", error);
+    throw new Error(error.message);
+  }
+
+  return data;
 }

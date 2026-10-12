@@ -14,10 +14,10 @@
 
 // export default function ProductTable({ setProductToDelete }: ProductTableProps) {
 //   const { products, isPending } = useGetAllProducts();
-  
+
 //   // Uses live Supabase data if available and populated, otherwise falls back to mock data
 // //   const displayProducts = products && products.length > 0 ? products : mockProducts;
-   
+
 //   if (isPending) {
 //     return (
 //       <div className="p-8 text-center text-slate-500">
@@ -81,7 +81,7 @@
 //                       <Pencil className="mr-2 h-4 w-4" />
 //                       Edit
 //                     </DropdownMenuItem>
-//                     <DropdownMenuItem 
+//                     <DropdownMenuItem
 //                       className="text-red-600 focus:text-red-600"
 //                       onClick={() => setProductToDelete(product)}
 //                     >
@@ -98,9 +98,6 @@
 //     </div>
 //   );
 // }
-
-
-
 
 "use client";
 
@@ -119,7 +116,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Button } from "../ui/button";
+
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { ProductResponse } from "@/types/product";
 import { useGetAllProducts } from "@/hooks/products/useGetAllProduct";
@@ -137,186 +134,168 @@ export default function ProductTable({
 
   if (isPending) {
     return (
-      <div className="p-8 text-center text-slate-500">
-        Loading products...
-      </div>
+      <div className="p-8 text-center text-slate-500">Loading products...</div>
     );
   }
 
-
-return (
-  <>
-    {/* =========================
+  return (
+    <>
+      {/* =========================
         MOBILE PRODUCT CARDS
     ========================== */}
-    <div className="space-y-4 md:hidden">
-      {products?.map((product) => (
-        <div
-          key={product.id}
-          className="rounded-xl border bg-white p-4 shadow-sm"
-        >
-          {/* Product Header */}
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h2 className="truncate font-semibold text-foreground">
-                {product.name}
-              </h2>
+      <div className="space-y-4 md:hidden">
+        {products?.map((product) => (
+          <div
+            key={product.id}
+            className="rounded-xl border bg-white p-4 shadow-sm"
+          >
+            {/* Product Header */}
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <h2 className="truncate font-semibold text-foreground">
+                  {product.name}
+                </h2>
 
-              <p className="mt-1 truncate text-sm text-muted-foreground">
-                {product.description || "No description"}
-              </p>
-            </div>
+                <p className="mt-1 truncate text-sm text-muted-foreground">
+                  {product.description || "No description"}
+                </p>
+              </div>
 
-            {/* Actions */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
+              {/* Actions */}
+              <DropdownMenu>
+                <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
                   <MoreHorizontal className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
+                </DropdownMenuTrigger>
 
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onClick={() => setProductToEdit(product)}
-                >
-                  <Pencil className="mr-2 h-4 w-4" />
-                  Edit
-                </DropdownMenuItem>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setProductToEdit(product)}>
+                    <Pencil className="mr-2 h-4 w-4" />
+                    Edit
+                  </DropdownMenuItem>
 
-                <DropdownMenuItem
-                  className="text-red-600 focus:text-red-600"
-                  onClick={() => setProductToDelete(product)}
-                >
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  Delete
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-
-          {/* Product Details */}
-          <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-muted-foreground">SKU</p>
-              <p className="mt-1 font-medium">{product.sku}</p>
+                  <DropdownMenuItem
+                    className="text-red-600 focus:text-red-600"
+                    onClick={() => setProductToDelete(product)}
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    Delete
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
-            <div>
-              <p className="text-muted-foreground">Category</p>
-              <p className="mt-1 font-medium">
-                {product.categories?.name || "Uncategorized"}
-              </p>
-            </div>
+            {/* Product Details */}
+            <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <p className="text-muted-foreground">SKU</p>
+                <p className="mt-1 font-medium">{product.sku}</p>
+              </div>
 
-            <div>
-              <p className="text-muted-foreground">Reorder Level</p>
-              <p className="mt-1 font-medium">
-                {product.reorder_level ?? 0}
-              </p>
-            </div>
+              <div>
+                <p className="text-muted-foreground">Category</p>
+                <p className="mt-1 font-medium">
+                  {product.categories?.name || "Uncategorized"}
+                </p>
+              </div>
 
-            <div>
-              <p className="text-muted-foreground">Status</p>
-              <div className="mt-1">
-                <Badge
-                  variant={product.is_active ? "default" : "secondary"}
-                >
-                  {product.is_active ? "Active" : "Inactive"}
-                </Badge>
+              <div>
+                <p className="text-muted-foreground">Reorder Level</p>
+                <p className="mt-1 font-medium">{product.reorder_level ?? 0}</p>
+              </div>
+
+              <div>
+                <p className="text-muted-foreground">Status</p>
+                <div className="mt-1">
+                  <Badge variant={product.is_active ? "default" : "secondary"}>
+                    {product.is_active ? "Active" : "Inactive"}
+                  </Badge>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
 
-    {/* =========================
+      {/* =========================
         DESKTOP PRODUCT TABLE
     ========================== */}
-    <div className="hidden rounded-md border md:block">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Product</TableHead>
-            <TableHead>SKU</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Reorder Level</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="w-20 text-right">Action</TableHead>
-          </TableRow>
-        </TableHeader>
-
-        <TableBody>
-          {products?.map((product) => (
-            <TableRow key={product.id}>
-              {/* Product Name & Description */}
-              <TableCell className="font-medium">
-                <div>
-                  <h2 className="font-semibold text-foreground">
-                    {product.name}
-                  </h2>
-
-                  <p className="text-sm text-muted-foreground">
-                    {product.description || "No description"}
-                  </p>
-                </div>
-              </TableCell>
-
-              {/* SKU */}
-              <TableCell>{product.sku}</TableCell>
-
-              {/* Category */}
-              <TableCell>
-                {product.categories?.name || "Uncategorized"}
-              </TableCell>
-
-              {/* Reorder Level */}
-              <TableCell>{product.reorder_level ?? 0}</TableCell>
-
-              {/* Status */}
-              <TableCell>
-                <Badge
-                  variant={product.is_active ? "default" : "secondary"}
-                >
-                  {product.is_active ? "Active" : "Inactive"}
-                </Badge>
-              </TableCell>
-
-              {/* Actions */}
-              <TableCell className="text-right">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <MoreHorizontal className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem
-                      onClick={() => setProductToEdit(product)}
-                    >
-                      <Pencil className="mr-2 h-4 w-4" />
-                      <span>Edit</span>
-                    </DropdownMenuItem>
-
-                    <DropdownMenuItem
-                      className="text-red-600 focus:text-red-600"
-                      onClick={() => setProductToDelete(product)}
-                    >
-                      <Trash2 className="mr-2 h-4 w-4" />
-                      <span>Delete</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
+      <div className="hidden rounded-md border md:block">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Product</TableHead>
+              <TableHead>SKU</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Reorder Level</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead className="w-20 text-right">Action</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
-  </>
-);
+          </TableHeader>
 
+          <TableBody>
+            {products?.map((product) => (
+              <TableRow key={product.id}>
+                {/* Product Name & Description */}
+                <TableCell className="font-medium">
+                  <div>
+                    <h2 className="font-semibold text-foreground">
+                      {product.name}
+                    </h2>
 
+                    <p className="text-sm text-muted-foreground">
+                      {product.description || "No description"}
+                    </p>
+                  </div>
+                </TableCell>
 
+                {/* SKU */}
+                <TableCell>{product.sku}</TableCell>
+
+                {/* Category */}
+                <TableCell>
+                  {product.categories?.name || "Uncategorized"}
+                </TableCell>
+
+                {/* Reorder Level */}
+                <TableCell>{product.reorder_level ?? 0}</TableCell>
+
+                {/* Status */}
+                <TableCell>
+                  <Badge variant={product.is_active ? "default" : "secondary"}>
+                    {product.is_active ? "Active" : "Inactive"}
+                  </Badge>
+                </TableCell>
+
+                {/* Actions */}
+                <TableCell className="text-right">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
+                      <MoreHorizontal className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem
+                        onClick={() => setProductToEdit(product)}
+                      >
+                        <Pencil className="mr-2 h-4 w-4" />
+                        <span>Edit</span>
+                      </DropdownMenuItem>
+
+                      <DropdownMenuItem
+                        className="text-red-600 focus:text-red-600"
+                        onClick={() => setProductToDelete(product)}
+                      >
+                        <Trash2 className="mr-2 h-4 w-4" />
+                        <span>Delete</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </>
+  );
 }

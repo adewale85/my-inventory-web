@@ -1,6 +1,7 @@
 export interface InventorySummaryResponse {
   total_products: number
   active_products: number
+  quatity: number
   low_stock_count: number
   by_category: ByCategory[]
 }
