@@ -157,7 +157,7 @@ export default function ReportsPage() {
       <div className="space-y-4 md:hidden">
         {inventoryReport?.map((item) => {
           const quantity = Number(
-            item.inventory?.quantity ?? 0
+            item.inventory?.[0]?.quantity ?? 0
           );
 
           const costPrice = Number(
@@ -268,7 +268,7 @@ export default function ReportsPage() {
           <tbody>
             {inventoryReport?.map((item) => {
               const quantity = Number(
-                item.inventory?.quantity ?? 0
+                item.inventory?.[0]?.quantity ?? 0
               );
 
               const costPrice = Number(

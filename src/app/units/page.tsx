@@ -10,7 +10,7 @@ import TablePagination from '@/components/Categories/TablePagination'
 
 
 
-export default function  units() {
+export default function UnitsPage() {
 
     const [onAddUnit, setOpenAddUnit] = useState (false)
 

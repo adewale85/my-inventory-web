@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { Resolver, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
@@ -37,7 +37,7 @@ export default function EditProductModal({
   onOpenChange,
 }: EditProductModalProps) {
   const form = useForm<ProductFormValues>({
-    resolver: zodResolver(productSchema),
+    resolver: zodResolver(productSchema) as unknown as Resolver<ProductFormValues>,
 
     defaultValues: {
       name: "",

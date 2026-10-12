@@ -166,12 +166,10 @@ return (
             </div>
 
             {/* Actions */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
+              <DropdownMenu>
+                <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
                   <MoreHorizontal className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
+                </DropdownMenuTrigger>
 
               <DropdownMenuContent align="end">
                 <DropdownMenuItem
@@ -264,10 +262,8 @@ return (
 
               <TableCell className="text-right">
                 <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <MoreHorizontal className="h-4 w-4" />
-                    </Button>
+                  <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
+                    <MoreHorizontal className="h-4 w-4" />
                   </DropdownMenuTrigger>
 
                   <DropdownMenuContent align="end">
