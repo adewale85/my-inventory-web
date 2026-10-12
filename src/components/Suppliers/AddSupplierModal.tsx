@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { toast } from "sonner";
 
-import { Resolver, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { SupplierFormValues, supplierSchema } from "@/schemas/supplierSchema";
 import SupplierForm from "./SupplierForm";
 import { useCreateSupplier } from "@/hooks/suppliers/useCreateSupplier";
@@ -31,7 +31,7 @@ export default function AddSupplierModal({
   onOpenChange,
 }: AddSupplierModalProps) {
   const form = useForm<SupplierFormValues>({
-    resolver: zodResolver(supplierSchema) as unknown as Resolver<SupplierFormValues>,
+    resolver: zodResolver(supplierSchema),
     defaultValues: {
       name: "",
       contact_person: "",

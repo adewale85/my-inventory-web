@@ -22,7 +22,7 @@ export const supplierSchema = z.object({
     .string()
     .min(1, "Address is required"),
 
-  is_active: z.boolean().default(true),
+  is_active: z.boolean(),
 });
 
 export type SupplierFormValues = z.infer<typeof supplierSchema>;
