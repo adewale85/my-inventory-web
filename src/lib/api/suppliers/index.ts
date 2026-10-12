@@ -1,4 +1,4 @@
-import { getSingleProduct } from "../products/getSingleProduct";
+import { getSingleSupplier } from "./getSingleSupplier";
 import { createSupplier } from "./createSupplier";
 import { deleteSupplier } from "./deleteSupplier";
 import { getAllSuppliers } from "./getAllSuppliers";
@@ -8,6 +8,6 @@ export const supplierApi = {
     createSupplier,
     deleteSupplier,
     getAllSuppliers,
-    getSingleProduct,
+    getSingleSupplier,
     updateSupplier
 }

@@ -3,6 +3,10 @@ import { PackagePlus, PackageMinus, Undo2, Settings2,
   Trash2,} from 'lucide-react';
 
 
+type Props = {
+  type: string;
+};
+
 export default function MovementTypeBadge({ type }: Props) {
   switch (type.toLowerCase()) {
     case "purchase":

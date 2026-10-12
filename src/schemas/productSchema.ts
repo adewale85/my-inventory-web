@@ -32,4 +32,6 @@ export const productSchema = z.object({
   supplier_ids: z.array(z.string()),
 });
 
-export type ProductFormValues = z.infer<typeof productSchema>;
+export type ProductFormValues = z.input<typeof productSchema>;
+
+export type ProductFormData = z.output<typeof productSchema>;

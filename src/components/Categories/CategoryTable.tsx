@@ -118,7 +118,6 @@ import { Badge } from "../ui/badge";
 import { useGetCategories } from "@/hooks/categories/useGetCategories";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { Button } from "../ui/button";
 import { CategoryResponse } from "@/types/categories";
 
 

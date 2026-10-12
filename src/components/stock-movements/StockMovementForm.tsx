@@ -58,7 +58,7 @@ export default function StockMovementForm() {
         <Select
           value={form.watch("product_id")}
           onValueChange={(value) =>
-            form.setValue("product_id", value, {
+            form.setValue("product_id", value ?? "", {
               shouldValidate: true,
             })
           }
@@ -90,11 +90,13 @@ export default function StockMovementForm() {
 
         <Select
           value={form.watch("type")}
-          onValueChange={(value: "IN" | "OUT") =>
-            form.setValue("type", value, {
-              shouldValidate: true,
-            })
-          }
+          onValueChange={(value: "IN" | "OUT" | null) => {
+            if (value) {
+              form.setValue("type", value, {
+                shouldValidate: true,
+              });
+            }
+          }}
         >
           <SelectTrigger>
             <SelectValue placeholder="Select movement type" />

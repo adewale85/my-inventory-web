@@ -46,13 +46,13 @@ export async function getDashboardStats () {
     "Cost Price:",
     product.cost_price,
     "Quantity:",
-    product.inventory?.quantity
+    product.inventory?.[0]?.quantity
   );
 });
 
    const totalStockValue =
   products?.reduce((total, product) => {
-    const quantity = Number(product.inventory?.quantity ?? 0);
+    const quantity = Number(product.inventory?.[0]?.quantity ?? 0);
     const costPrice = Number(product.cost_price ?? 0);
 
     return total + quantity * costPrice;
@@ -61,7 +61,7 @@ export async function getDashboardStats () {
 
   const totalQuantity =
   products?.reduce((total, product) => {
-    const quantity = Number(product.inventory?.quantity ?? 0);
+    const quantity = Number(product.inventory?.[0]?.quantity ?? 0);
 
     return total + quantity;
   }, 0) ?? 0;
@@ -70,7 +70,7 @@ export async function getDashboardStats () {
 
   const lowStockitems = 
   products?.filter ((product) => {
-    const quantity = Number (product.inventory?.quantity ?? 0)
+    const quantity = Number (product.inventory?.[0]?.quantity ?? 0)
     const reorderLevel = Number (product.reorder_level ?? 0)
 
     return quantity < reorderLevel;

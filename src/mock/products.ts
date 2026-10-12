@@ -11,6 +11,7 @@ export const mockProducts: ProductResponse[] = [
       name: "Grains",
       description: "it reach",
       products_count: 2,
+      is_active: true,
       created_at: "2026-07-29T10:00:00Z"
     },
     unit_of_measure: "Bag",
@@ -33,6 +34,7 @@ export const mockProducts: ProductResponse[] = [
       name: "Dairy",
        description: "it reach",
       products_count: 2,
+      is_active: true,
       created_at: "2026-07-29T10:00:00Z"
     },
     unit_of_measure: "Carton",
@@ -55,6 +57,7 @@ export const mockProducts: ProductResponse[] = [
       name: "Beverages",
        description: "it reach",
       products_count: 2,
+      is_active: true,
       created_at: "2026-07-29T10:00:00Z"
     },
     unit_of_measure: "Bottle",

@@ -2,7 +2,6 @@ import { useGetAllSuppliers } from '@/hooks/suppliers/useGetAllSuppliers';
 import { SupplierResponse } from '@/types/suppliers'
 import React from 'react'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
-import { Button } from '../ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
 import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 

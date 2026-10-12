@@ -11,7 +11,7 @@ import {
 
 import { Button } from "../ui/button";
 
-import { ProductFormValues, productSchema } from "@/schemas/productSchema";
+import { ProductFormData, ProductFormValues, productSchema } from "@/schemas/productSchema";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -31,8 +31,10 @@ export default function AddProductModal({
   open,
   onOpenChange,
 }: AddProductModalProps) {
-  const form = useForm<ProductFormValues>({
-    resolver: zodResolver(productSchema),
+  const form = useForm<
+  ProductFormValues,ProductFormData
+>({
+  resolver: zodResolver(productSchema),
     defaultValues: {
       name: "",
       sku: "",
