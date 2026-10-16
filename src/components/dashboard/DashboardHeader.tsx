@@ -1,34 +1,20 @@
 "use client";
 
-
+import { useAuthStore } from "@/zustand/useAuthStore";
 
 export default function DashboardHeader() {
-  const today = new Date().toLocaleDateString("en-US", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const auth = useAuthStore((state) => state.auth);
+  const user = auth?.user;
+  const firstName = user?.name ? user.name.split(" ")[0] : "Adewale";
 
   return (
-    
-    <div className="mb-8 flex items-start justify-between">
-      <div>
-        <h1 className="text-4xl font-bold tracking-tight text-slate-900">
-          Dashboard
-        </h1>
-
-        <p className="mt-2 text-slate-500 text-lg">
-          Welcome back! Here's what's happening with your inventory today.
-        </p>
-      </div>
-
-      <div className="rounded-xl border bg-white px-4 py-2 shadow-sm">
-        <p className="text-sm font-medium text-slate-600">
-          {today}
-        </p>
-      </div>
+    <div className="mb-2">
+      <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+        Welcome back, {firstName} <span className="inline-block animate-pulse">👋</span>
+      </h1>
+      <p className="mt-1 text-sm sm:text-base text-slate-500 font-normal">
+        Here's what's happening with your inventory today.
+      </p>
     </div>
-    
   );
 }
