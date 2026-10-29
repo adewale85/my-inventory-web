@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,6 +16,7 @@ import {
   X,
   Check,
   ChevronDown,
+  ShoppingCart,
 } from "lucide-react";
 
 import { useAuthStore } from "@/zustand/useAuthStore";
@@ -31,15 +32,18 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const logout = useAuthStore((state) => state.logout);
 
   const user = auth?.user;
-  const role = user?.role?.toUpperCase() || "ADMIN";
+  const role = user?.role?.trim().toUpperCase() ?? "";
+  /* const role = user?.role?.toUpperCase() || "ADMIN";*/
 
   const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { name: "Products", href: "/products", icon: Package },
+    { name: "Sales", href: "/sales", icon: ShoppingCart },
+    { name: "SalesHistory", href: "/salesHistory", icon: ShoppingCart},
     { name: "Categories", href: "/categories", icon: Tags, adminOnly: true },
     { name: "Units of Measure", href: "/units", icon: Ruler, adminOnly: true },
     { name: "Suppliers", href: "/suppliers", icon: Truck, adminOnly: true },
-    { name: "Inventory", href: "/inventory", icon: Boxes },
+    { name: "Inventory", href: "/inventory", icon: Boxes, adminOnly: true},
     { name: "Stock Movement", href: "/stock-movement", icon: ArrowLeftRight, adminOnly: true },
     { name: "Reports", href: "/reports", icon: FileText, adminOnly: true },
   ];
@@ -119,6 +123,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               </Link>
             );
           })}
+
+          
         </nav>
 
         {/* User Card & Bottom Actions */}

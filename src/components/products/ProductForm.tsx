@@ -40,8 +40,8 @@ export default function ProductForm ({
         <p className="text-sm text-red-500">
             {form.formState.errors.name.message}
         </p>
-     )}
-
+     )} 
+  
   </div>
   
   {/* SKU */}

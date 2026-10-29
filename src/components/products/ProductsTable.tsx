@@ -1,104 +1,3 @@
-// "use client";
-
-// import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
-// import { Badge } from "../ui/badge";
-// import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
-// import { Button } from "../ui/button";
-// import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
-// import { ProductResponse } from "@/types/product";
-// import { useGetAllProducts } from "@/hooks/products/useGetAllProduct";
-
-// interface ProductTableProps {
-//   setProductToDelete: (product: ProductResponse) => void;
-// }
-
-// export default function ProductTable({ setProductToDelete }: ProductTableProps) {
-//   const { products, isPending } = useGetAllProducts();
-
-//   // Uses live Supabase data if available and populated, otherwise falls back to mock data
-// //   const displayProducts = products && products.length > 0 ? products : mockProducts;
-
-//   if (isPending) {
-//     return (
-//       <div className="p-8 text-center text-slate-500">
-//         Loading inventory...
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="rounded-md border">
-//       <Table>
-//         <TableHeader>
-//           <TableRow>
-//             <TableHead>Product</TableHead>
-//             <TableHead>SKU</TableHead>
-//             <TableHead>Category</TableHead>
-//             <TableHead>Reorder Level</TableHead>
-//             <TableHead>Status</TableHead>
-//             <TableHead className="w-20 text-right">Action</TableHead>
-//           </TableRow>
-//         </TableHeader>
-
-//         <TableBody>
-//           {products?.map((product) => (
-//             <TableRow key={product.id}>
-//               {/* Product Name & Description */}
-//               <TableCell className="font-medium">
-//                 <div>
-//                   <h2 className="font-semibold text-foreground">{product.name}</h2>
-//                   <p className="text-sm text-muted-foreground">{product.description || "No description"}</p>
-//                 </div>
-//               </TableCell>
-
-//               {/* SKU */}
-//               <TableCell>{product.sku}</TableCell>
-
-//               {/* Category (mapped correctly to Supabase join relation) */}
-//               <TableCell>{product.categories?.name || "Uncategorized"}</TableCell>
-
-//               {/* Reorder Level */}
-//               <TableCell>{product.reorder_level ?? 0}</TableCell>
-
-//               {/* Status */}
-//               <TableCell>
-//                 <Badge variant={product.is_active ? "default" : "secondary"}>
-//                   {product.is_active ? "Active" : "Inactive"}
-//                 </Badge>
-//               </TableCell>
-
-//               {/* Action Dropdown */}
-//               <TableCell className="text-right">
-//                 <DropdownMenu>
-//                   <DropdownMenuTrigger asChild>
-//                     <Button variant="ghost" size="icon">
-//                       <MoreHorizontal className="h-4 w-4"/>
-//                     </Button>
-//                   </DropdownMenuTrigger>
-
-//                   <DropdownMenuContent align="end">
-//                     <DropdownMenuItem>
-//                       <Pencil className="mr-2 h-4 w-4" />
-//                       Edit
-//                     </DropdownMenuItem>
-//                     <DropdownMenuItem
-//                       className="text-red-600 focus:text-red-600"
-//                       onClick={() => setProductToDelete(product)}
-//                     >
-//                       <Trash2 className="mr-2 h-4 w-4" />
-//                       Delete
-//                     </DropdownMenuItem>
-//                   </DropdownMenuContent>
-//                 </DropdownMenu>
-//               </TableCell>
-//             </TableRow>
-//           ))}
-//         </TableBody>
-//       </Table>
-//     </div>
-//   );
-// }
-
 "use client";
 
 import {
@@ -120,6 +19,7 @@ import {
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { ProductResponse } from "@/types/product";
 import { useGetAllProducts } from "@/hooks/products/useGetAllProduct";
+import { useAuthStore } from "@/zustand/useAuthStore";
 
 interface ProductTableProps {
   setProductToDelete: (product: ProductResponse) => void;
@@ -132,9 +32,16 @@ export default function ProductTable({
 }: ProductTableProps) {
   const { products, isPending } = useGetAllProducts();
 
+  const auth = useAuthStore((state) => state.auth);
+
+  const user = auth?.user;
+  const role = user?.role?.trim().toUpperCase() ?? "";
+
   if (isPending) {
     return (
-      <div className="p-8 text-center text-slate-500">Loading products...</div>
+      <div className="p-8 text-center text-slate-500">
+        Loading products...
+      </div>
     );
   }
 
@@ -142,7 +49,7 @@ export default function ProductTable({
     <>
       {/* =========================
         MOBILE PRODUCT CARDS
-    ========================== */}
+      ========================== */}
       <div className="space-y-4 md:hidden">
         {products?.map((product) => (
           <div
@@ -162,26 +69,30 @@ export default function ProductTable({
               </div>
 
               {/* Actions */}
-              <DropdownMenu>
-                <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
-                  <MoreHorizontal className="h-4 w-4" />
-                </DropdownMenuTrigger>
+              {role === "ADMIN" && (
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
+                    <MoreHorizontal className="h-4 w-4" />
+                  </DropdownMenuTrigger>
 
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setProductToEdit(product)}>
-                    <Pencil className="mr-2 h-4 w-4" />
-                    Edit
-                  </DropdownMenuItem>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem
+                      onClick={() => setProductToEdit(product)}
+                    >
+                      <Pencil className="mr-2 h-4 w-4" />
+                      Edit
+                    </DropdownMenuItem>
 
-                  <DropdownMenuItem
-                    className="text-red-600 focus:text-red-600"
-                    onClick={() => setProductToDelete(product)}
-                  >
-                    <Trash2 className="mr-2 h-4 w-4" />
-                    Delete
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                    <DropdownMenuItem
+                      className="text-red-600 focus:text-red-600"
+                      onClick={() => setProductToDelete(product)}
+                    >
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      Delete
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
             </div>
 
             {/* Product Details */}
@@ -200,7 +111,9 @@ export default function ProductTable({
 
               <div>
                 <p className="text-muted-foreground">Reorder Level</p>
-                <p className="mt-1 font-medium">{product.reorder_level ?? 0}</p>
+                <p className="mt-1 font-medium">
+                  {product.reorder_level ?? 0}
+                </p>
               </div>
 
               <div>
@@ -218,9 +131,9 @@ export default function ProductTable({
 
       {/* =========================
         DESKTOP PRODUCT TABLE
-    ========================== */}
-      <div className="hidden rounded-md border md:block">
-        <Table>
+      ========================== */}
+      <div className="hidden w-full rounded-md border md:block">
+        <Table className="w-full">
           <TableHeader>
             <TableRow>
               <TableHead>Product</TableHead>
@@ -228,7 +141,9 @@ export default function ProductTable({
               <TableHead>Category</TableHead>
               <TableHead>Reorder Level</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="w-20 text-right">Action</TableHead>
+              <TableHead className="w-20 text-right">
+                {role === "ADMIN" ? "Action" : ""}
+              </TableHead>
             </TableRow>
           </TableHeader>
 
@@ -267,29 +182,31 @@ export default function ProductTable({
                 </TableCell>
 
                 {/* Actions */}
-                <TableCell className="text-right">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
-                      <MoreHorizontal className="h-4 w-4" />
-                    </DropdownMenuTrigger>
+                <TableCell className="w-20 text-right">
+                  {role === "ADMIN" && (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="inline-flex size-8 items-center justify-center rounded-lg hover:bg-muted hover:text-foreground">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </DropdownMenuTrigger>
 
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem
-                        onClick={() => setProductToEdit(product)}
-                      >
-                        <Pencil className="mr-2 h-4 w-4" />
-                        <span>Edit</span>
-                      </DropdownMenuItem>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem
+                          onClick={() => setProductToEdit(product)}
+                        >
+                          <Pencil className="mr-2 h-4 w-4" />
+                          <span>Edit</span>
+                        </DropdownMenuItem>
 
-                      <DropdownMenuItem
-                        className="text-red-600 focus:text-red-600"
-                        onClick={() => setProductToDelete(product)}
-                      >
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        <span>Delete</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                        <DropdownMenuItem
+                          className="text-red-600 focus:text-red-600"
+                          onClick={() => setProductToDelete(product)}
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          <span>Delete</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  )}
                 </TableCell>
               </TableRow>
             ))}
