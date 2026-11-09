@@ -62,25 +62,25 @@ export default function StockMovementChart() {
   }, [recentStockMovements]);
 
   return (
-    <div className="flex h-full flex-col justify-between rounded-2xl border border-slate-100/90 bg-white p-5 shadow-xs transition hover:shadow-md">
+    <div className="flex h-full flex-col justify-between rounded-2xl border border-border bg-card text-card-foreground p-5 shadow-xs transition hover:shadow-md">
       {/* Header & Legend */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
         <div>
-          <h3 className="text-base font-bold text-slate-900">
+          <h3 className="text-base font-bold text-foreground">
             Stock Movement
           </h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-muted-foreground mt-0.5">
             Total stock in and out (Last 7 days)
           </p>
         </div>
 
         {/* Legend */}
         <div className="flex items-center gap-4 text-xs font-medium">
-          <div className="flex items-center gap-1.5 text-slate-600">
+          <div className="flex items-center gap-1.5 text-muted-foreground">
             <span className="h-2 w-2 rounded-full bg-blue-500" />
             <span>Stock In</span>
           </div>
-          <div className="flex items-center gap-1.5 text-slate-600">
+          <div className="flex items-center gap-1.5 text-muted-foreground">
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
             <span>Stock Out</span>
           </div>
@@ -108,7 +108,8 @@ export default function StockMovementChart() {
             <CartesianGrid
               strokeDasharray="3 3"
               vertical={false}
-              stroke="#F1F5F9"
+              stroke="var(--border)"
+              strokeOpacity={0.6}
             />
 
             <XAxis
@@ -128,10 +129,11 @@ export default function StockMovementChart() {
 
             <Tooltip
               contentStyle={{
-                backgroundColor: "#FFFFFF",
+                backgroundColor: "var(--card)",
+                color: "var(--card-foreground)",
                 borderRadius: "12px",
-                border: "1px solid #E2E8F0",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+                border: "1px solid var(--border)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                 fontSize: "12px",
               }}
             />

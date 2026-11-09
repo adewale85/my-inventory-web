@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo } from "react";
 import { TrendingUp } from "lucide-react";
@@ -39,7 +39,7 @@ export default function RecentStockMovement() {
   }, [recentStockMovements]);
 
   return (
-    <Card className="rounded-2xl border border-slate-200 bg-blue-100 shadow-sm transition-all duration-300 hover:shadow-lg">
+    <Card className="rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg">
       <CardHeader className="flex flex-row items-start justify-between space-y-0">
         <div>
           <CardTitle className="text-xl font-semibold">
@@ -62,11 +62,11 @@ export default function RecentStockMovement() {
         </div>
 
         <div className="flex flex-col items-end gap-3">
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+          <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
             Last 30 Days
           </span>
 
-          <div className="flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-600">
+          <div className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
             <TrendingUp className="h-4 w-4" />
             +12%
           </div>

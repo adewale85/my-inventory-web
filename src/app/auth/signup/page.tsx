@@ -61,11 +61,11 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-6">
-      <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
+    <div className="min-h-screen flex items-center justify-center bg-background p-6">
+      <div className="w-full max-w-md rounded-3xl border border-border bg-card text-card-foreground p-8 shadow-xl">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-semibold text-slate-900">Create your account</h1>
-          <p className="mt-2 text-sm text-slate-500">Start managing inventory with a secure admin-friendly dashboard.</p>
+          <h1 className="text-2xl font-semibold text-foreground">Create your account</h1>
+          <p className="mt-2 text-sm text-muted-foreground">Start managing inventory with a secure admin-friendly dashboard.</p>
         </div>
 
         {error && (
@@ -74,47 +74,47 @@ export default function SignupPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-500">Name</label>
+            <label className="block text-xs font-semibold text-muted-foreground">Name</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
               placeholder="Jane Doe"
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-500">Email</label>
+            <label className="block text-xs font-semibold text-muted-foreground">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
               placeholder="you@example.com"
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-500">Password</label>
+            <label className="block text-xs font-semibold text-muted-foreground">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
               placeholder="Create a strong password"
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-500">Confirm Password</label>
+            <label className="block text-xs font-semibold text-muted-foreground">Confirm Password</label>
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+              className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
               placeholder="Repeat your password"
               required
             />
@@ -129,7 +129,7 @@ export default function SignupPage() {
           </button>
         </form>
 
-        <p className="mt-5 text-center text-sm text-slate-500">
+        <p className="mt-5 text-center text-sm text-muted-foreground">
           Already have an account?{' '}
           <a href="/auth/login" className="font-semibold text-emerald-600 hover:text-emerald-700">Log in</a>
         </p>

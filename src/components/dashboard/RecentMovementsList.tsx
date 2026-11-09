@@ -54,19 +54,19 @@ export default function RecentMovementsList() {
   }, [stockMovements, products]);
 
   return (
-    <div className="flex h-full flex-col justify-between rounded-2xl border border-slate-100/90 bg-white p-5 shadow-xs transition hover:shadow-md">
+    <div className="flex h-full flex-col justify-between rounded-2xl border border-border bg-card text-card-foreground p-5 shadow-xs transition hover:shadow-md">
       {/* Header */}
       <div>
-        <h3 className="text-base font-bold text-slate-900">
+        <h3 className="text-base font-bold text-foreground">
           Recent Stock Movement
         </h3>
-        <p className="text-xs text-slate-400 mt-0.5">
+        <p className="text-xs text-muted-foreground mt-0.5">
           Latest inventory activities
         </p>
       </div>
 
       {/* List */}
-      <div className="my-3 divide-y divide-slate-100">
+      <div className="my-3 divide-y divide-border">
         {movements.map((item) => {
           const isIn = item.type === "IN";
           return (
@@ -78,8 +78,8 @@ export default function RecentMovementsList() {
                 <div
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition ${
                     isIn
-                      ? "bg-emerald-50 text-emerald-600"
-                      : "bg-rose-50 text-rose-500"
+                      ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                      : "bg-rose-500/10 text-rose-500 dark:text-rose-400"
                   }`}
                 >
                   {isIn ? (
@@ -89,10 +89,10 @@ export default function RecentMovementsList() {
                   )}
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-xs font-semibold text-slate-800">
+                  <p className="truncate text-xs font-semibold text-foreground">
                     {item.name}
                   </p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">
+                  <p className="text-[11px] text-muted-foreground mt-0.5">
                     {item.time}
                   </p>
                 </div>
@@ -100,7 +100,7 @@ export default function RecentMovementsList() {
 
               <div
                 className={`shrink-0 text-xs font-bold ${
-                  isIn ? "text-emerald-600" : "text-rose-500"
+                  isIn ? "text-emerald-600 dark:text-emerald-400" : "text-rose-500 dark:text-rose-400"
                 }`}
               >
                 {isIn ? `+${item.qty}` : `-${item.qty}`} Qty
@@ -111,7 +111,7 @@ export default function RecentMovementsList() {
       </div>
 
       {/* Footer Link */}
-      <div className="border-t border-slate-100 pt-3">
+      <div className="border-t border-border pt-3">
         <Link
           href="/stock-movement"
           className="group flex items-center justify-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition"

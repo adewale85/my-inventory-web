@@ -22,8 +22,8 @@ export default function TopCategories () {
                 <CardContent>
                     {Array.from({length: 4}).map((_, i)=>(
                         <div key={i} className="space-y-2">
-                            <div className="h-4 w-32 animate-pulse rounded bg-slate-200" />
-              <div className="h-2 w-full animate-pulse rounded bg-slate-100" />
+                            <div className="h-4 w-32 animate-pulse rounded bg-muted" />
+              <div className="h-2 w-full animate-pulse rounded bg-muted/60" />
                         </div>
                     ))}
                 </CardContent>
@@ -48,7 +48,7 @@ export default function TopCategories () {
   );
 
   return (
-    <Card className="rounded-2xl border border-slate-200 shadow-sm transition-all duration-300 hover:shadow-lg">
+    <Card className="rounded-2xl border border-border shadow-sm transition-all duration-300 hover:shadow-lg">
       <CardHeader>
         <CardTitle className="text-xl">
           Top Categories by Value
@@ -71,7 +71,7 @@ export default function TopCategories () {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-semibold text-slate-900">
+                  <h3 className="font-semibold text-foreground">
                     {category.name}
                   </h3>
 
@@ -82,7 +82,7 @@ export default function TopCategories () {
                 </div>
 
                 <div className="text-right">
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-foreground">
                     {Number(category.total_value).toLocaleString("en-NG", {
                       style: "currency",
                       currency: "NGN",

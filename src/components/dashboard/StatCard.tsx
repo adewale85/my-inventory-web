@@ -26,29 +26,29 @@ const colorStyles: Record<
   { bg: string; text: string; ring: string }
 > = {
   blue: {
-    bg: "bg-blue-50/80",
-    text: "text-blue-600",
-    ring: "ring-blue-100",
+    bg: "bg-blue-500/10 dark:bg-blue-500/20",
+    text: "text-blue-600 dark:text-blue-400",
+    ring: "ring-blue-500/20",
   },
   emerald: {
-    bg: "bg-emerald-50/80",
-    text: "text-emerald-600",
-    ring: "ring-emerald-100",
+    bg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    text: "text-emerald-600 dark:text-emerald-400",
+    ring: "ring-emerald-500/20",
   },
   purple: {
-    bg: "bg-purple-50/80",
-    text: "text-purple-600",
-    ring: "ring-purple-100",
+    bg: "bg-purple-500/10 dark:bg-purple-500/20",
+    text: "text-purple-600 dark:text-purple-400",
+    ring: "ring-purple-500/20",
   },
   rose: {
-    bg: "bg-rose-50/80",
-    text: "text-rose-500",
-    ring: "ring-rose-100",
+    bg: "bg-rose-500/10 dark:bg-rose-500/20",
+    text: "text-rose-500 dark:text-rose-400",
+    ring: "ring-rose-500/20",
   },
   sky: {
-    bg: "bg-sky-50/80",
-    text: "text-sky-600",
-    ring: "ring-sky-100",
+    bg: "bg-sky-500/10 dark:bg-sky-500/20",
+    text: "text-sky-600 dark:text-sky-400",
+    ring: "ring-sky-500/20",
   },
 };
 
@@ -75,7 +75,7 @@ export default function StatCard({
       : value;
 
   return (
-    <div className="group flex flex-col justify-between rounded-2xl border border-slate-100/90 bg-white p-5 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+    <div className="group flex flex-col justify-between rounded-2xl border border-border bg-card text-card-foreground p-5 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex items-start gap-3.5">
         <div
           className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${styles.bg} ${styles.text} ring-1 ${styles.ring} transition-transform duration-200 group-hover:scale-105`}
@@ -84,14 +84,14 @@ export default function StatCard({
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-semibold text-slate-500 truncate tracking-tight">
+          <p className="text-xs font-semibold text-muted-foreground truncate tracking-tight">
             {title}
           </p>
 
           {loading ? (
-            <Skeleton className="mt-1 h-7 w-20 rounded bg-slate-100" />
+            <Skeleton className="mt-1 h-7 w-20 rounded bg-muted" />
           ) : (
-            <h3 className="mt-0.5 text-2xl font-extrabold tracking-tight text-slate-900">
+            <h3 className="mt-0.5 text-2xl font-extrabold tracking-tight text-foreground">
               {formattedValue}
             </h3>
           )}
@@ -102,7 +102,7 @@ export default function StatCard({
         <div className="mt-3.5 flex items-center gap-1.5 text-xs">
           <div
             className={`flex items-center font-bold ${
-              trend.isGood ?? trend.isUp ? "text-emerald-600" : "text-rose-500"
+              trend.isGood ?? trend.isUp ? "text-emerald-600 dark:text-emerald-400" : "text-rose-500 dark:text-rose-400"
             }`}
           >
             {trend.isUp ? (
@@ -112,7 +112,7 @@ export default function StatCard({
             )}
             {trend.value}
           </div>
-          <span className="text-slate-400 font-medium">
+          <span className="text-muted-foreground font-medium">
             {trend.label || "vs last month"}
           </span>
         </div>

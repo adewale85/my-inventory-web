@@ -71,11 +71,11 @@ export default function InventoryStatusChart() {
     }, [inventory, products, dashboard]);
 
   return (
-    <div className="flex h-full flex-col justify-between rounded-2xl border border-slate-100/90 bg-white p-5 shadow-xs transition hover:shadow-md">
+    <div className="flex h-full flex-col justify-between rounded-2xl border border-border bg-card text-card-foreground p-5 shadow-xs transition hover:shadow-md">
       {/* Header */}
       <div>
-        <h3 className="text-base font-bold text-slate-900">Inventory Status</h3>
-        <p className="text-xs text-slate-400 mt-0.5">Stock health overview</p>
+        <h3 className="text-base font-bold text-foreground">Inventory Status</h3>
+        <p className="text-xs text-muted-foreground mt-0.5">Stock health overview</p>
       </div>
 
       {/* Donut Chart with center label */}
@@ -85,9 +85,10 @@ export default function InventoryStatusChart() {
             <Tooltip
               formatter={(value: any, name: any) => [`${value}%`, name]}
               contentStyle={{
-                backgroundColor: "#FFFFFF",
+                backgroundColor: "var(--card)",
+                color: "var(--card-foreground)",
                 borderRadius: "10px",
-                border: "1px solid #E2E8F0",
+                border: "1px solid var(--border)",
                 fontSize: "12px",
                 padding: "6px 10px",
               }}
@@ -111,31 +112,31 @@ export default function InventoryStatusChart() {
 
         {/* Center Text */}
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-xl font-bold tracking-tight text-slate-900">
+          <span className="text-xl font-bold tracking-tight text-foreground">
             {totalQuantity.toLocaleString()}
           </span>
-          <span className="text-[11px] font-medium text-slate-400">
+          <span className="text-[11px] font-medium text-muted-foreground">
             Total Quantity
           </span>
         </div>
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
+      <div className="flex items-center justify-between border-t border-border pt-3 text-xs">
         <div className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-blue-500" />
-          <span className="font-medium text-slate-600">In Stock</span>
-          <span className="font-semibold text-slate-900">{inStockPct}%</span>
+          <span className="font-medium text-muted-foreground">In Stock</span>
+          <span className="font-semibold text-foreground">{inStockPct}%</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-amber-500" />
-          <span className="font-medium text-slate-600">Low Stock</span>
-          <span className="font-semibold text-slate-900">{lowStockPct}%</span>
+          <span className="font-medium text-muted-foreground">Low Stock</span>
+          <span className="font-semibold text-foreground">{lowStockPct}%</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-rose-500" />
-          <span className="font-medium text-slate-600">Out of Stock</span>
-          <span className="font-semibold text-slate-900">{outOfStockPct}%</span>
+          <span className="font-medium text-muted-foreground">Out of Stock</span>
+          <span className="font-semibold text-foreground">{outOfStockPct}%</span>
         </div>
       </div>
     </div>

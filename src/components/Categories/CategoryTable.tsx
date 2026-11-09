@@ -20,7 +20,7 @@
    
 //   if (isPending) {
 //     return (
-//       <div className="p-8 text-center text-slate-500">
+//       <div className="p-8 text-center text-muted-foreground">
 //         Loading inventory...
 //       </div>
 //     );
@@ -134,7 +134,7 @@ export default function CategoryTable ({
 
   if (isPendingCategories) {
     return (
-      <div className="p-8 text-center text-slate-500">
+      <div className="p-8 text-center text-muted-foreground">
         Loading categories...
       </div>
     );
@@ -150,7 +150,7 @@ return (
       {categories?.map((category) => (
         <div
           key={category.id}
-          className="rounded-xl border bg-white p-4 shadow-sm"
+          className="rounded-xl border border-border bg-card text-card-foreground p-4 shadow-sm"
         >
           {/* Category Header */}
           <div className="flex items-start justify-between gap-3">
@@ -220,7 +220,7 @@ return (
     {/* =========================
         DESKTOP CATEGORY TABLE
     ========================== */}
-    <div className="hidden rounded-md border md:block">
+    <div className="hidden rounded-md border border-border bg-card md:block">
       <Table>
         <TableHeader>
           <TableRow>

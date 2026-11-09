@@ -65,14 +65,14 @@ export default function LowStockAlerts() {
   }, [inventory, products]);
 
   return (
-    <div className="rounded-2xl border border-slate-100/90 bg-white p-5 shadow-xs transition hover:shadow-md">
+    <div className="rounded-2xl border border-border bg-card text-card-foreground p-5 shadow-xs transition hover:shadow-md">
       {/* Header */}
       <div className="flex items-center justify-between pb-4">
         <div className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-50 text-rose-500">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-500/10 text-rose-500 dark:text-rose-400">
             <AlertTriangle className="h-4 w-4" />
           </div>
-          <h3 className="text-base font-bold text-slate-900">Low Stock Alerts</h3>
+          <h3 className="text-base font-bold text-foreground">Low Stock Alerts</h3>
         </div>
 
         <Link
@@ -87,7 +87,7 @@ export default function LowStockAlerts() {
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs">
           <thead>
-            <tr className="border-b border-slate-100 text-slate-400">
+            <tr className="border-b border-border text-muted-foreground">
               <th className="pb-2.5 font-semibold tracking-wider uppercase">
                 Product
               </th>
@@ -102,23 +102,23 @@ export default function LowStockAlerts() {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-border">
             {lowStockItems.map((item) => (
               <tr
                 key={item.id}
-                className="group transition-colors hover:bg-slate-50/60"
+                className="group transition-colors hover:bg-muted/50"
               >
-                <td className="py-3 font-semibold text-slate-800">
+                <td className="py-3 font-semibold text-foreground">
                   {item.name}
                 </td>
-                <td className="py-3 font-medium text-slate-600">
+                <td className="py-3 font-medium text-muted-foreground">
                   {item.currentStock}
                 </td>
-                <td className="py-3 font-medium text-slate-500">
+                <td className="py-3 font-medium text-muted-foreground">
                   {item.reorderLevel}
                 </td>
                 <td className="py-3 text-right">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-[11px] font-semibold text-amber-600 border border-amber-200/50">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-amber-600 dark:text-amber-400 border border-amber-500/20">
                     <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
                     Low Stock
                   </span>

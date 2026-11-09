@@ -51,7 +51,9 @@ export default function StockMovementForm() {
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-      {/* Product */}
+     
+      <div className="space-y-4 flex flex-col md:flex-row md:space-x-4 md:space-y-0 justify-between">
+       {/* Product */}
       <div className="space-y-2">
         <label>Product</label>
 
@@ -113,6 +115,7 @@ export default function StockMovementForm() {
             {form.formState.errors.type.message}
           </p>
         )}
+      </div>
       </div>
 
       {/* Quantity */}

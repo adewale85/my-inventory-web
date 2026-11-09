@@ -9,10 +9,10 @@ export default function DashboardHeader() {
 
   return (
     <div className="mb-2">
-      <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+      <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
         Welcome back, {firstName} <span className="inline-block animate-pulse">👋</span>
       </h1>
-      <p className="mt-1 text-sm sm:text-base text-slate-500 font-normal">
+      <p className="mt-1 text-sm sm:text-base text-muted-foreground font-normal">
         Here's what's happening with your inventory today.
       </p>
     </div>

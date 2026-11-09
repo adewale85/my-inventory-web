@@ -6,9 +6,9 @@ import { ArrowRight, PackagePlus } from "lucide-react";
 
 export default function StockPromoBanner() {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-blue-100/80 bg-gradient-to-br from-blue-50/80 via-indigo-50/30 to-white p-5 shadow-xs transition hover:shadow-md">
+    <div className="relative overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-card text-card-foreground p-5 shadow-xs transition hover:shadow-md">
       {/* Decorative top right accent */}
-      <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-blue-100/40 blur-xl" />
+      <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-blue-500/10 blur-xl" />
 
       <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
         <div className="space-y-2">
@@ -17,10 +17,10 @@ export default function StockPromoBanner() {
           </div>
 
           <div>
-            <h4 className="text-base font-bold text-slate-900">
+            <h4 className="text-base font-bold text-foreground">
               Keep your business well stocked
             </h4>
-            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               Ensure seamless operations with accurate stock management.
             </p>
           </div>

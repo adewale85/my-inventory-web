@@ -5,34 +5,32 @@ import React, { useEffect, useState } from "react";
 import { useAuthStore } from "@/zustand/useAuthStore";
 import Sidebar from "@/components/layout/Sidebar";
 import { Bell, ChevronDown, Menu, Moon, Search, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+
 
 export default function AppShell({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  
   const auth = useAuthStore((state) => state.auth);
   const user = auth?.user;
 
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // Load saved theme when the component mounts
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const darkMode = savedTheme === "dark";
-
-    setIsDark(darkMode);
-    document.documentElement.classList.toggle("dark", darkMode);
+    setMounted(true);
   }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
 
   // Toggle between light and dark mode
   const toggleTheme = () => {
-    const newTheme = !isDark;
-
-    setIsDark(newTheme);
-    localStorage.setItem("theme", newTheme ? "dark" : "light");
-    document.documentElement.classList.toggle("dark", newTheme);
+    setTheme(isDark ? "light" : "dark");
   };
 
   return (
@@ -66,7 +64,7 @@ export default function AppShell({
                 <input
                   type="text"
                   placeholder="Search for products, categories, suppliers..."
-                  className="h-10 w-full rounded-full border border-border bg-muted/80 pl-10 pr-20 text-xs sm:text-sm text-foreground outline-none transition focus:border-blue-400 focus:bg-background focus:ring-2 focus:ring-blue-100 placeholder:text-muted-foreground"
+                  className="h-10 w-full rounded-full border border-border bg-muted/80 pl-10 pr-20 text-xs sm:text-sm text-foreground outline-none transition focus:border-blue-400 focus:bg-background focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-950/40 placeholder:text-muted-foreground"
                 />
 
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md bg-background border border-border px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground shadow-2xs">

@@ -39,7 +39,7 @@ export default function ProductTable({
 
   if (isPending) {
     return (
-      <div className="p-8 text-center text-slate-500">
+      <div className="p-8 text-center text-muted-foreground">
         Loading products...
       </div>
     );
@@ -54,7 +54,7 @@ export default function ProductTable({
         {products?.map((product) => (
           <div
             key={product.id}
-            className="rounded-xl border bg-white p-4 shadow-sm"
+            className="rounded-xl border border-border bg-card text-card-foreground p-4 shadow-sm"
           >
             {/* Product Header */}
             <div className="flex items-start justify-between gap-3">
@@ -132,7 +132,7 @@ export default function ProductTable({
       {/* =========================
         DESKTOP PRODUCT TABLE
       ========================== */}
-      <div className="hidden w-full rounded-md border md:block">
+      <div className="hidden w-full rounded-md border border-border bg-card md:block">
         <Table className="w-full">
           <TableHeader>
             <TableRow>
