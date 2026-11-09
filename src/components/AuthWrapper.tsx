@@ -1,4 +1,4 @@
-﻿// "use client";
+// "use client";
 
 // import React, { useEffect } from "react";
 // import { useRouter } from "next/navigation";
@@ -82,9 +82,9 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
     const onAuthPage = pathname?.startsWith("/auth") || pathname === "/login";
 
     // 2. If the user is NOT logged in and trying to access a protected page, redirect to Login
-    // if (!isAuthenticated && !onAuthPage) {
-    //   router.replace("/auth/login");
-    // }
+    if (!isAuthenticated && !onAuthPage) {
+      router.replace("/auth/login");
+    }
 
     // 3. If the user IS logged in but wanders back to the auth/login page, redirect them to the home dashboard
     if (isAuthenticated && onAuthPage) {
@@ -96,8 +96,8 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
   // Show a loading screen if the app is currently in the middle of logging out
   if (isLoggingOut ||!isMounted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="rounded-lg bg-white px-6 py-5 shadow-sm text-slate-700">
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="rounded-lg bg-card border border-border px-6 py-5 shadow-sm text-foreground">
             Checking authentication...
         </div>
       </div>

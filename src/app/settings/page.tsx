@@ -42,10 +42,10 @@ export default function SettingsPage() {
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-slate-50 p-6">
-        <div className="max-w-xl mx-auto rounded-lg border border-slate-200 bg-white p-8 text-center">
+      <div className="min-h-screen bg-background p-6">
+        <div className="max-w-xl mx-auto rounded-lg border border-border bg-card text-card-foreground p-8 text-center">
           <h2 className="text-xl font-semibold text-rose-600">403 — Access Denied</h2>
-          <p className="mt-2 text-sm text-slate-600">Administrator credentials required to view Settings.</p>
+          <p className="mt-2 text-sm text-muted-foreground">Administrator credentials required to view Settings.</p>
         </div>
       </div>
     );
@@ -94,33 +94,33 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
+    <div className="space-y-6">
       <header className="mb-6">
-        <h1 className="text-2xl font-semibold text-slate-800">Administrative Settings</h1>
-        <p className="text-sm text-slate-500">Manage categories and units of measure.</p>
+        <h1 className="text-2xl font-semibold text-foreground">Administrative Settings</h1>
+        <p className="text-sm text-muted-foreground">Manage categories and units of measure.</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-          <h2 className="text-lg font-medium text-slate-800 mb-3">Category Manager</h2>
+        <section className="rounded-lg border border-border bg-card text-card-foreground p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-foreground mb-3">Category Manager</h2>
           <div className="mb-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <input placeholder="Name" value={newCat.name} onChange={(e) => setNewCat((s) => ({ ...s, name: e.target.value }))} className="col-span-2 rounded border border-slate-200 px-3 py-2" />
+            <input placeholder="Name" value={newCat.name} onChange={(e) => setNewCat((s) => ({ ...s, name: e.target.value }))} className="col-span-2 rounded border border-input bg-background text-foreground px-3 py-2" />
             <button onClick={createCategory} disabled={savingCat} className="rounded bg-emerald-500 text-white px-3 py-2">{savingCat ? 'Saving...' : 'Create'}</button>
-            <input placeholder="Description" value={newCat.description} onChange={(e) => setNewCat((s) => ({ ...s, description: e.target.value }))} className="col-span-3 rounded border border-slate-200 px-3 py-2 mt-2" />
+            <input placeholder="Description" value={newCat.description} onChange={(e) => setNewCat((s) => ({ ...s, description: e.target.value }))} className="col-span-3 rounded border border-input bg-background text-foreground px-3 py-2 mt-2" />
           </div>
 
           {loading ? (
-            <div className="text-sm text-slate-500">Loading…</div>
+            <div className="text-sm text-muted-foreground">Loading…</div>
           ) : (
             <ul className="space-y-2">
               {categories.map((c) => (
-                <li key={c.id} className="flex items-center justify-between rounded border border-slate-100 p-2">
+                <li key={c.id} className="flex items-center justify-between rounded border border-border p-2">
                   <div>
-                    <div className="font-medium text-slate-800">{c.name}</div>
-                    <div className="text-xs text-slate-500">{c.description}</div>
+                    <div className="font-medium text-foreground">{c.name}</div>
+                    <div className="text-xs text-muted-foreground">{c.description}</div>
                   </div>
                   <div>
-                    <button onClick={() => deleteCategory(c.id)} className="text-sm rounded px-2 py-1 bg-rose-50 text-rose-700 border border-rose-100">Delete</button>
+                    <button onClick={() => deleteCategory(c.id)} className="text-sm rounded px-2 py-1 bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 transition">Delete</button>
                   </div>
                 </li>
               ))}
@@ -128,25 +128,25 @@ export default function SettingsPage() {
           )}
         </section>
 
-        <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-          <h2 className="text-lg font-medium text-slate-800 mb-3">Units of Measure</h2>
+        <section className="rounded-lg border border-border bg-card text-card-foreground p-4 shadow-sm">
+          <h2 className="text-lg font-medium text-foreground mb-3">Units of Measure</h2>
           <div className="mb-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <input placeholder="Name (e.g. Kilogram)" value={newUnit.name} onChange={(e) => setNewUnit((s) => ({ ...s, name: e.target.value }))} className="col-span-2 rounded border border-slate-200 px-3 py-2" />
+            <input placeholder="Name (e.g. Kilogram)" value={newUnit.name} onChange={(e) => setNewUnit((s) => ({ ...s, name: e.target.value }))} className="col-span-2 rounded border border-input bg-background text-foreground px-3 py-2" />
             <button onClick={createUnit} disabled={savingUnit} className="rounded bg-emerald-500 text-white px-3 py-2">{savingUnit ? 'Saving...' : 'Create'}</button>
-            <input placeholder="Abbrev (kg)" value={newUnit.abbreviation} onChange={(e) => setNewUnit((s) => ({ ...s, abbreviation: e.target.value }))} className="col-span-3 rounded border border-slate-200 px-3 py-2 mt-2" />
+            <input placeholder="Abbrev (kg)" value={newUnit.abbreviation} onChange={(e) => setNewUnit((s) => ({ ...s, abbreviation: e.target.value }))} className="col-span-3 rounded border border-input bg-background text-foreground px-3 py-2 mt-2" />
           </div>
 
           {loading ? (
-            <div className="text-sm text-slate-500">Loading…</div>
+            <div className="text-sm text-muted-foreground">Loading…</div>
           ) : (
             <ul className="space-y-2">
               {units.map((u) => (
-                <li key={u.id} className="flex items-center justify-between rounded border border-slate-100 p-2">
+                <li key={u.id} className="flex items-center justify-between rounded border border-border p-2">
                   <div>
-                    <div className="font-medium text-slate-800">{u.name} <span className="text-xs text-slate-500">{u.abbreviation}</span></div>
+                    <div className="font-medium text-foreground">{u.name} <span className="text-xs text-muted-foreground">{u.abbreviation}</span></div>
                   </div>
                   <div>
-                    <button onClick={() => deleteUnit(u.id)} className="text-sm rounded px-2 py-1 bg-rose-50 text-rose-700 border border-rose-100">Delete</button>
+                    <button onClick={() => deleteUnit(u.id)} className="text-sm rounded px-2 py-1 bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 transition">Delete</button>
                   </div>
                 </li>
               ))}

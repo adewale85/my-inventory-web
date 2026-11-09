@@ -35,7 +35,7 @@ export default function RecentStockMovementChart({
 }: Props) {
   if (loading) {
     return (
-      <div className="h-[360px] animate-pulse rounded-xl bg-slate-100" />
+      <div className="h-[360px] animate-pulse rounded-xl bg-muted" />
     );
   }
 

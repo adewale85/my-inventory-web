@@ -177,7 +177,7 @@ export default function ReportsPage() {
           return (
             <div
               key={item.id}
-              className="rounded-lg border bg-white p-4 shadow-sm"
+              className="rounded-lg border border-border bg-card p-4 shadow-sm"
             >
               {/* Product + Status */}
               <div className="mb-4 flex items-start justify-between gap-3">
@@ -194,8 +194,8 @@ export default function ReportsPage() {
                 <span
                   className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium ${
                     isLowStock
-                      ? "bg-red-100 text-red-700"
-                      : "bg-green-100 text-green-700"
+                      ? "bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20"
+                      : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
                   }`}
                 >
                   {isLowStock
@@ -205,7 +205,7 @@ export default function ReportsPage() {
               </div>
 
               {/* Report Details */}
-              <div className="grid grid-cols-2 gap-4 border-t pt-4">
+              <div className="grid grid-cols-2 gap-4 border-t border-border pt-4">
                 <div>
                   <p className="text-sm text-muted-foreground">
                     Quantity
@@ -252,10 +252,10 @@ export default function ReportsPage() {
       </div>
 
       {/* ================= DESKTOP VIEW ================= */}
-      <div className="hidden overflow-x-auto rounded-lg border md:block">
+      <div className="hidden overflow-x-auto rounded-lg border border-border md:block">
         <table className="w-full">
           <thead>
-            <tr className="border-b bg-slate-50 text-left">
+            <tr className="border-b border-border bg-muted/50 text-left">
               <th className="p-3">Product</th>
               <th className="p-3">SKU</th>
               <th className="p-3">Quantity</th>
@@ -288,7 +288,7 @@ export default function ReportsPage() {
               return (
                 <tr
                   key={item.id}
-                  className="border-b"
+                  className="border-b border-border hover:bg-muted/40 transition"
                 >
                   <td className="p-3">
                     {item.name}

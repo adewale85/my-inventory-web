@@ -25,34 +25,34 @@ const [password, setPassword] = useState("");
   // Safe mapping for validation error payloads or generic server failures
  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-300 w-full">
-      <div className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
-        <h2 className="text-xl font-semibold text-slate-800">Sign in to My Inventory</h2>
-        <p className="text-sm text-slate-500 mt-1">Enter your credentials to continue.</p>
+    <div className="min-h-screen flex items-center justify-center bg-background w-full">
+      <div className="w-full max-w-md rounded-lg border border-border bg-card text-card-foreground p-8 shadow-sm">
+        <h2 className="text-xl font-semibold text-foreground">Sign in to My Inventory</h2>
+        <p className="text-sm text-muted-foreground mt-1">Enter your credentials to continue.</p>
 
      
        
 
         <form onSubmit={submit} className="mt-4 space-y-3">
           <div>
-            <label className="block text-xs text-slate-500">Email</label>
+            <label className="block text-xs text-muted-foreground">Email</label>
             <input 
               type="email" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
               required 
-              className="w-full rounded border border-slate-200 px-3 py-2 text-slate-900 focus:outline-none focus:border-emerald-500" 
+              className="w-full rounded border border-input bg-background px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500" 
             />
           </div>
 
           <div>
-            <label className="block text-xs text-slate-500">Password</label>
+            <label className="block text-xs text-muted-foreground">Password</label>
             <input 
               type="password" 
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
               required 
-              className="w-full rounded border border-slate-200 px-3 py-2 text-slate-900 focus:outline-none focus:border-emerald-500" 
+              className="w-full rounded border border-input bg-background px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500" 
             />
           </div>
 
@@ -64,7 +64,7 @@ const [password, setPassword] = useState("");
             >
               {isPending ? "Signing in..." : "Sign in"}
             </button>
-            <a href="/auth/signup" className="text-sm text-slate-500 hover:underline">Create account</a>
+            <a href="/auth/signup" className="text-sm text-muted-foreground hover:text-foreground hover:underline">Create account</a>
           </div>
          
         </form>
